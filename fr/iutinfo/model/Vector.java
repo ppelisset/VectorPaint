@@ -2,114 +2,158 @@ package fr.iutinfo.model;
 
 public class Vector extends Observable {
 
-	float size;
-	float topDistance;
-	float leftDistance;
-	float xDirection;
-	float yDirection;
+	protected float _size;
+	protected float _topDistance;
+	protected float _leftDistance;
+	protected float _xDirection;
+	protected float _yDirection;
+
 	/**
-	 * Définit un vecteur par sa position dans l'écran (topDistance,leftDistance)
-	 * ainsi que par sa direction (xDirection,yDirection) et sa taille size.
+	 * Définit un vecteur par sa position dans l'écran
+	 * (_topDistance,_leftDistance) ainsi que par sa direction
+	 * (_xDirection,_yDirection) et sa taille _size.
 	 * 
-	 * @param size
-	 * @param topDistance
-	 * @param leftDistance
-	 * @param xDirection
-	 * @param yDirection
+	 * @param _size
+	 * @param _topDistance
+	 * @param _leftDistance
+	 * @param _xDirection
+	 * @param _yDirection
+	 * @throws Exception 
 	 */
-	
-	
-	public Vector(float size,float topDistance,float leftDistance,
-			float xDirection,float yDirection){
-		this.size=size;
-		this.topDistance=topDistance ;
-		this.leftDistance=leftDistance ;
-		this.xDirection=xDirection ;
-		this.yDirection=yDirection ;	
+
+	public Vector(float _size, float _topDistance, float _leftDistance,
+			float _yDirection, float _xDirection) throws Exception {
+
+		setSize(_size);
+		setTopDistance(_topDistance);
+		setLeftDistance(_leftDistance);
+		setYDirection(_yDirection);
+		setXDirection(_xDirection);
 	}
+
 	/**
 	 * retourne la tailel du vecteur.
 	 * 
-	 * @return size
+	 * @return _size
 	 */
 	public float getSize() {
-		return size;
+		return _size;
 	}
+
 	/**
 	 * Modifie la taille du vecteur et en notifie les observeurs.
 	 * 
-	 * @param size
+	 * @param _size
+	 * @throws Exception
 	 */
-	public void setSize(float size) {
-		this.size = size;
-		notifyObs();
+	public void setSize(float _size) throws Exception {
+		if (_size > 100 || _size < 0) {
+			throw new Exception("size incorrecte");
+		} else {
+			this._size = _size;
+			notifyObs();
+		}
 	}
-	
+
 	/**
-	 * retourne la distance entre le point de départ du vecteur et le l'axe horizontal 
+	 * retourne la distance entre le point de départ du vecteur et le l'axe
+	 * horizontal
 	 * 
-	 * @return topDistance
+	 * @return _topDistance
 	 */
 	public float getTopDistance() {
-		return topDistance;
+		return _topDistance;
 	}
+
 	/**
-	 * Modifie la distance entre le point de départ du vecteur et le l'axe horizontal 
-	 * et en notifie les observeurs.
-	 * @param topDistance
-	 */
-	public void setTopDistance(float topDistance) {
-		this.topDistance = topDistance;
-		notifyObs();
-	}
-	/**
-	 * retourne la distance entre le point de départ du vecteur et le l'axe vertical 
+	 * Modifie la distance entre le point de départ du vecteur et le l'axe
+	 * horizontal et en notifie les observeurs.
 	 * 
-	 * @return leftDistance
+	 * @param _topDistance
+	 * @throws Exception
+	 */
+	public void setTopDistance(float _topDistance) throws Exception {
+
+		if (_topDistance > 100 || _topDistance < 0) {
+			throw new Exception("TopDistance incorrecte ");
+		} else {
+			this._topDistance = _topDistance;
+			notifyObs();
+		}
+	}
+
+	/**
+	 * retourne la distance entre le point de départ du vecteur et le l'axe
+	 * vertical
+	 * 
+	 * @return _leftDistance
 	 */
 	public float getLeftDistance() {
-		return leftDistance;
+		return _leftDistance;
 	}
+
 	/**
-	 * Modifie la distance entre le point de départ du vecteur et le l'axe vertical 
-	 * et notifie les Observeurs.
-	 * @param leftDistance
+	 * Modifie la distance entre le point de départ du vecteur et le l'axe
+	 * vertical et notifie les Observeurs.
+	 * 
+	 * @param _leftDistance
+	 * @throws Exception
 	 */
-	public void setLeftDistance(float leftDistance) {
-		this.leftDistance = leftDistance;
-		notifyObs();
+	public void setLeftDistance(float _leftDistance) throws Exception {
+		if (_leftDistance > 100 || _leftDistance < 0) {
+			throw new Exception("_LeftDistance incorrecte");
+		} else {
+			this._leftDistance = _leftDistance;
+			notifyObs();
+		}
 	}
+
 	/**
 	 * retourne la direction de l'axe x du vecteur.
-	 * @return xDirection 
+	 * 
+	 * @return _xDirection
 	 */
-	public float getxDirection() {
-		return xDirection;
+	public float getXDirection() {
+		return _xDirection;
 	}
+
 	/**
 	 * Modifie la direction de l'axe x du vecteur et notifie les observeurs.
 	 * 
-	 * @param xDirection
+	 * @param _xDirection
+	 * @throws Exception
 	 */
-	public void setxDirection(float xDirection) {
-		this.xDirection = xDirection;
-		notifyObs();
+	public void setXDirection(float _xDirection) throws Exception {
+		if (_xDirection > 100 || _xDirection < 0) {
+			throw new Exception("xDirection incorrecte");
+		} else {
+			this._xDirection = _xDirection;
+			notifyObs();
+		}
 	}
+
 	/**
 	 * retourne la direction de l'axe y du vecteur.
-	 * @return yDirection
+	 * 
+	 * @return _yDirection
 	 */
-	public float getyDirection() {
-		return yDirection;
+	public float getYDirection() {
+		return _yDirection;
 	}
+
 	/**
-	 * modifie la direction de l'axe y du vecteur.
-	 *  et notifie les observeurs.
-	 * @param yDirection
+	 * modifie la direction de l'axe y du vecteur. et notifie les observeurs.
+	 * 
+	 * @param _yDirection
+	 * @throws Exception
 	 */
-	public void setyDirection(float yDirection) {
-		this.yDirection = yDirection;
-		notifyObs();
+	public void setYDirection(float _yDirection) throws Exception {
+		if (_yDirection > 100 || _yDirection < 0) {
+			throw new Exception("yDirection incorrecte");
+		} else {
+			this._yDirection = _yDirection;
+			notifyObs();
+		}
 	}
-	
+
 }
