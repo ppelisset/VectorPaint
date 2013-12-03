@@ -72,6 +72,7 @@ public class Polygon extends Figure {
 		double diffX = first.getLeftDistance()-finishX;
 		
 		if(diffY < ERROR_MARGE && diffX < ERROR_MARGE) {
+			notifyObs();
 			return true;
 		} else {
 			return false;
