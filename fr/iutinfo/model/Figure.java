@@ -1,14 +1,16 @@
 package fr.iutinfo.model;
 
+import java.awt.Color;
+
 public abstract class Figure extends Observable {
 	/**
 	 * Défini si une forme est pleine (true) ou si elle ne contient que le contour(false)
 	 */
-	private boolean _fill;
+	private boolean _fill = true;
 	/**
 	 * Contient la couleur de la figure
 	 */
-	private Color _color;
+	private Color _color = Color.BLACK;
 	
 	/**
 	 * Modifie le remplissage d'une forme

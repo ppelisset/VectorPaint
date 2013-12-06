@@ -8,23 +8,23 @@ public class Polygon extends Figure {
 	public final static float ERROR_MARGE = (float) 0.005;
 	
 	/**
-	 * Cr√©e un polygone vide
+	 * Crée un polygone vide
 	 */
 	public Polygon() {
 		_vectorList = new ArrayList<Vector>();
 	}
 	
 	/**
-	 * Ajoute un vecteur √† la forme
+	 * Ajoute un vecteur à la forme
 	 * @param v
 	 * @throws Exception 
 	 */
 	public void addVector(Vector v) throws Exception {
 		if(!_checkVector(v)) {
-			throw new IllegalArgumentException("Le vecteur ne suit pas le vecteur pr√©c√©dent");
+			throw new IllegalArgumentException("Le vecteur ne suit pas le vecteur précédent");
 		}
 		if(isFinish()) {
-			throw new Exception("La figure est d√©j√† pleine");
+			throw new Exception("La figure est déjà pleine");
 		}
 		if(_isFinish(v)) {
 			_finished = true;
@@ -42,11 +42,11 @@ public class Polygon extends Figure {
 		
 		Vector last = _vectorList.get(_vectorList.size()-1);
 		
-		double finishY = last.getTopDistance()+(last.getYDirection()*last.getSize());
-		double finishX = last.getLeftDistance()+(last.getXDirection()*last.getSize());
+		double finishY = last.getEndTopDistance();
+		double finishX = last.getEndLeftDistance();
 		
-		double diffY = v.getTopDistance()-finishY;
-		double diffX = v.getLeftDistance()-finishX;
+		double diffY = Math.abs(v.getTopDistance()-finishY);
+		double diffX = Math.abs(v.getLeftDistance()-finishX);
 		
 		if(diffY < ERROR_MARGE && diffX < ERROR_MARGE) {
 			return true;
@@ -65,11 +65,14 @@ public class Polygon extends Figure {
 		
 		Vector first = _vectorList.get(0);
 		
-		double finishY = v.getTopDistance()+(v.getYDirection()*v.getSize());
-		double finishX = v.getLeftDistance()+(v.getYDirection()*v.getSize());
+		double finishY = v.getEndTopDistance();
+		double finishX = v.getEndLeftDistance();
 		
-		double diffY = first.getTopDistance()-finishY;
-		double diffX = first.getLeftDistance()-finishX;
+		double diffY = Math.abs(first.getTopDistance()-finishY);
+		double diffX = Math.abs(first.getLeftDistance()-finishX);
+		
+		System.out.println("diffY : " + diffY);
+		System.out.println("diffX : " + diffX);
 		
 		if(diffY < ERROR_MARGE && diffX < ERROR_MARGE) {
 			notifyObs();
@@ -80,10 +83,14 @@ public class Polygon extends Figure {
 	}
 	
 	/**
-	 * V√©rifie si un polygon est fini
+	 * Vérifie si un polygon est fini
 	 * @return
 	 */
 	public boolean isFinish() {
 		return _finished;
+	}
+
+	public ArrayList<Vector> getVectors() {
+		return _vectorList;
 	}
 }

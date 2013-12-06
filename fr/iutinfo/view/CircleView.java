@@ -4,18 +4,24 @@ import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
 
-public class CircleView implements Printable, Observer {
+import fr.iutinfo.model.Circle;
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-
+/**
+ * Classe d'affichage d'un cercle
+ * @author pierre
+ * TODO : A coder
+ */
+public class CircleView implements Printable {
+	private Circle _circle;
+	
+	public CircleView(Circle c) {
+		_circle = c;
 	}
+	
 
 	@Override
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-
+	public void paint(SceneView v, Graphics g) {
+		
 	}
 
 }

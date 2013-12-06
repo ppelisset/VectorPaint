@@ -1,23 +1,19 @@
 package fr.iutinfo.model;
 
 import java.util.ArrayList;
+import java.util.Observer;
 
 /**
  * 
  * @author Vanneufville Matthieu
  *
  */
-public class Scene extends Observable {
+public class Scene extends Observable implements Observer {
 	//--ATTRIBUTS--
 	/**
 	 * il sagit d'une ArrayList qui contient 4 ArrayList pour chaque niveau de profondeur.
 	 */
 	protected ArrayList<ArrayList<Figure>> listFigure;
-
-	/**
-	 * il sagit d'une ArrayList qui contient 4 ArrayList pour chaque niveau de profondeur.
-	 */
-	protected ArrayList<ArrayList<Vector>> listVector;
 
 	//--CONSTRUCTEURS--
 	/**
@@ -25,11 +21,9 @@ public class Scene extends Observable {
 	 */
 	public Scene(){
 		listFigure = new ArrayList<ArrayList<Figure>>();
-		listVector = new ArrayList<ArrayList<Vector>>();
 		//boucle qui initialise les ArrayList dans les ArrayList
 		for(int i=0; i<4; i++){
 			listFigure.add(new ArrayList<Figure>());
-			listVector.add(new ArrayList<Vector>());
 		}
 	}
 
@@ -37,40 +31,25 @@ public class Scene extends Observable {
 	/**
 	 * ajoute une Figure dans l'ArrayList de profondeur voulue
 	 */
-	public void addFigure(int profondeur, Figure figure){
-		if(isCorrect(profondeur))
+	public void addFigure(int profondeur, Figure figure) {
+		if(isCorrect(profondeur)) {
 			listFigure.get(profondeur).add(figure);
-	}
-
-	/**
-	 * ajoute un Vector dans l'ArrayList de profondeur voulue
-	 */
-	public void addVector(int profondeur, Vector vector){
-		if(isCorrect(profondeur))
-			listVector.get(profondeur).add(vector);
+			figure.addObserver(this);
+		}
 	}
 
 	/**
 	 * change une Figure d'ArrayList
 	 */
-	public void setFigure(Figure figure, int profondeur){
-		if(isCorrect(profondeur)){
-			for(int i=0; i<4; i++){
-				listFigure.get(i).remove(figure);
+	public void setFigure(Figure figure, int profondeur) {
+		if(listFigure.contains(figure)) {
+			if(isCorrect(profondeur)){
+				for(int i=0; i<4; i++){
+					listFigure.get(i).remove(figure);
+				}
+				listFigure.get(profondeur).add(figure);
 			}
-			listFigure.get(profondeur).add(figure);
-		}
-	}
-
-	/**
-	 * change un Vector d'ArrayList
-	 */
-	public void setVector(Vector vector, int profondeur){
-		if(isCorrect(profondeur)){
-			for(int i=0; i<4; i++){
-				listVector.get(i).remove(vector);
-			}
-			listVector.get(profondeur).add(vector);
+			notifyObs();
 		}
 	}
 
@@ -82,4 +61,18 @@ public class Scene extends Observable {
 		return false;
 	}
 
+	/**
+	 * RŽcupre un Žtage de Figure
+	 */
+	public ArrayList<Figure> getProfondeurFigure(int profondeur){
+		if(isCorrect(profondeur)){
+			return listFigure.get(profondeur);
+		}
+		return null;
+	}
+
+	@Override
+	public void update(java.util.Observable arg0, Object arg1) {
+		notifyObs();
+	}
 }

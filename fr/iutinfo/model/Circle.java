@@ -1,5 +1,10 @@
 package fr.iutinfo.model;
 
+/**
+ * Classe représentant un cercle
+ * @author pierre
+ * TODO A recoder complétement
+ */
 public class Circle extends Figure {
 	private Vector _height;
 	private Vector _width;
