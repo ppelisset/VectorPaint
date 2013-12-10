@@ -17,6 +17,8 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	private int _startX, _startY;
 	private boolean _inResize = false;
 	private double _beginTop, _beginLeft;
+	private Figure _copy;
+	private boolean _ctrl;
 
 	/**
 	 * Cree un gestionnaire de la souris qui s'occupe de la souris pour la selection et le d�placement de figure sur la sceneView
@@ -151,11 +153,25 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 			} else if(ev.getKeyCode() == KeyEvent.VK_DELETE || ev.getKeyCode() == 8) {
 				_scene.getScene().removeFigure(_scene.getSelectedFigure());
 				_scene.setSelectedFigure(null);
+			} else if(_ctrl && ev.getKeyCode() == KeyEvent.VK_C) {
+				_copy = _scene.getSelectedFigure();
+			} else if(_ctrl && ev.getKeyCode() == KeyEvent.VK_V) {
+				Figure f = _copy.clone();
+				f.move(f.GO_DOWN, 2);
+				f.move(f.GO_LEFT, 2);
+				_scene.getScene().addFigure(0, f);
+			} else if(ev.getKeyCode() == 17) {
+				_ctrl = true;
 			}
 		}
 	}
 	@Override
-	public void keyReleased(KeyEvent arg0) {}
+	public void keyReleased(KeyEvent ev) {
+		if(ev.getKeyCode() == 17) {
+			System.out.println("Controle");
+			_ctrl = false;
+		}
+	}
 	@Override
 	public void keyTyped(KeyEvent arg0) {}
 

@@ -67,6 +67,7 @@ public class SceneView extends JPanel implements MyObserver {
 					update(_scene, f);
 					p = _map.get(f);
 				}
+				System.out.println("Affichage : " + f);
 				p.paint(this, g);
 			}
 		}

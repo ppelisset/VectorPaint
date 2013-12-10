@@ -1,6 +1,9 @@
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Polygon;
 import fr.iutinfo.model.Scene;
 import fr.iutinfo.model.Vector;
@@ -26,6 +29,7 @@ public class Main {
 		control.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		control.setSize(100, 200);
 		control.setVisible(true);
+		
 	}
 
 }

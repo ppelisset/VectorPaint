@@ -1,6 +1,5 @@
 package fr.iutinfo.model;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Polygon extends Figure {
@@ -152,5 +151,17 @@ public class Polygon extends Figure {
 			}
 		}
 		notifyObs(this);
+	}
+
+	@Override
+	public Polygon clone() {
+		Polygon copy;
+		copy = (Polygon) super.clone();
+		if(copy == null) return copy;
+		copy._vectorList = new ArrayList<Vector>();
+		for(Vector v : _vectorList) {
+			copy._vectorList.add(v.clone());
+		}
+		return copy;
 	}
 }

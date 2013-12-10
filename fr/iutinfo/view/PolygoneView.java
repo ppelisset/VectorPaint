@@ -29,6 +29,7 @@ public class PolygoneView implements Printable {
 	public void paint(SceneView v, Graphics g) {
 		calcPolygone(v);
 		g.setColor(_polygon.getColor());
+		System.out.println("Affichage (methode) : " + _polygon.getVectors().get(1));
 		if(_polygon.isFill()) {
 			g.fillPolygon(_view);
 		} else {

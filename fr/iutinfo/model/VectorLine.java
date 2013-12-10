@@ -67,4 +67,11 @@ public class VectorLine extends Figure {
 		}
 		notifyObs(this);
 	}
+	
+	public VectorLine clone() {
+		VectorLine copy = (VectorLine) super.clone();
+		if(copy == null) return null;
+		copy._vector = _vector.clone();
+		return copy;
+	}
 }

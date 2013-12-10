@@ -4,7 +4,7 @@ package fr.iutinfo.model;
  * Classe représentant un vecteur
  * @author maxence, pierre
  */
-public class Vector {
+public class Vector implements Cloneable {
 
 	protected double _size;
 	protected double _topDistance;
@@ -208,6 +208,19 @@ public class Vector {
 
 	public String toString() {
 		return "Vecteur (" + _topDistance + "," + _leftDistance + "," + _yDirection + "," + _xDirection + "," + _size + ")";
+	}
+	
+	public boolean equals(Vector v) {
+		return (_topDistance == v._topDistance && _leftDistance == v._leftDistance && _endLeftDistance == v._endLeftDistance && _endTopDistance == v._endTopDistance);
+	}
+
+	public Vector clone() {
+		try {
+			return (Vector) super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

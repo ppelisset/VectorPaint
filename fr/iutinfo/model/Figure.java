@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import fr.iutinfo.librairies.MyObservable;
 
-public abstract class Figure extends MyObservable {
+public abstract class Figure extends MyObservable implements Cloneable {
 	public static final int GO_UP = 1;
 	public static final int GO_DOWN = 2;
 	public static final int GO_LEFT = 3;
@@ -68,4 +68,14 @@ public abstract class Figure extends MyObservable {
 	
 	public abstract void move(int direction, double speed);
 	public abstract void resize(double originTop, double originLeft, double endTop, double endLeft);
+	
+	public Figure clone() {
+		try {
+			return (Figure) super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
