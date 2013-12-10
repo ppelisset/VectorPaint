@@ -4,14 +4,14 @@ package fr.iutinfo.model;
  * Classe reprŽsentant un vecteur
  * @author maxence, pierre
  */
-public class Vector extends Observable {
+public class Vector {
 
 	protected double _size;
 	protected double _topDistance;
 	protected double _leftDistance;
 	protected double _xDirection;
 	protected double _yDirection;
-	
+
 	protected double _endTopDistance;
 	protected double _endLeftDistance;
 
@@ -38,7 +38,7 @@ public class Vector extends Observable {
 		setXDirection(xDirection);
 		_updateEndDistance();
 	}
-	
+
 	/**
 	 * DŽfinit un vecteur par rapport ˆ un point de dŽpart(topDistance,leftDistance)
 	 * et d'un point d'arrivŽ (endTopDistance,endLeftDistance)
@@ -55,21 +55,21 @@ public class Vector extends Observable {
 		setEndLeftDistance(endLeftDistance);
 		_updateDirection();
 	}
-	
+
 
 	protected void _updateEndDistance() {
 		_endTopDistance = _topDistance+(_yDirection*_size);
 		_endLeftDistance = _leftDistance+(_xDirection*_size);
 	}
-	
+
 	protected void _updateDirection() {
 		double yDistance = _topDistance-_endTopDistance;
 		double xDistance = _leftDistance-_endLeftDistance;
-		
+
 		double ySize = Math.abs(yDistance), xSize = Math.abs(xDistance);
-		
+
 		_size = (ySize > xSize) ? ySize : xSize;
-		
+
 		_xDirection = xDistance/_size;
 		_yDirection = yDistance/_size;
 	}
@@ -95,7 +95,6 @@ public class Vector extends Observable {
 		} else {
 			this._size = _size;
 			_updateEndDistance();
-			notifyObs();
 		}
 	}
 
@@ -114,15 +113,9 @@ public class Vector extends Observable {
 	 * horizontal et en notifie les observeurs.
 	 * 
 	 * @param _topDistance
-	 * @throws Exception
 	 */
-	public void setTopDistance(double _topDistance) throws Exception {
-		if (_topDistance > 100 || _topDistance < 0) {
-			throw new Exception("TopDistance incorrecte ");
-		} else {
-			this._topDistance = _topDistance;
-			notifyObs();
-		}
+	public void setTopDistance(double _topDistance) {
+		this._topDistance = _topDistance;
 	}
 
 	/**
@@ -140,15 +133,9 @@ public class Vector extends Observable {
 	 * vertical et notifie les Observeurs.
 	 * 
 	 * @param _leftDistance
-	 * @throws Exception
 	 */
-	public void setLeftDistance(double _leftDistance) throws Exception {
-		if (_leftDistance > 100 || _leftDistance < 0) {
-			throw new Exception("_LeftDistance incorrecte");
-		} else {
-			this._leftDistance = _leftDistance;
-			notifyObs();
-		}
+	public void setLeftDistance(double _leftDistance) {
+		this._leftDistance = _leftDistance;
 	}
 
 	/**
@@ -172,7 +159,6 @@ public class Vector extends Observable {
 		} else {
 			this._xDirection = _xDirection;
 			_updateEndDistance();
-			notifyObs();
 		}
 	}
 
@@ -197,38 +183,27 @@ public class Vector extends Observable {
 		} else {
 			this._yDirection = _yDirection;
 			_updateEndDistance();
-			notifyObs();
 		}
 	}
-	
-	
-	
+
+
+
 	public double getEndTopDistance() {
 		return _endTopDistance;
 	}
 
-	public void setEndTopDistance(double endTopDistance) throws Exception {
-		if (endTopDistance > 100 || endTopDistance < 0) {
-			throw new Exception("endTopDistance incorrecte ");
-		} else {
-			_endTopDistance = endTopDistance;
-			_updateDirection();
-			notifyObs();
-		}
+	public void setEndTopDistance(double endTopDistance) {
+		_endTopDistance = endTopDistance;
+		_updateDirection();
 	}
 
 	public double getEndLeftDistance() {
 		return _endLeftDistance;
 	}
 
-	public void setEndLeftDistance(double endLeftDistance) throws Exception {
-		if (endLeftDistance > 100 || endLeftDistance < 0) {
-			throw new Exception("endLeftDistance incorrecte ");
-		} else {
-			_endLeftDistance = endLeftDistance;
-			_updateDirection();
-			notifyObs();
-		}
+	public void setEndLeftDistance(double endLeftDistance) {
+		_endLeftDistance = endLeftDistance;
+		_updateDirection();
 	}
 
 	public String toString() {

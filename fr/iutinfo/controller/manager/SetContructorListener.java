@@ -2,9 +2,11 @@ package fr.iutinfo.controller.manager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 import fr.iutinfo.constructor.Constructor;
-import fr.iutinfo.controller.MouseController;
+import fr.iutinfo.controller.MouseCreateController;
+import fr.iutinfo.view.SceneView;
 
 /**
  * Controller (normalement provisoire) de gestion d'un constructeur de figure (permet de changer le constructeur lorsqu'on clique sur un bouton)
@@ -12,16 +14,19 @@ import fr.iutinfo.controller.MouseController;
  */
 public class SetContructorListener implements ActionListener {
 	private Constructor _constructor;
-	private MouseController _mouseController;
+	private SceneView _scene;
 	
-	public SetContructorListener(MouseController mc, Constructor c) {
+	public SetContructorListener(SceneView sv, Constructor c) {
 		_constructor = c;
-		_mouseController = mc;
+		_scene = sv;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		_mouseController.setConstructor(_constructor);
+		_scene.setSelectedFigure(null);
+		if(!(_scene.getMouseListener() instanceof MouseCreateController)) {
+			_scene.setMouseListener(new MouseCreateController(_scene));
+		}
+		((MouseCreateController)_scene.getMouseListener()).setConstructor(_constructor);
 	}
-
 }

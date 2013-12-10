@@ -2,7 +2,15 @@ package fr.iutinfo.model;
 
 import java.awt.Color;
 
-public abstract class Figure extends Observable {
+import fr.iutinfo.librairies.MyObservable;
+
+public abstract class Figure extends MyObservable {
+	public static final int GO_UP = 1;
+	public static final int GO_DOWN = 2;
+	public static final int GO_LEFT = 3;
+	public static final int GO_RIGHT = 4;
+	public final static float ERROR_MARGE = (float) 0.005;
+	
 	/**
 	 * D√©fini si une forme est pleine (true) ou si elle ne contient que le contour(false)
 	 */
@@ -11,6 +19,10 @@ public abstract class Figure extends Observable {
 	 * Contient la couleur de la figure
 	 */
 	private Color _color = Color.BLACK;
+	/**
+	 * Contient le fait que la figure soit séléctionner ou non
+	 */
+	private boolean _selected = false;
 	
 	/**
 	 * Modifie le remplissage d'une forme
@@ -18,7 +30,7 @@ public abstract class Figure extends Observable {
 	 */
 	public void setFill(boolean fill) {
 		_fill = fill;
-		notifyObs();
+		notifyObs(this);
 	}
 	
 	/**
@@ -35,7 +47,7 @@ public abstract class Figure extends Observable {
 	 */
 	public void setColor(Color color) {
 		_color = color;
-		notifyObs();
+		notifyObs(this);
 	}
 	
 	/**
@@ -45,4 +57,15 @@ public abstract class Figure extends Observable {
 	public Color getColor() {
 		return _color;
 	}
+
+	public void setSelected(boolean b) {
+		_selected = b;
+	}
+	
+	public boolean isSelected() {
+		return _selected;
+	}
+	
+	public abstract void move(int direction, double speed);
+	public abstract void resize(double originTop, double originLeft, double endTop, double endLeft);
 }

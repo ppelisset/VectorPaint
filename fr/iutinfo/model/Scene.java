@@ -3,12 +3,15 @@ package fr.iutinfo.model;
 import java.util.ArrayList;
 import java.util.Observer;
 
+import fr.iutinfo.librairies.MyObservable;
+import fr.iutinfo.librairies.MyObserver;
+
 /**
  * 
  * @author Vanneufville Matthieu
  *
  */
-public class Scene extends Observable implements Observer {
+public class Scene extends MyObservable implements MyObserver {
 	//--ATTRIBUTS--
 	/**
 	 * il sagit d'une ArrayList qui contient 4 ArrayList pour chaque niveau de profondeur.
@@ -35,6 +38,7 @@ public class Scene extends Observable implements Observer {
 		if(isCorrect(profondeur)) {
 			listFigure.get(profondeur).add(figure);
 			figure.addObserver(this);
+			update(this, figure);
 		}
 	}
 
@@ -49,7 +53,7 @@ public class Scene extends Observable implements Observer {
 				}
 				listFigure.get(profondeur).add(figure);
 			}
-			notifyObs();
+			notifyObs(figure);
 		}
 	}
 
@@ -72,7 +76,13 @@ public class Scene extends Observable implements Observer {
 	}
 
 	@Override
-	public void update(java.util.Observable arg0, Object arg1) {
-		notifyObs();
+	public void update(MyObservable observable, Figure modified) {
+		notifyObs(modified);
+	}
+
+	public void removeFigure(Figure figure) {
+		for(int i=0; i<4; i++){
+			listFigure.get(i).remove(figure);
+		}
 	}
 }

@@ -17,6 +17,18 @@ public class Circle extends Figure {
 	public Circle(Vector height, Vector width) {
 		_height = height;
 		_width = width;
-		notifyObs();
+		notifyObs(this);
+	}
+
+	@Override
+	public void move(int direction, double speed) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resize(double orginTop, double originLeft, double endTop, double endLeft) {
+		// TODO Auto-generated method stub
+		
 	}
 }

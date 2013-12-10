@@ -1,11 +1,11 @@
 package fr.iutinfo.model;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Polygon extends Figure {
 	protected ArrayList<Vector> _vectorList;
 	protected boolean _finished = false;
-	public final static float ERROR_MARGE = (float) 0.005;
 	
 	/**
 	 * Crée un polygone vide
@@ -75,7 +75,7 @@ public class Polygon extends Figure {
 		System.out.println("diffX : " + diffX);
 		
 		if(diffY < ERROR_MARGE && diffX < ERROR_MARGE) {
-			notifyObs();
+			notifyObs(this);
 			return true;
 		} else {
 			return false;
@@ -92,5 +92,59 @@ public class Polygon extends Figure {
 
 	public ArrayList<Vector> getVectors() {
 		return _vectorList;
+	}
+
+	@Override
+	public void move(int direction, double speed) {
+		System.out.println("Move");
+		for(Vector v : _vectorList) {
+			switch(direction) {
+				case GO_UP:
+					v.setTopDistance(v.getTopDistance()-speed);
+					v.setEndTopDistance(v.getEndTopDistance()-speed);
+					break;
+				case GO_DOWN:
+					v.setTopDistance(v.getTopDistance()+speed);
+					v.setEndTopDistance(v.getEndTopDistance()+speed);
+					break;
+				case GO_LEFT:
+					v.setLeftDistance(v.getLeftDistance()-speed);
+					v.setEndLeftDistance(v.getEndLeftDistance()-speed);
+					break;
+				case GO_RIGHT:
+					v.setLeftDistance(v.getLeftDistance()+speed);
+					v.setEndLeftDistance(v.getEndLeftDistance()+speed);
+					break;
+			}
+		}
+	}
+
+	@Override
+	public void resize(double originTop, double originLeft, double endTop, double endLeft) {
+		double diffX, diffY;
+		boolean beginResize = false, endResize = false;
+		for(Vector v : _vectorList) {
+			if(!beginResize) {
+				diffX = Math.abs(v.getLeftDistance() - originLeft);
+				diffY = Math.abs(v.getTopDistance() - originTop);
+				
+				if(diffX < ERROR_MARGE && diffY < ERROR_MARGE) {
+					v.setLeftDistance(endLeft);
+					v.setTopDistance(endTop);
+				}
+				beginResize = true;
+			}
+			
+			if(!endResize) {
+				diffX = Math.abs(v.getEndLeftDistance() - originLeft);
+				diffY = Math.abs(v.getEndTopDistance() - originTop);
+				
+				if(diffX < ERROR_MARGE && diffY < ERROR_MARGE) {
+					v.setEndLeftDistance(endLeft);
+					v.setEndTopDistance(endTop);
+				}
+				endResize = true;
+			}
+		}
 	}
 }
