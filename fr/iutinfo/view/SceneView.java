@@ -11,7 +11,9 @@ import fr.iutinfo.model.VectorLine;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.RenderingHints;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class SceneView extends JPanel implements MyObserver {
 	public final int ERROR_MARGE = 5;
 
 	/**
-	 * Crée une scene
+	 * CrÔøΩe une scene
 	 * @param scene
 	 */
 	public SceneView(Scene scene) {
@@ -46,12 +48,13 @@ public class SceneView extends JPanel implements MyObserver {
 	 * Methode d'affichage d'une scene
 	 */
 	public void paintComponent(Graphics g) {
+		((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		// On ajoute un fond blanc
 		g.setColor(Color.white);
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.black);
 
-		// On affiche tout les éléments qui existe déjà
+		// On affiche tout les ÔøΩlÔøΩments qui existe dÔøΩjÔøΩ
 		ArrayList<Figure> listFigure;
 		Printable p;
 		for(int i = 0; i < 4; i++) {
@@ -67,13 +70,13 @@ public class SceneView extends JPanel implements MyObserver {
 			}
 		}
 
-		// On dessine l'élément qu'on est en train de créer (si il y en a un)
+		// On dessine l'ÔøΩlÔøΩment qu'on est en train de crÔøΩer (si il y en a un)
 		g.setColor(Color.black);
 		if(_controller instanceof MouseCreateController && ((MouseCreateController)_controller).getCurrentConstructor() != null) {
 			((MouseCreateController)_controller).getCurrentConstructor().paint(this, g, ((MouseCreateController)_controller).getPosX(), ((MouseCreateController)_controller).getPosY());
 		}
 		
-		// On dessine les éléments de selection
+		// On dessine les ÔøΩlÔøΩments de selection
 		if(getSelectedFigure() != null) {
 			p = _map.get(getSelectedFigure());
 			int nb = p.getNbPoint();
@@ -108,7 +111,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 
 	public Figure getSelectedFigure(int x, int y) {
-		// On teste tout les éléments qui sont présent
+		// On teste tout les ÔøΩlÔøΩments qui sont prÔøΩsent
 		ArrayList<Figure> listFigure;
 		Printable p;
 		Figure selectedFigure = null;
@@ -155,8 +158,8 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 
 	/**
-	 * Gère la vitesse de déplacement au clavier
-	 * TODO : Modifier pour la faire différer en fonction de la taille de la fenêtre
+	 * GÔøΩre la vitesse de dÔøΩplacement au clavier
+	 * TODO : Modifier pour la faire diffÔøΩrer en fonction de la taille de la fenÔøΩtre
 	 * @return
 	 */
 	public double getSpeed() {
