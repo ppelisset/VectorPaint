@@ -41,6 +41,7 @@ public class SceneView extends JPanel implements MyObserver {
 		_scene = scene;
 		_map = new HashMap<Figure, Printable>();
 		_controller = new MouseCreateController(this);
+		scene.addObserver(this);
 		addMouseListener(_controller);
 	}
 

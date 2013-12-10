@@ -1,7 +1,7 @@
 package fr.iutinfo.model;
 
 /**
- * Classe reprŽsentant une ligne vectorielle
+ * Classe reprï¿½sentant une ligne vectorielle
  * @author pierre
  *
  */
@@ -37,6 +37,7 @@ public class VectorLine extends Figure {
 			v.setEndLeftDistance(v.getEndLeftDistance()+speed);
 			break;
 		}
+		notifyObs(this);
 	}
 
 	@Override
@@ -64,5 +65,6 @@ public class VectorLine extends Figure {
 			}
 			endResize = true;
 		}
+		notifyObs(this);
 	}
 }

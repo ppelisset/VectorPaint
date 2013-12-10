@@ -17,7 +17,7 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	private int _startX, _startY;
 
 	/**
-	 * Cre un gestionnaire de la souris qui s'occupe de la souris pour la selection et le dplacement de figure sur la sceneView
+	 * Crï¿½e un gestionnaire de la souris qui s'occupe de la souris pour la selection et le dï¿½placement de figure sur la sceneView
 	 * @param v
 	 */
 	public MouseSelectController(SceneView v) {
@@ -27,7 +27,7 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	}
 	@Override
 	public void mouseDragged(MouseEvent ev) {
-		// Si on est en train de dplacer une forme, on la dplace
+		// Si on est en train de dï¿½placer une forme, on la dï¿½place
 		if(_inMove) {
 			int decX = _startX - ev.getX();
 			int decY = _startY - ev.getY();
@@ -68,10 +68,10 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 
 	@Override
 	public void mousePressed(MouseEvent ev) {
-		// Quand on enfonce le bouton de la souris, on vrifie plusieurs choses :
-		// - Si une figure et slctionn et que l'appuie sur une touche est faite sur la mme, on dmarre un dplacement
-		// - Si une nouvelle figure est slctionn, on dslctionne l'ancienne et on slctionne l'ancienne
-		// - Si aucune figure est slctionn, on dslectionne celle qui l'tait
+		// Quand on enfonce le bouton de la souris, on vï¿½rifie plusieurs choses :
+		// - Si une figure et sï¿½lï¿½ctionnï¿½ et que l'appuie sur une touche est faite sur la mï¿½me, on dï¿½marre un dï¿½placement
+		// - Si une nouvelle figure est sï¿½lï¿½ctionnï¿½, on dï¿½sï¿½lï¿½ctionne l'ancienne et on sï¿½lï¿½ctionne l'ancienne
+		// - Si aucune figure est sï¿½lï¿½ctionnï¿½, on dï¿½sï¿½lectionne celle qui l'ï¿½tait
 		Figure selectedFigure = _scene.getSelectedFigure(ev.getX(), ev.getY());
 		if(selectedFigure != null && selectedFigure == _scene.getSelectedFigure()) {
 			_inMove = true;
@@ -114,20 +114,15 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 			System.out.println("KeyCode : " + ev.getKeyCode());
 			if(ev.getKeyCode() == KeyEvent.VK_UP) {
 				_scene.getSelectedFigure().move(Figure.GO_UP, _scene.getSpeed());
-				_scene.repaint();
 			} else if(ev.getKeyCode() == KeyEvent.VK_DOWN) {
 				_scene.getSelectedFigure().move(Figure.GO_DOWN, _scene.getSpeed());
-				_scene.repaint();
 			} else if(ev.getKeyCode() == KeyEvent.VK_LEFT) {
 				_scene.getSelectedFigure().move(Figure.GO_LEFT, _scene.getSpeed());
-				_scene.repaint();
 			} else if(ev.getKeyCode() == KeyEvent.VK_RIGHT) {
 				_scene.getSelectedFigure().move(Figure.GO_RIGHT, _scene.getSpeed());
-				_scene.repaint();
 			} else if(ev.getKeyCode() == KeyEvent.VK_DELETE || ev.getKeyCode() == 8) {
 				_scene.getScene().removeFigure(_scene.getSelectedFigure());
 				_scene.setSelectedFigure(null);
-				_scene.repaint();
 			}
 		}
 	}

@@ -66,7 +66,7 @@ public class Scene extends MyObservable implements MyObserver {
 	}
 
 	/**
-	 * Rcupre un tage de Figure
+	 * Rï¿½cupï¿½re un ï¿½tage de Figure
 	 */
 	public ArrayList<Figure> getProfondeurFigure(int profondeur){
 		if(isCorrect(profondeur)){
@@ -84,5 +84,6 @@ public class Scene extends MyObservable implements MyObserver {
 		for(int i=0; i<4; i++){
 			listFigure.get(i).remove(figure);
 		}
+		notifyObs(null);
 	}
 }

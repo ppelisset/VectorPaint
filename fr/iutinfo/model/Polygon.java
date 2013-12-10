@@ -8,23 +8,23 @@ public class Polygon extends Figure {
 	protected boolean _finished = false;
 	
 	/**
-	 * CrŽe un polygone vide
+	 * Crï¿½e un polygone vide
 	 */
 	public Polygon() {
 		_vectorList = new ArrayList<Vector>();
 	}
 	
 	/**
-	 * Ajoute un vecteur ˆ la forme
+	 * Ajoute un vecteur ï¿½ la forme
 	 * @param v
 	 * @throws Exception 
 	 */
 	public void addVector(Vector v) throws Exception {
 		if(!_checkVector(v)) {
-			throw new IllegalArgumentException("Le vecteur ne suit pas le vecteur prŽcŽdent");
+			throw new IllegalArgumentException("Le vecteur ne suit pas le vecteur prï¿½cï¿½dent");
 		}
 		if(isFinish()) {
-			throw new Exception("La figure est dŽjˆ pleine");
+			throw new Exception("La figure est dï¿½jï¿½ pleine");
 		}
 		if(_isFinish(v)) {
 			_finished = true;
@@ -83,7 +83,7 @@ public class Polygon extends Figure {
 	}
 	
 	/**
-	 * VŽrifie si un polygon est fini
+	 * Vï¿½rifie si un polygon est fini
 	 * @return
 	 */
 	public boolean isFinish() {
@@ -117,6 +117,7 @@ public class Polygon extends Figure {
 					break;
 			}
 		}
+		notifyObs(this);
 	}
 
 	@Override
@@ -146,5 +147,6 @@ public class Polygon extends Figure {
 				endResize = true;
 			}
 		}
+		notifyObs(this);
 	}
 }
