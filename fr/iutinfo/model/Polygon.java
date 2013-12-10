@@ -128,23 +128,27 @@ public class Polygon extends Figure {
 			if(!beginResize) {
 				diffX = Math.abs(v.getLeftDistance() - originLeft);
 				diffY = Math.abs(v.getTopDistance() - originTop);
-				
+				System.out.println("diffX : " + diffX);
+				System.out.println("diffY : " + diffY);
 				if(diffX < ERROR_MARGE && diffY < ERROR_MARGE) {
+					System.out.println("Resize");
 					v.setLeftDistance(endLeft);
 					v.setTopDistance(endTop);
+					beginResize = true;
 				}
-				beginResize = true;
 			}
 			
 			if(!endResize) {
 				diffX = Math.abs(v.getEndLeftDistance() - originLeft);
 				diffY = Math.abs(v.getEndTopDistance() - originTop);
-				
+				System.out.println("diffX : " + diffX);
+				System.out.println("diffY : " + diffY);
 				if(diffX < ERROR_MARGE && diffY < ERROR_MARGE) {
+					System.out.println("Resize");
 					v.setEndLeftDistance(endLeft);
 					v.setEndTopDistance(endTop);
+					endResize = true;
 				}
-				endResize = true;
 			}
 		}
 		notifyObs(this);

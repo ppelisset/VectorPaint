@@ -15,9 +15,11 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	private int _posX, _posY;
 	private boolean _inMove = false;
 	private int _startX, _startY;
+	private boolean _inResize = false;
+	private double _beginTop, _beginLeft;
 
 	/**
-	 * Cr�e un gestionnaire de la souris qui s'occupe de la souris pour la selection et le d�placement de figure sur la sceneView
+	 * Cree un gestionnaire de la souris qui s'occupe de la souris pour la selection et le d�placement de figure sur la sceneView
 	 * @param v
 	 */
 	public MouseSelectController(SceneView v) {
@@ -27,6 +29,14 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	}
 	@Override
 	public void mouseDragged(MouseEvent ev) {
+		if(_inResize) {
+			double endTop, endLeft;
+			endLeft = (((double)ev.getX())/_scene.getWidth())*100;
+			endTop = (((double)ev.getY())/_scene.getHeight())*100;
+			_scene.getSelectedFigure().resize(_beginTop, _beginLeft, endTop, endLeft);
+			_beginTop = endTop;
+			_beginLeft = endLeft;
+		}
 		// Si on est en train de d�placer une forme, on la d�place
 		if(_inMove) {
 			int decX = _startX - ev.getX();
@@ -69,9 +79,20 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	@Override
 	public void mousePressed(MouseEvent ev) {
 		// Quand on enfonce le bouton de la souris, on v�rifie plusieurs choses :
-		// - Si une figure et s�l�ctionn� et que l'appuie sur une touche est faite sur la m�me, on d�marre un d�placement
-		// - Si une nouvelle figure est s�l�ctionn�, on d�s�l�ctionne l'ancienne et on s�l�ctionne l'ancienne
-		// - Si aucune figure est s�l�ctionn�, on d�s�lectionne celle qui l'�tait
+		// - Si une figure et selectionne et que l'appuie sur une touche est faite sur la m�me, on d�marre un d�placement
+		// - Si une nouvelle figure est selectionne, on deselectionne l'ancienne et on selectionne la nouvelle
+		// - Si aucune figure est selectionne, on deselectionne celle qui l'etait
+		if(_scene.getSelectedFigure() != null) {
+			Point p = _scene.getSelectedPoint(_scene.getSelectedFigure(), ev.getX(), ev.getY());
+			System.out.println("Point : " + p);
+			if(p != null) {
+				_beginLeft = (((double)p.getX())/_scene.getWidth())*100;
+				_beginTop = (((double)p.getY())/_scene.getHeight())*100;
+				_inResize = true;
+				return;
+			}
+		}
+		_inResize = false;
 		Figure selectedFigure = _scene.getSelectedFigure(ev.getX(), ev.getY());
 		if(selectedFigure != null && selectedFigure == _scene.getSelectedFigure()) {
 			_inMove = true;
@@ -93,6 +114,12 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 
 	@Override
 	public void mouseReleased(MouseEvent ev) {
+		if(_inResize) {
+			double endTop, endLeft;
+			endLeft = (((double)ev.getX())/_scene.getWidth())*100;
+			endTop = (((double)ev.getY())/_scene.getHeight())*100;
+			_scene.getSelectedFigure().resize(_beginTop, _beginLeft, endTop, endLeft);
+		}
 		// Si on fesait un mouvement lors du relachement de la souris, on le termine
 		if(_inMove) {
 			int decX = _startX - ev.getX();
@@ -106,6 +133,7 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 			_scene.repaint();
 		}
 		_inMove = false;
+		_inResize = false;
 	}
 	
 	@Override

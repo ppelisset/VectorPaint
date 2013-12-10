@@ -9,7 +9,7 @@ public abstract class Figure extends MyObservable {
 	public static final int GO_DOWN = 2;
 	public static final int GO_LEFT = 3;
 	public static final int GO_RIGHT = 4;
-	public final static float ERROR_MARGE = (float) 0.005;
+	public final static float ERROR_MARGE = (float) 0.5;
 	
 	/**
 	 * Défini si une forme est pleine (true) ou si elle ne contient que le contour(false)

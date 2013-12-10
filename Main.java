@@ -1,12 +1,9 @@
 import javax.swing.JFrame;
-import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 
 import fr.iutinfo.model.Polygon;
 import fr.iutinfo.model.Scene;
 import fr.iutinfo.model.Vector;
-import fr.iutinfo.model.VectorLine;
 import fr.iutinfo.view.SceneView;
 import fr.iutinfo.view.manager.ControllerPanel;
 
