@@ -1,17 +1,25 @@
 package fr.iutinfo.model;
 
 /**
- * Classe repr�sentant une ligne vectorielle
+ * Classe representant une ligne vectorielle
  * @author pierre
  *
  */
 public class VectorLine extends Figure {
 	private Vector _vector;
 
+	/**
+	 * Cree une nouvelle ligne defini par un vecteur
+	 * @param v
+	 */
 	public VectorLine(Vector v) {
 		_vector = v;
 	}
 
+	/**
+	 * Recupere le vecteur utilise par la ligne
+	 * @return
+	 */
 	public Vector getVector() {
 		return _vector;
 	}

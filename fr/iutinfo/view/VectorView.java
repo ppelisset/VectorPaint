@@ -13,6 +13,10 @@ import fr.iutinfo.model.VectorLine;
 public class VectorView implements Printable {
 	VectorLine _vector;
 	
+	/**
+	 * Créer la vue d'un vector view
+	 * @param v
+	 */
 	public VectorView(VectorLine v) {
 		_vector = v;
 	}

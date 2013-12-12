@@ -1,7 +1,6 @@
 package fr.iutinfo.model;
 
 import java.util.ArrayList;
-import java.util.Observer;
 
 import fr.iutinfo.librairies.MyObservable;
 import fr.iutinfo.librairies.MyObserver;
@@ -66,7 +65,7 @@ public class Scene extends MyObservable implements MyObserver {
 	}
 
 	/**
-	 * RÔøΩcupÔøΩre un ÔøΩtage de Figure
+	 * Recupere un etage de figure
 	 */
 	public ArrayList<Figure> getProfondeurFigure(int profondeur){
 		if(isCorrect(profondeur)){
@@ -80,6 +79,10 @@ public class Scene extends MyObservable implements MyObserver {
 		notifyObs(modified);
 	}
 
+	/**
+	 * Permet de supprimer la figure passer en paramètre
+	 * @param figure
+	 */
 	public void removeFigure(Figure figure) {
 		for(int i=0; i<4; i++){
 			listFigure.get(i).remove(figure);

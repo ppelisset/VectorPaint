@@ -15,7 +15,6 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.event.MouseListener;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,6 +25,8 @@ import javax.swing.JPanel;
  * @author pierre
  */
 public class SceneView extends JPanel implements MyObserver {
+	private static final long serialVersionUID = 6846502414478651296L;
+	
 	protected Scene _scene;
 	protected MouseListener _controller;
 	protected HashMap<Figure, Printable> _map;
@@ -34,7 +35,7 @@ public class SceneView extends JPanel implements MyObserver {
 	public final int ERROR_MARGE = 5;
 
 	/**
-	 * CrÔøΩe une scene
+	 * Cree la vue de la scene passe en parametre
 	 * @param scene
 	 */
 	public SceneView(Scene scene) {
@@ -55,7 +56,7 @@ public class SceneView extends JPanel implements MyObserver {
 		g.fillRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.black);
 
-		// On affiche tout les ÔøΩlÔøΩments qui existe dÔøΩjÔøΩ
+		// On affiche tout les elements qui existe deja
 		ArrayList<Figure> listFigure;
 		Printable p;
 		for(int i = 0; i < 4; i++) {
@@ -72,13 +73,13 @@ public class SceneView extends JPanel implements MyObserver {
 			}
 		}
 
-		// On dessine l'ÔøΩlÔøΩment qu'on est en train de crÔøΩer (si il y en a un)
+		// On dessine l'element qu'on est en train de creer (si il y en a un)
 		g.setColor(Color.black);
 		if(_controller instanceof MouseCreateController && ((MouseCreateController)_controller).getCurrentConstructor() != null) {
 			((MouseCreateController)_controller).getCurrentConstructor().paint(this, g, ((MouseCreateController)_controller).getPosX(), ((MouseCreateController)_controller).getPosY());
 		}
 		
-		// On dessine les ÔøΩlÔøΩments de selection
+		// On dessine les ronds de selection
 		if(getSelectedFigure() != null) {
 			p = _map.get(getSelectedFigure());
 			int nb = p.getNbPoint();
@@ -91,6 +92,10 @@ public class SceneView extends JPanel implements MyObserver {
 		}
 	}
 
+	/**
+	 * Permet de récuperer la scene afficher par la scene view
+	 * @return
+	 */
 	public Scene getScene() {
 		return _scene;
 	}
@@ -112,6 +117,12 @@ public class SceneView extends JPanel implements MyObserver {
 		this.repaint();
 	}
 
+	/**
+	 * Permet de récupérer la figure se trouvant au point (x,y)
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public Figure getSelectedFigure(int x, int y) {
 		// On teste tout les ÔøΩlÔøΩments qui sont prÔøΩsent
 		ArrayList<Figure> listFigure;
@@ -134,6 +145,13 @@ public class SceneView extends JPanel implements MyObserver {
 		return selectedFigure;
 	}
 	
+	/**
+	 * Permet de récupérer le point de la figure f se trouvant aux coordonnés (x,y)
+	 * @param f
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public Point getSelectedPoint(Figure f, int x, int y) {
 		if(_map.containsKey(f)) {
 			return _map.get(f).getPoint(this, x, y);
@@ -141,27 +159,43 @@ public class SceneView extends JPanel implements MyObserver {
 		return null;
 	}
 	
+	/**
+	 * Recupere le MouseListener du pannel
+	 * @return
+	 */
 	public MouseListener getMouseListener() {
 		return _controller;
 	}
 	
+	/**
+	 * Modifie le MouseListener du pannel
+	 * @param listener
+	 */
 	public void setMouseListener(MouseListener listener) {
 		if(_controller != null) removeMouseListener(_controller);
 		_controller = listener;
 		addMouseListener(_controller);
 	}
 
+	/**
+	 * Recupère la figure séléctionné dans le pannel
+	 * @return
+	 */
 	public Figure getSelectedFigure() {
 		return _selectedFigure;
 	}
 
+	/**
+	 * Change la figure selectionné dans le pannel
+	 * @param _selectedFigure
+	 */
 	public void setSelectedFigure(Figure _selectedFigure) {
 		this._selectedFigure = _selectedFigure;
 	}
 
 	/**
-	 * GÔøΩre la vitesse de dÔøΩplacement au clavier
-	 * TODO : Modifier pour la faire diffÔøΩrer en fonction de la taille de la fenÔøΩtre
+	 * Gere la vitesse de deplacement au clavier
+	 * TODO : Modifier pour la faire differer en fonction de la taille de la fenetre
 	 * @return
 	 */
 	public double getSpeed() {

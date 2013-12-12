@@ -2,11 +2,9 @@ package fr.iutinfo.view;
 
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 import fr.iutinfo.model.Polygon;
-import fr.iutinfo.model.Scene;
 import fr.iutinfo.model.Vector;
 
 /**
@@ -17,19 +15,15 @@ import fr.iutinfo.model.Vector;
 public class PolygoneView implements Printable {
 	private Polygon _polygon;
 	private java.awt.Polygon _view;
-	private int _width, _height;
-	private int _save;
 
 	public PolygoneView(Polygon p) {
 		_polygon = p;
-		_save = 0;
 	}
 
 	@Override
 	public void paint(SceneView v, Graphics g) {
 		calcPolygone(v);
 		g.setColor(_polygon.getColor());
-		System.out.println("Affichage (methode) : " + _polygon.getVectors().get(1));
 		if(_polygon.isFill()) {
 			g.fillPolygon(_view);
 		} else {
@@ -39,9 +33,7 @@ public class PolygoneView implements Printable {
 
 	@Override
 	public boolean isSelect(SceneView v, int x, int y) {
-		//if(_width != v.getWidth() || _height != v.getHeight() || _save != _polygon.hashCode() || _view == null) {
 		calcPolygone(v);
-		//}
 		if(_view.contains(x, y)) {
 			return true;
 		} else {
@@ -63,9 +55,6 @@ public class PolygoneView implements Printable {
 			y = (int) ((vector.getEndTopDistance()*v.getHeight())/100);
 			_view.addPoint(x, y);
 		}
-		_width = v.getWidth();
-		_height = v.getHeight();
-		_save = _polygon.hashCode();
 	}
 
 	@Override

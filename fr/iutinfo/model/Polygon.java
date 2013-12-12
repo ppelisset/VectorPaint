@@ -7,23 +7,23 @@ public class Polygon extends Figure {
 	protected boolean _finished = false;
 	
 	/**
-	 * Crï¿½e un polygone vide
+	 * Cree un polygone vide
 	 */
 	public Polygon() {
 		_vectorList = new ArrayList<Vector>();
 	}
 	
 	/**
-	 * Ajoute un vecteur ï¿½ la forme
+	 * Ajoute un vecteur a la forme
 	 * @param v
 	 * @throws Exception 
 	 */
 	public void addVector(Vector v) throws Exception {
 		if(!_checkVector(v)) {
-			throw new IllegalArgumentException("Le vecteur ne suit pas le vecteur prï¿½cï¿½dent");
+			throw new IllegalArgumentException("Le vecteur ne suit pas le vecteur precedent");
 		}
 		if(isFinish()) {
-			throw new Exception("La figure est dï¿½jï¿½ pleine");
+			throw new Exception("La figure est deja pleine");
 		}
 		if(_isFinish(v)) {
 			_finished = true;
@@ -70,9 +70,6 @@ public class Polygon extends Figure {
 		double diffY = Math.abs(first.getTopDistance()-finishY);
 		double diffX = Math.abs(first.getLeftDistance()-finishX);
 		
-		System.out.println("diffY : " + diffY);
-		System.out.println("diffX : " + diffX);
-		
 		if(diffY < ERROR_MARGE && diffX < ERROR_MARGE) {
 			notifyObs(this);
 			return true;
@@ -82,20 +79,23 @@ public class Polygon extends Figure {
 	}
 	
 	/**
-	 * Vï¿½rifie si un polygon est fini
+	 * Verifie si un polygon est fini
 	 * @return
 	 */
 	public boolean isFinish() {
 		return _finished;
 	}
 
+	/**
+	 * Recupre la liste des vecteurs constituant le polygone
+	 * @return
+	 */
 	public ArrayList<Vector> getVectors() {
 		return _vectorList;
 	}
 
 	@Override
 	public void move(int direction, double speed) {
-		System.out.println("Move");
 		for(Vector v : _vectorList) {
 			switch(direction) {
 				case GO_UP:
@@ -127,8 +127,6 @@ public class Polygon extends Figure {
 			if(!beginResize) {
 				diffX = Math.abs(v.getLeftDistance() - originLeft);
 				diffY = Math.abs(v.getTopDistance() - originTop);
-				System.out.println("diffX : " + diffX);
-				System.out.println("diffY : " + diffY);
 				if(diffX < ERROR_MARGE && diffY < ERROR_MARGE) {
 					System.out.println("Resize");
 					v.setLeftDistance(endLeft);
@@ -140,10 +138,7 @@ public class Polygon extends Figure {
 			if(!endResize) {
 				diffX = Math.abs(v.getEndLeftDistance() - originLeft);
 				diffY = Math.abs(v.getEndTopDistance() - originTop);
-				System.out.println("diffX : " + diffX);
-				System.out.println("diffY : " + diffY);
 				if(diffX < ERROR_MARGE && diffY < ERROR_MARGE) {
-					System.out.println("Resize");
 					v.setEndLeftDistance(endLeft);
 					v.setEndTopDistance(endTop);
 					endResize = true;

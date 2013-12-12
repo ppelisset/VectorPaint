@@ -12,17 +12,13 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	public final static float ERROR_MARGE = (float) 0.5;
 	
 	/**
-	 * D√©fini si une forme est pleine (true) ou si elle ne contient que le contour(false)
+	 * Defini si une forme est pleine (true) ou si elle ne contient que le contour(false)
 	 */
 	private boolean _fill = true;
 	/**
 	 * Contient la couleur de la figure
 	 */
 	private Color _color = Color.BLACK;
-	/**
-	 * Contient le fait que la figure soit séléctionner ou non
-	 */
-	private boolean _selected = false;
 	
 	/**
 	 * Modifie le remplissage d'une forme
@@ -57,23 +53,30 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	public Color getColor() {
 		return _color;
 	}
-
-	public void setSelected(boolean b) {
-		_selected = b;
-	}
 	
-	public boolean isSelected() {
-		return _selected;
-	}
-	
+	/**
+	 * Permet de diriger une forme dans une direction(LEFT, RIGHT, DOWN, UP) avec une vitesse
+	 * @param direction
+	 * @param speed
+	 */
 	public abstract void move(int direction, double speed);
+	/**
+	 * Permet de redimensionner une figure en remplacent le point à l'origine par l'autre
+	 * @param originTop
+	 * @param originLeft
+	 * @param endTop
+	 * @param endLeft
+	 */
 	public abstract void resize(double originTop, double originLeft, double endTop, double endLeft);
 	
+	/**
+	 * Methode de clonage, si la figure contient une liste de vecteur alors la classe fille doit redéfinir clone
+	 * @see Polygon.clone
+	 */
 	public Figure clone() {
 		try {
 			return (Figure) super.clone();
 		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

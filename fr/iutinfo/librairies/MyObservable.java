@@ -20,8 +20,6 @@ public class MyObservable {
 		notifyObservers();
 	}
 
-
-
 	private void notifyObservers() {
 		for(MyObserver obs : _observer) {
 			obs.update(this, _message);

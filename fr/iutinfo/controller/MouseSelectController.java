@@ -102,13 +102,10 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 			_startY = ev.getY();
 		} else if(selectedFigure != null) {
 			_inMove = false;
-			selectedFigure.setSelected(true);
-			if(_scene.getSelectedFigure() != null) _scene.getSelectedFigure().setSelected(false);
 			_scene.setSelectedFigure(selectedFigure);
 			_scene.repaint();
 		} else {
 			_inMove = false;
-			if(_scene.getSelectedFigure() != null) _scene.getSelectedFigure().setSelected(false);
 			_scene.setSelectedFigure(null);
 			_scene.repaint();
 		}

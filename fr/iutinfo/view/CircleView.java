@@ -2,12 +2,8 @@ package fr.iutinfo.view;
 
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.geom.Point2D;
-import java.util.Observable;
-import java.util.Observer;
 
 import fr.iutinfo.model.Circle;
-import fr.iutinfo.model.Scene;
 
 /**
  * Classe d'affichage d'un cercle

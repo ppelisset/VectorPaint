@@ -75,9 +75,9 @@ public class Vector implements Cloneable {
 	}
 
 	/**
-	 * retourne la tailel du vecteur.
+	 * retourne la taille du vecteur.
 	 * 
-	 * @return _size
+	 * @return size
 	 */
 	public double getSize() {
 		return _size;
@@ -85,8 +85,7 @@ public class Vector implements Cloneable {
 
 	/**
 	 * Modifie la taille du vecteur et en notifie les observeurs.
-	 * 
-	 * @param _size
+	 * @param size
 	 * @throws Exception
 	 */
 	public void setSize(double _size) throws Exception {
@@ -186,21 +185,35 @@ public class Vector implements Cloneable {
 		}
 	}
 
-
-
+	/**
+	 * Recupère la distance par rapport au haut de l'ecran du point d'arrive
+	 * @return
+	 */
 	public double getEndTopDistance() {
 		return _endTopDistance;
 	}
 
+	/**
+	 * Modifie la distance par rapport au haut de l'ecran du point d'arrive
+	 * @param endTopDistance
+	 */
 	public void setEndTopDistance(double endTopDistance) {
 		_endTopDistance = endTopDistance;
 		_updateDirection();
 	}
 
+	/**
+	 * Recupère la distance par rapport au cote gauche de l'écran du point d'arrive
+	 * @return
+	 */
 	public double getEndLeftDistance() {
 		return _endLeftDistance;
 	}
 
+	/**
+	 * Modifie la distance par rapport au cote gauche de l'écran du point d'arrive
+	 * @param endLeftDistance
+	 */
 	public void setEndLeftDistance(double endLeftDistance) {
 		_endLeftDistance = endLeftDistance;
 		_updateDirection();
@@ -213,7 +226,7 @@ public class Vector implements Cloneable {
 	public boolean equals(Vector v) {
 		return (_topDistance == v._topDistance && _leftDistance == v._leftDistance && _endLeftDistance == v._endLeftDistance && _endTopDistance == v._endTopDistance);
 	}
-
+	
 	public Vector clone() {
 		try {
 			return (Vector) super.clone();
