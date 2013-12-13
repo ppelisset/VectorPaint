@@ -1,5 +1,7 @@
 package fr.iutinfo.model;
 
+import fr.iutinfo.constructor.PolygonConstructor;
+
 /**
  * Classe representant une ligne vectorielle
  * @author pierre
@@ -13,7 +15,7 @@ public class VectorLine extends Figure {
 	 * @param v
 	 */
 	public VectorLine(Vector v) {
-		_vector = v;
+		_vector = v; 	
 	}
 
 	/**

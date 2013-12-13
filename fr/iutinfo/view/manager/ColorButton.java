@@ -7,10 +7,11 @@ import javax.swing.JButton;
 public class ColorButton extends JButton {
 
 	private Color color;
-	private String nomCouleur;
+	private  String nomCouleur;
 	public ColorButton(Color c, String nomnomCouleur){
+		super(nomnomCouleur);
 		this.color=c;
-		this.nomCouleur=nomCouleur;
+		this.nomCouleur=nomnomCouleur;
 		
 		
 	}

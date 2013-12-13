@@ -18,7 +18,7 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	/**
 	 * Contient la couleur de la figure
 	 */
-	private Color _color = Color.BLACK;
+	private  Color _color = Color.BLACK;
 	
 	/**
 	 * Modifie le remplissage d'une forme
@@ -61,7 +61,7 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	 */
 	public abstract void move(int direction, double speed);
 	/**
-	 * Permet de redimensionner une figure en remplacent le point ˆ l'origine par l'autre
+	 * Permet de redimensionner une figure en remplacent le point ï¿½ l'origine par l'autre
 	 * @param originTop
 	 * @param originLeft
 	 * @param endTop
@@ -70,7 +70,7 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	public abstract void resize(double originTop, double originLeft, double endTop, double endLeft);
 	
 	/**
-	 * Methode de clonage, si la figure contient une liste de vecteur alors la classe fille doit redŽfinir clone
+	 * Methode de clonage, si la figure contient une liste de vecteur alors la classe fille doit redï¿½finir clone
 	 * @see Polygon.clone
 	 */
 	public Figure clone() {

@@ -9,13 +9,16 @@ import java.awt.Point;
  */
 public interface Printable {
 	/**
-	 * Methode d'affichage de la forme, elle prend en paramètre le pannel sur lequel elle doit s'afficher ainsi que son objet graphics
+	 * Methode d'affichage de la forme, elle prend en parametre
+	 *  le pannel sur lequel elle doit s'afficher ainsi que son objet graphics
 	 * @param v
 	 * @param g
 	 */
 	public void paint(SceneView v, Graphics g);
 	/**
-	 * Methode de test d'une selection, elle doit retourner true si dans la scene view passé en paramètre, la forme se trouve au point (x,y)
+	 * Methode de test d'une selection, elle doit retourner 
+	 * true si dans la scene view passe en parametre, 
+	 * la forme se trouve au point (x,y)
 	 * @param v
 	 * @param x
 	 * @param y
@@ -23,24 +26,26 @@ public interface Printable {
 	 */
 	public boolean isSelect(SceneView v, int x, int y);
 	/**
-	 * Retourne le nombre de point de la forme (pour afficher les points de la selection qui sont géré indépendamment de la forme)
+	 * Retourne le nombre de point de la forme 
+	 * (pour afficher les points de la selection qui sont gere 
+	 * independamment de la forme)
 	 * @return
 	 */
 	public int getNbPoint();
 	/**
-	 * Recupère la liste des différents x des points de la forme
+	 * Recupere la liste des differents x des points de la forme
 	 * @param v
 	 * @return
 	 */
 	public int[] getXPoint(SceneView v);
 	/**
-	 * Recupere la liste des différents y des points de la forme
+	 * Recupere la liste des differents y des points de la forme
 	 * @param v
 	 * @return
 	 */
 	public int[] getYPoint(SceneView v);
 	/**
-	 * Recupere le point de la figure se trouvant au coordonnées (x,y) dans la figure
+	 * Recupere le point de la figure se trouvant au coordonnees (x,y) dans la figure
 	 * @param scene
 	 * @param x
 	 * @param y

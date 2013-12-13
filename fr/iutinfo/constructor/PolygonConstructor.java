@@ -3,6 +3,7 @@ package fr.iutinfo.constructor;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import fr.iutinfo.model.Color;
 import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Polygon;
 import fr.iutinfo.model.Vector;
@@ -17,9 +18,12 @@ import fr.iutinfo.view.VectorView;
  */
 public class PolygonConstructor implements Constructor {
 	private boolean _isBegin = false;
+	private static java.awt.Color _currentColor=Color.BLACK;
 	private Polygon _polygon = new Polygon();
+	
 	private double _topDistance, _leftDistance;
 	private double _beginTopDistance, _beginLeftDistance;
+	
 	
 	@Override
 	public boolean addPoint(double topDistance, double leftDistance) throws ConstructorException {
@@ -40,22 +44,26 @@ public class PolygonConstructor implements Constructor {
 			try {
 				_polygon.addVector(new Vector(_topDistance, _leftDistance, topDistance, leftDistance));
 			} catch (Exception e) {
-				System.err.println("Erreur du système de vecteur : " + e.getMessage());
+				System.err.println("Erreur du systÔøΩme de vecteur : " + e.getMessage());
 				System.exit(0);
 			}
 			_topDistance = topDistance;
 			_leftDistance = leftDistance;
 			if(_polygon.isFinish()) {
+				_polygon.setColor(_currentColor);
 				return true;
 			}
 			return false;
 		}
+		
 	}
 
 	@Override
 	public void paint(SceneView v, Graphics g, int mousePosX, int mousePosY) {
 		if(_isBegin) {
+			g.setColor(_currentColor);
 			ArrayList<Vector> list = _polygon.getVectors();
+			
 			for(Vector vec : list) {
 				(new VectorView(new VectorLine(vec))).paint(v, g);
 			}
@@ -84,5 +92,11 @@ public class PolygonConstructor implements Constructor {
 	public boolean isBegin() {
 		return _isBegin;
 	}
-
+	
+	public static void setColor(java.awt.Color color){
+		_currentColor=color;
+	}
+	public static java.awt.Color getColor(){
+		return _currentColor;
+	}
 }

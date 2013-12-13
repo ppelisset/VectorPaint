@@ -27,7 +27,9 @@ public class VectorLineConstructor implements Constructor {
 			return false;
 		} else {
 			try {
+				
 				_vector = new VectorLine(new Vector(_topDistance, _leftDistance, topDistance, leftDistance));
+			
 				return true;
 			} catch(Exception e) {
 				throw new ConstructorException(e.getMessage());

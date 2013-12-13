@@ -18,6 +18,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 /**
@@ -27,13 +28,14 @@ import javax.swing.JPanel;
 public class SceneView extends JPanel implements MyObserver {
 	private static final long serialVersionUID = 6846502414478651296L;
 	
+	protected Color _couleur ;
 	protected Scene _scene;
 	protected MouseListener _controller;
 	protected HashMap<Figure, Printable> _map;
 	Figure _selectedFigure;
 	public final int POINT_SIZE = 5;
 	public final int ERROR_MARGE = 5;
-
+	
 	/**
 	 * Cree la vue de la scene passe en parametre
 	 * @param scene
@@ -42,10 +44,16 @@ public class SceneView extends JPanel implements MyObserver {
 		_scene = scene;
 		_map = new HashMap<Figure, Printable>();
 		_controller = new MouseCreateController(this);
+		_couleur= Color.BLACK;
 		scene.addObserver(this);
 		addMouseListener(_controller);
 	}
-
+	public void setColor(Color col){
+		this._couleur=col;
+	}
+	public Color getColor(){
+		return this._couleur;
+	}
 	/**
 	 * Methode d'affichage d'une scene
 	 */
@@ -54,7 +62,7 @@ public class SceneView extends JPanel implements MyObserver {
 		// On ajoute un fond blanc
 		g.setColor(Color.white);
 		g.fillRect(0, 0, getWidth(), getHeight());
-		g.setColor(Color.black);
+		g.setColor(_couleur);
 
 		// On affiche tout les elements qui existe deja
 		ArrayList<Figure> listFigure;
@@ -74,7 +82,7 @@ public class SceneView extends JPanel implements MyObserver {
 		}
 
 		// On dessine l'element qu'on est en train de creer (si il y en a un)
-		g.setColor(Color.black);
+		g.setColor(_couleur);
 		if(_controller instanceof MouseCreateController && ((MouseCreateController)_controller).getCurrentConstructor() != null) {
 			((MouseCreateController)_controller).getCurrentConstructor().paint(this, g, ((MouseCreateController)_controller).getPosX(), ((MouseCreateController)_controller).getPosY());
 		}
@@ -93,7 +101,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 
 	/**
-	 * Permet de récuperer la scene afficher par la scene view
+	 * Permet de rÔøΩcuperer la scene afficher par la scene view
 	 * @return
 	 */
 	public Scene getScene() {
@@ -118,7 +126,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 
 	/**
-	 * Permet de récupérer la figure se trouvant au point (x,y)
+	 * Permet de rÔøΩcupÔøΩrer la figure se trouvant au point (x,y)
 	 * @param x
 	 * @param y
 	 * @return
@@ -146,7 +154,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 	
 	/**
-	 * Permet de récupérer le point de la figure f se trouvant aux coordonnés (x,y)
+	 * Permet de rÔøΩcupÔøΩrer le point de la figure f se trouvant aux coordonnÔøΩs (x,y)
 	 * @param f
 	 * @param x
 	 * @param y
@@ -178,7 +186,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 
 	/**
-	 * Recupère la figure séléctionné dans le pannel
+	 * RecupÔøΩre la figure sÔøΩlÔøΩctionnÔøΩ dans le pannel
 	 * @return
 	 */
 	public Figure getSelectedFigure() {
@@ -186,7 +194,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 
 	/**
-	 * Change la figure selectionné dans le pannel
+	 * Change la figure selectionnÔøΩ dans le pannel
 	 * @param _selectedFigure
 	 */
 	public void setSelectedFigure(Figure _selectedFigure) {

@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 
+import fr.iutinfo.constructor.PolygonConstructor;
 import fr.iutinfo.model.VectorLine;
 
 /**
@@ -14,7 +15,7 @@ public class VectorView implements Printable {
 	VectorLine _vector;
 	
 	/**
-	 * CrŽer la vue d'un vector view
+	 * Crï¿½er la vue d'un vector view
 	 * @param v
 	 */
 	public VectorView(VectorLine v) {
