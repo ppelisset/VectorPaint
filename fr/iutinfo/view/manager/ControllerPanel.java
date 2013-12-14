@@ -10,7 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import fr.iutinfo.controller.MouseAdapterDeux;
+import fr.iutinfo.controller.MouseController;
 import fr.iutinfo.constructor.PolygonConstructor;
 import fr.iutinfo.constructor.VectorLineConstructor;
 import fr.iutinfo.controller.MouseCreateController;
@@ -49,32 +49,7 @@ public class ControllerPanel extends JPanel {
 				new PolygonConstructor()));
 		_modeSelect.addActionListener(new SetSelectListener(sv));
 		setLayout(new GridLayout(0, 1));
-		_listeColorButton.addMouseListener(new MouseAdapterDeux(sv) {
-			public void mouseClicked(MouseEvent evt) {
-				JList list = (JList) evt.getSource();
-
-				try {
-					if (evt.getClickCount() == 2) {
-						this._sv.setColor((((ColorButton) list
-								.getSelectedValue()).getColor()));
-						
-						
-						PolygonConstructor.setColor(((ColorButton) list.getSelectedValue())
-								.getColor());
-						
-					} else if (evt.getClickCount() == 1) {
-						this._sv.setColor((((ColorButton) list
-								.getSelectedValue()).getColor()));
-						this._sv.getSelectedFigure().setColor(
-								(((ColorButton) list.getSelectedValue())
-										.getColor()));
-					}
-				} catch (Exception e) {
-					System.err.println("No Figure selected");
-				}
-
-			}
-		});
+		_listeColorButton.addMouseListener(new MouseController(sv));
 
 		add(_modeLine);
 		add(_modePolygone);

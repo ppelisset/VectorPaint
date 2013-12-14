@@ -61,11 +61,12 @@ public class PolygonConstructor implements Constructor {
 	@Override
 	public void paint(SceneView v, Graphics g, int mousePosX, int mousePosY) {
 		if(_isBegin) {
-			g.setColor(_currentColor);
 			ArrayList<Vector> list = _polygon.getVectors();
 			
 			for(Vector vec : list) {
-				(new VectorView(new VectorLine(vec))).paint(v, g);
+				VectorLine tmp = new VectorLine(vec);
+				 tmp.setColor(PolygonConstructor.getColor());
+				(new VectorView(tmp)).paint(v, g);
 			}
 			
 			int x, y;
