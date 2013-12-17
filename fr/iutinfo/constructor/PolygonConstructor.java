@@ -65,13 +65,14 @@ public class PolygonConstructor implements Constructor {
 			
 			for(Vector vec : list) {
 				VectorLine tmp = new VectorLine(vec);
-				 tmp.setColor(PolygonConstructor.getColor());
+				 tmp.setColor(v.getColor());
 				(new VectorView(tmp)).paint(v, g);
 			}
 			
 			int x, y;
 			x = (int) ((_leftDistance*v.getWidth())/100);
 			y = (int) ((_topDistance*v.getHeight())/100);
+			g.setColor(v.getColor());
 			g.drawLine(x, y, mousePosX, mousePosY);
 		}
 	}

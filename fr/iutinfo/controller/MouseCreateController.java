@@ -20,7 +20,7 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 	int _posX, _posY;
 	
 	/**
-	 * CrŽe un gestionnaire de la souris qui s'occupe de la souris pour la creation de figure sur la scene view
+	 * Crï¿½e un gestionnaire de la souris qui s'occupe de la souris pour la creation de figure sur la scene view
 	 * @param v
 	 */
 	public MouseCreateController(SceneView v) {
@@ -65,6 +65,7 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 		}
 		if(finish) {
 			System.out.println("Fini");
+			_constructor.getFigure().setColor(_scene.getColor());
 			_scene.getScene().addFigure(0, _constructor.getFigure());
 			_scene.repaint();
 			_constructor.reinit();

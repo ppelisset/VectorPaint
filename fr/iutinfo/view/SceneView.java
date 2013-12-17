@@ -5,6 +5,7 @@ import fr.iutinfo.librairies.MyObservable;
 import fr.iutinfo.librairies.MyObserver;
 import fr.iutinfo.model.Circle;
 import fr.iutinfo.model.Polygon;
+import fr.iutinfo.model.Rectangle;
 import fr.iutinfo.model.Scene;
 import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.VectorLine;
@@ -27,7 +28,6 @@ import javax.swing.JPanel;
  */
 public class SceneView extends JPanel implements MyObserver {
 	private static final long serialVersionUID = 6846502414478651296L;
-	
 	protected Color _couleur ;
 	protected Scene _scene;
 	protected MouseListener _controller;
@@ -35,6 +35,7 @@ public class SceneView extends JPanel implements MyObserver {
 	Figure _selectedFigure;
 	public final int POINT_SIZE = 5;
 	public final int ERROR_MARGE = 5;
+
 	
 	/**
 	 * Cree la vue de la scene passe en parametre
@@ -48,6 +49,7 @@ public class SceneView extends JPanel implements MyObserver {
 		scene.addObserver(this);
 		addMouseListener(_controller);
 	}
+	
 	public void setColor(Color col){
 		this._couleur=col;
 	}
@@ -119,6 +121,8 @@ public class SceneView extends JPanel implements MyObserver {
 				p = new CircleView((Circle)modified);
 			} else if(modified instanceof Polygon) {
 				p = new PolygoneView((Polygon)modified);
+			} else if(modified instanceof Rectangle) {
+				p = new RectangleView((Rectangle)modified);
 			}
 			if(p != null) _map.put(modified, p);
 		}

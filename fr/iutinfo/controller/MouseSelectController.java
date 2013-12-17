@@ -35,6 +35,7 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 			double endTop, endLeft;
 			endLeft = (((double)ev.getX())/_scene.getWidth())*100;
 			endTop = (((double)ev.getY())/_scene.getHeight())*100;
+			System.out.println("Resize");
 			_scene.getSelectedFigure().resize(_beginTop, _beginLeft, endTop, endLeft);
 			_beginTop = endTop;
 			_beginLeft = endLeft;
@@ -80,7 +81,7 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 
 	@Override
 	public void mousePressed(MouseEvent ev) {
-		// Quand on enfonce le bouton de la souris, on v�rifie plusieurs choses :
+		// Quand on enfonce le bouton de la souris, on verifie plusieurs choses :
 		// - Si une figure et selectionne et que l'appuie sur une touche est faite sur la m�me, on d�marre un d�placement
 		// - Si une nouvelle figure est selectionne, on deselectionne l'ancienne et on selectionne la nouvelle
 		// - Si aucune figure est selectionne, on deselectionne celle qui l'etait

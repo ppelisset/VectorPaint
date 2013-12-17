@@ -36,23 +36,16 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseClicked(MouseEvent evt) {
-
 		ColorButton bouton = (ColorButton) evt.getSource();
 
-		try {
-			if (evt.getClickCount() == 2) {
-				
-				this._scene.setColor((bouton.getColor()));
-				PolygonConstructor.setColor( bouton.getColor());
-
-			} else if (evt.getClickCount() == 1) {
-				
-				this._scene.getSelectedFigure().setColor(bouton.getColor());
-			}
-		} catch (Exception e) {
-			System.err.println("No Figure selected");
-		}
-
+        
+		if (evt.getClickCount() == 2) {
+	        this._scene.setColor((bouton.getColor()));
+	    } else if (evt.getClickCount() == 1) {
+	        if(this._scene.getSelectedFigure() != null) {
+	        	this._scene.getSelectedFigure().setColor(bouton.getColor());
+	        }
+	    }
 	}
 
 	@Override
