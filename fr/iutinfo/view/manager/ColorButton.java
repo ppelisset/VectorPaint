@@ -1,33 +1,17 @@
 package fr.iutinfo.view.manager;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 import javax.swing.JButton;
 
 public class ColorButton extends JButton {
 
 	private Color color;
-	private  String nomCouleur;
-	public ColorButton(Color c, String nomnomCouleur){
-		super(nomnomCouleur);
+	public ColorButton(Color c){
 		this.color=c;
-		this.nomCouleur=nomnomCouleur;
 		
 		
-	}
-	/**
-	 * retourne le nom de la couleur
-	 * @return String 
-	 */
-	public String getnomCouleur() {
-		return nomCouleur;
-	}
-	/**
-	 * set le nom de la couleur
-	 * @param nomCouleur
-	 */
-	public void setnomCouleur(String nomCouleur) {
-		this.nomCouleur = nomCouleur;
 	}
 	/**
 	 * retourne la couleur
@@ -43,5 +27,10 @@ public class ColorButton extends JButton {
 	public void setColor(Color color){
 		
 		this.color=color;
+	}
+	
+	public void paintComponent(Graphics g) {
+		g.setColor(color);
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 }

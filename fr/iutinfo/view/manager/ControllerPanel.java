@@ -32,11 +32,11 @@ public class ControllerPanel extends JPanel {
 	@SuppressWarnings("unchecked")
 	public ControllerPanel(SceneView sv) {
 		MouseCreateController mcc;
-		_red = new ColorButton(Color.RED, "red");
-		_blue = new ColorButton(Color.BLUE, "blue");
-		_green = new ColorButton(Color.GREEN, "green");
-		_yellow = new ColorButton(Color.YELLOW, "yellow");
-		_black = new ColorButton(Color.BLACK, "black");
+		_red = new ColorButton(Color.RED);
+		_blue = new ColorButton(Color.BLUE);
+		_green = new ColorButton(Color.GREEN);
+		_yellow = new ColorButton(Color.YELLOW);
+		_black = new ColorButton(Color.BLACK);
 		_modeLine = new JButton("Ligne");
 		_modePolygone = new JButton("Polygone");
 		_modeSelect = new JButton("Select");

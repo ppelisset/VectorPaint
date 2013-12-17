@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 public class InterfaceGraphique extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Outils ot;
+	private OutilsCouleur otc;
 	
 	public InterfaceGraphique(){
 		super("Paint");
@@ -20,12 +21,15 @@ public class InterfaceGraphique extends JFrame {
 		Page p = new Page();
 		Onglet o = new Onglet();
 		ot = new Outils(o);
+		otc = new OutilsCouleur(o);
 		p.addTab(o.nom, o);
 		Onglet o2 = new Onglet();
 		ot.addOutilOnglet(o2);
+		otc.addOutilCouleurOnglet(o2);
 		p.addTab(o2.nom, o2);
 		add(p);
 		add(ot, BorderLayout.WEST);
+		add(otc, BorderLayout.SOUTH);
 	}
 
 }
