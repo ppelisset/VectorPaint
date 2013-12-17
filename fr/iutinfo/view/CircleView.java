@@ -28,7 +28,7 @@ public class CircleView implements Printable {
 		g.setColor(_circle.getColor());
 		
 	//	g.fillOval(beginLeft,beginTop,Math.abs(endLeft-beginLeft),Math.abs(endTop-beginTop));
-		g.fillOval(beginLeft,beginTop,Math.abs(endLeft-beginLeft),Math.abs(endLeft-beginLeft));
+		g.fillOval(beginLeft,beginTop,Math.abs(endTop-beginTop),Math.abs(endTop-beginTop));
 		//g.drawLine(beginLeft,beginTop,endLeft,endTop);
 	}
 

@@ -23,8 +23,7 @@ public class CircleConstructor implements Constructor {
 		} else {
 			try {
 
-				_circle = new Circle(new Vector(_topDistance,_leftDistance,
-						 topDistance,leftDistance));
+				_circle = new Circle(new Vector(_topDistance,_leftDistance,topDistance,leftDistance));
 				return true;
 			} catch (Exception e) {
 				throw new ConstructorException(e.getMessage());
