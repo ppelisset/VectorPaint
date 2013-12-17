@@ -23,14 +23,8 @@ public class CircleConstructor implements Constructor {
 		} else {
 			try {
 
-				_circle = new Circle(new Vector(_leftDistance, _topDistance,
-						leftDistance, topDistance), new Vector(
-						(int) ((double) _leftDistance + (double) leftDistance
-								/ (double) 2),
-						(int) ((double) _topDistance - (double) topDistance
-								/ (double) 2), (int) ((double) _topDistance - (double) topDistance
-										/ (double) 2), (int) ((double) _leftDistance + (double) leftDistance
-										/ (double) 2)));
+				_circle = new Circle(new Vector(_topDistance,_leftDistance,
+						 topDistance,leftDistance));
 				return true;
 			} catch (Exception e) {
 				throw new ConstructorException(e.getMessage());
@@ -44,8 +38,9 @@ public class CircleConstructor implements Constructor {
 			int x, y;
 			x = (int) ((_leftDistance * v.getWidth()) / 100);
 			y = (int) ((_topDistance * v.getHeight()) / 100);
-			g.drawLine(x, y, mousePosX, mousePosY);
-			g.drawOval(x, y, mousePosX - x, mousePosX - x);
+			//g.drawLine(x, y, mousePosX, mousePosY);
+		//	g.drawOval(x, y, Math.abs(mousePosX - x), Math.abs(mousePosY - y));
+			g.drawOval(x, y, Math.abs(mousePosY - y), Math.abs(mousePosY - y));
 		}
 	}
 
