@@ -5,28 +5,27 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import fr.iutinfo.interfaces.controler.InterfaceGraphiqueListener;
+
 public class InterfaceGraphique extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Outils ot;
 	private OutilsCouleur otc;
+	private MenuBar mb;
 	
 	public InterfaceGraphique(){
 		super("Paint");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setJMenuBar(new MenuBar());
+		mb = new MenuBar();
+		setJMenuBar(mb);
 		setSize(600, 500);
 		setMinimumSize(new Dimension(250, 200));
 		setLocation(600, 300);
 		setVisible(true);
-		Page p = new Page();
-		Onglet o = new Onglet();
-		ot = new Outils(o);
-		otc = new OutilsCouleur(o);
-		p.addTab(o.nom, o);
-		Onglet o2 = new Onglet();
-		ot.addOutilOnglet(o2);
-		otc.addOutilCouleurOnglet(o2);
-		p.addTab(o2.nom, o2);
+		ot = new Outils();
+		otc = new OutilsCouleur();
+		Page p = new Page(ot, otc);
+		mb.addActionListener(new InterfaceGraphiqueListener(p, mb));
 		add(p);
 		add(ot, BorderLayout.WEST);
 		add(otc, BorderLayout.SOUTH);

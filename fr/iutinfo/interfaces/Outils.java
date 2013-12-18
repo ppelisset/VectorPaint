@@ -15,7 +15,7 @@ public class Outils extends JToolBar{
 	
 	private JButton _modeLine, _modePolygone, _modeSelect, _modePara, _modeCercle;
 
-	public Outils(Onglet o){
+	public Outils(){
 		super(VERTICAL);
         setAlignmentX(0);
         
@@ -24,12 +24,6 @@ public class Outils extends JToolBar{
 		_modePara = new JButton("Parallélogramme");
 		_modeCercle = new JButton("Cercle");
 		_modeSelect = new JButton("Select");
-        
-		_modeLine.addActionListener(new SetContructorListener(o.sv,new VectorLineConstructor()));
-		_modePolygone.addActionListener(new SetContructorListener(o.sv,new PolygonConstructor()));
-		_modePara.addActionListener(new SetContructorListener(o.sv,new RectangleConstructor()));
-		_modeCercle.addActionListener(new SetContructorListener(o.sv,new CircleConstructor()));
-		_modeSelect.addActionListener(new SetSelectListener(o.sv));
 
 		add(_modeLine);
 		add(_modePolygone);

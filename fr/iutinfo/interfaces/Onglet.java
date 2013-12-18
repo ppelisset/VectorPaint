@@ -22,4 +22,9 @@ public class Onglet extends JPanel {
 		add(sv);
 		setPreferredSize(new Dimension(300,80));
 	}
+	
+	public void fermer(){
+		nb--;
+		remove(this);
+	}
 }
