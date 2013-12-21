@@ -20,93 +20,75 @@ public class CircleView implements Printable {
 
 	@Override
 	public void paint(SceneView v, Graphics g) {
-		int beginTop, beginLeft, endTop, endLeft;
-		beginTop = (int) ((_circle.getHeight().getTopDistance() * v.getHeight()) / 100);
-		beginLeft = (int) ((_circle.getHeight().getLeftDistance() * v.getWidth()) / 100);
-		endTop = (int) ((_circle.getHeight().getEndTopDistance() * v.getHeight()) / 100);
-		endLeft = (int) ((_circle.getHeight().getEndLeftDistance() * v.getWidth()) / 100);
-		g.setColor(_circle.getColor());
+		int x, y, size;
 		
-	//	g.fillOval(beginLeft,beginTop,Math.abs(endLeft-beginLeft),Math.abs(endTop-beginTop));
-		g.fillOval(beginLeft,beginTop,Math.abs(endTop-beginTop),Math.abs(endTop-beginTop));
-		//g.drawLine(beginLeft,beginTop,endLeft,endTop);
+		size = (int) ((_circle.getDiametre()*v.getWidth())/100);
+		x = (int) ((_circle.getCentre().getLeft()*v.getWidth())/100);
+		y = (int) ((_circle.getCentre().getTop()*v.getHeight())/100);
+		
+		x -= size;
+		y -= size;
+		
+		g.setColor(_circle.getColor());
+		if(_circle.isFill()) {
+			g.fillOval(x, y, size*2, size*2);
+		} else {
+			g.drawOval(x, y, size*2, size*2);
+		}
+		
 	}
 
 	@Override
 	public boolean isSelect(SceneView v, int x, int y) {
-		int beginTop, beginLeft, endTop, endLeft;
-		Polygon p = new Polygon();
-		beginTop = (int) ((_circle.getHeight().getTopDistance() * v.getHeight()) / 100);
-		beginLeft = (int) ((_circle.getHeight().getLeftDistance() * v
-				.getWidth()) / 100);
-		endTop = (int) ((_circle.getHeight().getEndTopDistance() * v
-				.getHeight()) / 100);
-		endLeft = (int) ((_circle.getHeight().getEndLeftDistance() * v
-				.getWidth()) / 100);
-
-		p.addPoint(beginLeft - 5, beginTop - 5);
-		p.addPoint(endLeft - 5, endTop - 5);
-		p.addPoint(endLeft + 5, endTop + 5);
-		p.addPoint(beginLeft + 5, beginTop + 5);
-
-		return p.contains(x, y);
+		int cx, cy, size;
+		cx = (int) ((_circle.getCentre().getLeft()*v.getWidth())/100);
+		cy = (int) ((_circle.getCentre().getTop()*v.getHeight())/100);
+		size = (int) ((_circle.getDiametre()*v.getWidth())/100);
+		
+		int diffX, diffY, diffSize;
+		diffX = Math.abs(x-cx);
+		diffY = Math.abs(y-cy);
+		diffSize = (int) Math.sqrt(Math.pow(diffX, 2)+Math.pow(diffY, 2));
+		
+		return (diffSize <= size);
 	}
 
 	@Override
 	public int getNbPoint() {
-		// TODO Auto-generated method stub
 		return 2;
 	}
 
 	@Override
 	public int[] getXPoint(SceneView v) {
-		int beginLeft = (int) ((_circle.getHeight().getLeftDistance() * v
-				.getWidth()) / 100);
-		int endLeft = (int) ((_circle.getHeight().getEndLeftDistance() * v
-				.getWidth()) / 100);
-		int ret[] = new int[2];
-		ret[0] = beginLeft;
-		ret[1] = endLeft;
-		return ret;
+		int x, size;
+		size = (int) ((_circle.getDiametre()*v.getWidth())/100);
+		x = (int) ((_circle.getCentre().getLeft()*v.getWidth())/100);
+		int tab[] = new int[2];
+		tab[0] = x;
+		tab[1] = x + size;
+		return tab;
 	}
 
 	@Override
 	public int[] getYPoint(SceneView v) {
-		int beginTop = (int) ((_circle.getHeight().getTopDistance() * v
-				.getHeight()) / 100);
-		int endTop = (int) ((_circle.getHeight().getEndTopDistance() * v
-				.getHeight()) / 100);
-		int ret[] = new int[2];
-		ret[0] = beginTop;
-		ret[1] = endTop;
-		return ret;
+		int y = (int) ((_circle.getCentre().getTop()*v.getHeight())/100);
+		int tab[] = {y,y};
+		return tab;
 	}
 
 	@Override
 	public Point getPoint(SceneView scene, int x, int y) {
-		int beginLeft = (int) ((_circle.getHeight().getLeftDistance() * scene
-				.getWidth()) / 100);
-		int endLeft = (int) ((_circle.getHeight().getEndLeftDistance() * scene
-				.getWidth()) / 100);
-		int beginTop = (int) ((_circle.getHeight().getTopDistance() * scene
-				.getHeight()) / 100);
-		int endTop = (int) ((_circle.getHeight().getEndTopDistance() * scene
-				.getHeight()) / 100);
-		int diffX, diffY;
-
-		diffX = Math.abs(beginLeft - x);
-		diffY = Math.abs(beginTop - y);
-		if (diffX < scene.ERROR_MARGE && diffY < scene.ERROR_MARGE) {
-			return new Point(beginLeft, beginTop);
+		int diffX, diffY, min = scene.ERROR_MARGE*2+1, nbMin = -1;
+		for(int i = 0; i < this.getNbPoint(); i++) {
+			diffX = Math.abs(this.getXPoint(scene)[i]-x);
+			diffY = Math.abs(this.getYPoint(scene)[i]-y);
+			if(diffX < scene.ERROR_MARGE && diffY < scene.ERROR_MARGE && diffX+diffY < min) {
+				min = diffX+diffY;
+				nbMin = i;
+			}
 		}
-
-		diffX = Math.abs(endLeft - x);
-		diffY = Math.abs(endTop - y);
-		if (diffX < scene.ERROR_MARGE && diffY < scene.ERROR_MARGE) {
-			return new Point(endLeft, endTop);
-		}
-
-		return null;
+		if(nbMin == -1) return null;
+		else return new Point(this.getXPoint(scene)[nbMin], this.getYPoint(scene)[nbMin]);
 	}
 
 }

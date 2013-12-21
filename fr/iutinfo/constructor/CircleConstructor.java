@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import fr.iutinfo.model.Circle;
 import fr.iutinfo.model.Figure;
+import fr.iutinfo.model.Point;
 import fr.iutinfo.model.Vector;
 import fr.iutinfo.view.SceneView;
 
@@ -22,8 +23,8 @@ public class CircleConstructor implements Constructor {
 			return false;
 		} else {
 			try {
-
-				_circle = new Circle(new Vector(_topDistance,_leftDistance,topDistance,leftDistance));
+				double size = Math.abs(leftDistance - _leftDistance);
+				_circle = new Circle(new Point(_topDistance, _leftDistance), size);
 				return true;
 			} catch (Exception e) {
 				throw new ConstructorException(e.getMessage());
@@ -37,9 +38,9 @@ public class CircleConstructor implements Constructor {
 			int x, y;
 			x = (int) ((_leftDistance * v.getWidth()) / 100);
 			y = (int) ((_topDistance * v.getHeight()) / 100);
-			//g.drawLine(x, y, mousePosX, mousePosY);
-		//	g.drawOval(x, y, Math.abs(mousePosX - x), Math.abs(mousePosY - y));
-			g.drawOval(x, y, Math.abs(mousePosY - y), Math.abs(mousePosY - y));
+			int size = Math.abs(mousePosX - x);
+			g.setColor(v.getColor());
+			g.fillOval(x-size, y-size, size*2, size*2);
 		}
 	}
 
