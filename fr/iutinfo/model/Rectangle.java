@@ -42,19 +42,34 @@ public class Rectangle extends Figure {
 
 	@Override
 	public void resize(double originTop, double originLeft, double endTop, double endLeft) {
-		if(originTop == _vector.getTopDistance()) {
+		if(Math.abs(originTop-_vector.getTopDistance()) < Math.abs(originTop-_vector.getEndTopDistance()) && Math.abs(originTop-_vector.getTopDistance()) < Rectangle.ERROR_MARGE) {
 			_vector.setTopDistance(endTop);
-		}
-		if(originTop == _vector.getEndTopDistance()) {
+		} else if(Math.abs(originTop-_vector.getEndTopDistance())  < Rectangle.ERROR_MARGE) {
 			_vector.setEndTopDistance(endTop);
 		}
-		if(originLeft == _vector.getLeftDistance()) {
+		if(Math.abs(originLeft-_vector.getLeftDistance()) < Math.abs(originLeft-_vector.getEndLeftDistance()) && Math.abs(originLeft-_vector.getLeftDistance()) < Rectangle.ERROR_MARGE) {
 			_vector.setLeftDistance(endLeft);
-		}
-		if(originLeft == _vector.getEndLeftDistance()) {
+		} else if(Math.abs(originLeft-_vector.getEndLeftDistance()) < Rectangle.ERROR_MARGE) {
 			_vector.setEndLeftDistance(endLeft);
 		}
+		if(_vector.getEndLeftDistance()-_vector.getLeftDistance() < 1 || _vector.getEndTopDistance()-_vector.getTopDistance() < 1) {
+			double tmp;
+			if(this._vector.getTopDistance() > this._vector.getEndTopDistance()) {
+				tmp = _vector.getTopDistance();
+				_vector.setTopDistance(_vector.getEndTopDistance());
+				_vector.setEndTopDistance(tmp);
+			}
+			if(this._vector.getLeftDistance() > this._vector.getEndLeftDistance()) {
+				tmp = _vector.getLeftDistance();
+				_vector.setLeftDistance(_vector.getEndLeftDistance());
+				_vector.setEndLeftDistance(tmp);
+			}
+		}
 		notifyObs(this); 
+	}
+	
+	public String toString() {
+		return "Vector : " + this._vector;
 	}
 
 }

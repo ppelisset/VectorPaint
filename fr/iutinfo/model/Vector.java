@@ -220,7 +220,7 @@ public class Vector implements Cloneable {
 	}
 
 	public String toString() {
-		return "Vecteur (" + _topDistance + "," + _leftDistance + "," + _yDirection + "," + _xDirection + "," + _size + ")";
+		return "Vecteur (" + _topDistance + "," + _leftDistance + "," + _endTopDistance + "," + _endLeftDistance + ")";
 	}
 	
 	public boolean equals(Vector v) {

@@ -21,7 +21,7 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	private boolean _ctrl;
 
 	/**
-	 * Cree un gestionnaire de la souris qui s'occupe de la souris pour la selection et le d�placement de figure sur la sceneView
+	 * Cree un gestionnaire de la souris qui s'occupe de la souris pour la selection et le deplacement de figure sur la sceneView
 	 * @param v
 	 */
 	public MouseSelectController(SceneView v) {

@@ -1,7 +1,6 @@
 package fr.iutinfo.constructor;
 
 import java.awt.Graphics;
-import java.awt.Polygon;
 
 import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Rectangle;
