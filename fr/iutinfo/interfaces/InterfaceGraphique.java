@@ -29,6 +29,7 @@ public class InterfaceGraphique extends JFrame {
 		add(p);
 		add(ot, BorderLayout.WEST);
 		add(otc, BorderLayout.SOUTH);
+		p.nouvelOnglet();
 	}
 
 }
