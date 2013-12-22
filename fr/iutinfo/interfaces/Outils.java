@@ -1,5 +1,9 @@
 package fr.iutinfo.interfaces;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
@@ -17,19 +21,21 @@ public class Outils extends JToolBar{
 
 	public Outils(){
 		super(VERTICAL);
+		System.out.println(getClass().getResource("icons/"));
         setAlignmentX(0);
         
-        _modeLine = new JButton("Ligne");
-		_modePolygone = new JButton("Polygone");
-		_modeRectangle = new JButton("Rectangle");
-		_modeCercle = new JButton("Cercle");
-		_modeSelect = new JButton("Select");
+        _modeLine = new JButton(new ImageIcon(getClass().getResource("icons/line.png")));
+		_modePolygone = new JButton(new ImageIcon(getClass().getResource("icons/polygon.png")));
+		_modeRectangle = new JButton(new ImageIcon(getClass().getResource("icons/rectangle.png")));
+		_modeCercle = new JButton(new ImageIcon(getClass().getResource("icons/circle.png")));
+		_modeSelect = new JButton(new ImageIcon(getClass().getResource("icons/select.png")));
 
+		setLayout(new GridLayout(3, 1));
+		add(_modeSelect);
 		add(_modeLine);
 		add(_modePolygone);
 		add(_modeRectangle);
 		add(_modeCercle);
-		add(_modeSelect);
 	}
 	
 	public void addOutilOnglet(Onglet o){
