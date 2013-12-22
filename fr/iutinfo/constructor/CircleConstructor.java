@@ -12,7 +12,8 @@ public class CircleConstructor implements Constructor {
 	private double _topDistance, _leftDistance;
 	private boolean _isFirst = true;
 	private Circle _circle;
-
+	private SceneView _v;
+	
 	@Override
 	public boolean addPoint(double topDistance, double leftDistance)
 			throws ConstructorException {
@@ -23,8 +24,10 @@ public class CircleConstructor implements Constructor {
 			return false;
 		} else {
 			try {
-				double size = Math.abs(leftDistance - _leftDistance);
-				_circle = new Circle(new Point(_topDistance, _leftDistance), size);
+				double sizeX = Math.abs(leftDistance - _leftDistance);
+				double reallySize = (int) (sizeX*_v.getWidth());
+				double sizeY = reallySize/_v.getHeight();
+				_circle = new Circle(new Point(_topDistance, _leftDistance), sizeX, sizeY);
 				return true;
 			} catch (Exception e) {
 				throw new ConstructorException(e.getMessage());
@@ -34,6 +37,7 @@ public class CircleConstructor implements Constructor {
 
 	@Override
 	public void paint(SceneView v, Graphics g, int mousePosX, int mousePosY) {
+		_v = v;
 		if (!_isFirst) {
 			int x, y;
 			x = (int) ((_leftDistance * v.getWidth()) / 100);

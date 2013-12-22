@@ -3,6 +3,7 @@ package fr.iutinfo.view;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
+import java.awt.geom.Ellipse2D;
 
 import fr.iutinfo.model.Circle;
 
@@ -20,59 +21,60 @@ public class CircleView implements Printable {
 
 	@Override
 	public void paint(SceneView v, Graphics g) {
-		int x, y, size;
+		int x, y, sizeX, sizeY;
 		
-		size = (int) ((_circle.getDiametre()*v.getWidth())/100);
+		sizeX = (int) ((_circle.getDiametreX()*v.getWidth())/100);
+		sizeY = (int) ((_circle.getDiametreY()*v.getHeight())/100);
 		x = (int) ((_circle.getCentre().getLeft()*v.getWidth())/100);
 		y = (int) ((_circle.getCentre().getTop()*v.getHeight())/100);
 		
-		x -= size;
-		y -= size;
+		x -= sizeX;
+		y -= sizeY;
 		
 		g.setColor(_circle.getColor());
 		if(_circle.isFill()) {
-			g.fillOval(x, y, size*2, size*2);
+			g.fillOval(x, y, sizeX*2, sizeY*2);
 		} else {
-			g.drawOval(x, y, size*2, size*2);
+			g.drawOval(x, y, sizeX*2, sizeY*2);
 		}
 		
 	}
 
 	@Override
 	public boolean isSelect(SceneView v, int x, int y) {
-		int cx, cy, size;
+		int cx, cy, sizeX, sizeY;
 		cx = (int) ((_circle.getCentre().getLeft()*v.getWidth())/100);
 		cy = (int) ((_circle.getCentre().getTop()*v.getHeight())/100);
-		size = (int) ((_circle.getDiametre()*v.getWidth())/100);
+		sizeX = (int) ((_circle.getDiametreX()*v.getWidth())/100);
+		sizeY = (int) ((_circle.getDiametreY()*v.getHeight())/100);
 		
-		int diffX, diffY, diffSize;
-		diffX = Math.abs(x-cx);
-		diffY = Math.abs(y-cy);
-		diffSize = (int) Math.sqrt(Math.pow(diffX, 2)+Math.pow(diffY, 2));
+		Ellipse2D e = new Ellipse2D.Double(cx-sizeX, cy-sizeY, sizeX*2, sizeY*2);
 		
-		return (diffSize <= size);
+		return e.contains(x, y);
 	}
 
 	@Override
 	public int getNbPoint() {
-		return 2;
+		return 3;
 	}
 
 	@Override
 	public int[] getXPoint(SceneView v) {
 		int x, size;
-		size = (int) ((_circle.getDiametre()*v.getWidth())/100);
+		size = (int) ((_circle.getDiametreX()*v.getWidth())/100);
 		x = (int) ((_circle.getCentre().getLeft()*v.getWidth())/100);
-		int tab[] = new int[2];
+		int tab[] = new int[3];
 		tab[0] = x;
 		tab[1] = x + size;
+		tab[2] = x;
 		return tab;
 	}
 
 	@Override
 	public int[] getYPoint(SceneView v) {
 		int y = (int) ((_circle.getCentre().getTop()*v.getHeight())/100);
-		int tab[] = {y,y};
+		int size = (int) ((_circle.getDiametreY()*v.getHeight())/100);
+		int tab[] = {y,y, y-size};
 		return tab;
 	}
 

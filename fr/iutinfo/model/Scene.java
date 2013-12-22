@@ -27,7 +27,6 @@ public class Scene extends MyObservable implements MyObserver {
 		for(int i=0; i<4; i++){
 			listFigure.add(new ArrayList<Figure>());
 		}
-		this.addFigure(1, new Circle(new Point(10, 10), 5));
 	}
 
 	//--METHODES--
