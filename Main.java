@@ -9,7 +9,6 @@ public class Main {
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		InterfaceGraphique ig = new InterfaceGraphique();
-		
 	}
 
 }
