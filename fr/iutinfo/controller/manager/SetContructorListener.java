@@ -24,6 +24,7 @@ public class SetContructorListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		_scene.setSelectedFigure(null);
+		System.out.println("Select : " + _scene.getSelectedFigure());
 		if(!(_scene.getMouseListener() instanceof MouseCreateController)) {
 			_scene.setMouseListener(new MouseCreateController(_scene));
 		}

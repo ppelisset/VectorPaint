@@ -1,6 +1,5 @@
 package fr.iutinfo.interfaces;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
@@ -17,11 +16,10 @@ import fr.iutinfo.controller.manager.SetSelectListener;
 public class Outils extends JToolBar{
 	private static final long serialVersionUID = 1L;
 	
-	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle;
+	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer;
 
 	public Outils(){
 		super(VERTICAL);
-		System.out.println(getClass().getResource("icons/"));
         setAlignmentX(0);
         
         _modeLine = new JButton(new ImageIcon(getClass().getResource("icons/line.png")));
@@ -29,8 +27,10 @@ public class Outils extends JToolBar{
 		_modeRectangle = new JButton(new ImageIcon(getClass().getResource("icons/rectangle.png")));
 		_modeCercle = new JButton(new ImageIcon(getClass().getResource("icons/circle.png")));
 		_modeSelect = new JButton(new ImageIcon(getClass().getResource("icons/select.png")));
+		_modePointer = new JButton(new ImageIcon(getClass().getResource("icons/pointer.png")));
 
 		setLayout(new GridLayout(3, 1));
+		add(_modePointer);
 		add(_modeSelect);
 		add(_modeLine);
 		add(_modePolygone);
@@ -39,6 +39,8 @@ public class Outils extends JToolBar{
 	}
 	
 	public void addOutilOnglet(Onglet o){
+		_modePointer.addActionListener(new SetContructorListener(o.sv,null));
+		_modeLine.addActionListener(new SetContructorListener(o.sv,new VectorLineConstructor()));
 		_modeLine.addActionListener(new SetContructorListener(o.sv,new VectorLineConstructor()));
 		_modePolygone.addActionListener(new SetContructorListener(o.sv,new PolygonConstructor()));
 		_modeSelect.addActionListener(new SetSelectListener(o.sv));

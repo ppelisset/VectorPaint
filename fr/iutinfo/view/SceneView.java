@@ -203,6 +203,7 @@ public class SceneView extends JPanel implements MyObserver {
 	 */
 	public void setSelectedFigure(Figure _selectedFigure) {
 		this._selectedFigure = _selectedFigure;
+		this.repaint();
 	}
 
 	/**
