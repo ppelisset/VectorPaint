@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import fr.iutinfo.constructor.CircleConstructor;
+import fr.iutinfo.constructor.OvalConstructor;
 import fr.iutinfo.constructor.PolygonConstructor;
 import fr.iutinfo.constructor.RectangleConstructor;
 import fr.iutinfo.constructor.VectorLineConstructor;
@@ -16,7 +17,7 @@ import fr.iutinfo.controller.manager.SetSelectListener;
 public class Outils extends JToolBar{
 	private static final long serialVersionUID = 1L;
 	
-	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer;
+	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer,_modeOval;
 
 	public Outils(){
 		super(VERTICAL);
@@ -28,7 +29,7 @@ public class Outils extends JToolBar{
 		_modeCercle = new JButton(new ImageIcon(getClass().getResource("icons/circle.png")));
 		_modeSelect = new JButton(new ImageIcon(getClass().getResource("icons/select.png")));
 		_modePointer = new JButton(new ImageIcon(getClass().getResource("icons/pointer.png")));
-		
+		_modeOval=new JButton("oval");
 		setLayout(new GridLayout(3, 1));
 		add(_modePointer);
 		add(_modeSelect);
@@ -36,6 +37,7 @@ public class Outils extends JToolBar{
 		add(_modePolygone);
 		add(_modeRectangle);
 		add(_modeCercle);
+		add(_modeOval);
 	}
 	
 	public void addOutilOnglet(Onglet o){
@@ -46,5 +48,6 @@ public class Outils extends JToolBar{
 		_modeSelect.addActionListener(new SetSelectListener(o.sv));
 		_modeRectangle.addActionListener(new SetContructorListener(o.sv,new RectangleConstructor()));
 		_modeCercle.addActionListener(new SetContructorListener(o.sv,new CircleConstructor()));
+		_modeOval.addActionListener(new SetContructorListener(o.sv, new OvalConstructor()));
 	}
 }

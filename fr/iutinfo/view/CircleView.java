@@ -51,10 +51,9 @@ public class CircleView implements Printable {
 		cy = (int) ((_circle.getCentre().getTop() * v.getHeight()) / 100);
 		sizeX = (int) ((_circle.getDiametreX() * v.getWidth()) / 100);
 		sizeY = (int) ((_circle.getDiametreY() * v.getHeight()) / 100);
-		cx -= sizeX;
-		cy -= sizeY;
+
 		int hypo = pythagore(sizeX,sizeY);
-		Ellipse2D e = new Ellipse2D.Double(cx-(hypo/4), cy-(hypo/4), hypo * 2,
+		Ellipse2D e = new Ellipse2D.Double(cx-hypo, cy-hypo, hypo * 2,
 				hypo * 2);
 
 		return e.contains(x, y);

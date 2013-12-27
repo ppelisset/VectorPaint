@@ -1,6 +1,5 @@
 package fr.iutinfo.model;
 
-import fr.iutinfo.constructor.PolygonConstructor;
 
 /**
  * Classe representant une ligne vectorielle
