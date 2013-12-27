@@ -1,6 +1,5 @@
 package fr.iutinfo.model;
 
-import fr.iutinfo.controller.manager.SetSelectListener;
 
 /**
  * Classe representant un cercle

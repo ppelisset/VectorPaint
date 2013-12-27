@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import fr.iutinfo.model.Circle;
 import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Point;
-import fr.iutinfo.model.Vector;
 import fr.iutinfo.view.SceneView;
 
 public class CircleConstructor implements Constructor {
@@ -25,8 +24,7 @@ public class CircleConstructor implements Constructor {
 		} else {
 			try {
 				double sizeX = Math.abs(leftDistance - _leftDistance);
-				double reallySize = (int) (sizeX*_v.getWidth());
-				double sizeY = reallySize/_v.getHeight();
+				double sizeY = Math.abs(topDistance - _topDistance);
 				_circle = new Circle(new Point(_topDistance, _leftDistance), sizeX, sizeY);
 				return true;
 			} catch (Exception e) {
@@ -42,12 +40,14 @@ public class CircleConstructor implements Constructor {
 			int x, y;
 			x = (int) ((_leftDistance * v.getWidth()) / 100);
 			y = (int) ((_topDistance * v.getHeight()) / 100);
-			int size = Math.abs(mousePosX - x);
+			int hypo = pythagore(x-mousePosX,y-mousePosY);
 			g.setColor(v.getColor());
-			g.fillOval(x-size, y-size, size*2, size*2);
+			g.fillOval(x-hypo, y-hypo, hypo*2, hypo*2);
 		}
 	}
-
+	public int pythagore(int a, int b) {
+		return (int) (double) Math.sqrt(a*a+b*b);
+	}
 	@Override
 	public Figure getFigure() {
 		// TODO Auto-generated method stub

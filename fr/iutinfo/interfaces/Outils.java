@@ -28,7 +28,7 @@ public class Outils extends JToolBar{
 		_modeCercle = new JButton(new ImageIcon(getClass().getResource("icons/circle.png")));
 		_modeSelect = new JButton(new ImageIcon(getClass().getResource("icons/select.png")));
 		_modePointer = new JButton(new ImageIcon(getClass().getResource("icons/pointer.png")));
-
+		
 		setLayout(new GridLayout(3, 1));
 		add(_modePointer);
 		add(_modeSelect);
@@ -46,6 +46,5 @@ public class Outils extends JToolBar{
 		_modeSelect.addActionListener(new SetSelectListener(o.sv));
 		_modeRectangle.addActionListener(new SetContructorListener(o.sv,new RectangleConstructor()));
 		_modeCercle.addActionListener(new SetContructorListener(o.sv,new CircleConstructor()));
-
 	}
 }
