@@ -2,8 +2,12 @@ package fr.iutinfo.interfaces;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import fr.iutinfo.interfaces.controler.InterfaceGraphiqueListener;
 
@@ -27,8 +31,11 @@ public class InterfaceGraphique extends JFrame {
 		Page p = new Page(ot, otc);
 		mb.addActionListener(new InterfaceGraphiqueListener(p, mb));
 		add(p);
-		add(ot, BorderLayout.WEST);
-		add(otc, BorderLayout.SOUTH);
+		JPanel tools = new JPanel();
+		tools.setLayout(new GridLayout(0, 1));
+		tools.add(ot);
+		tools.add(otc);
+		add(tools, BorderLayout.WEST);
 		p.nouvelOnglet();
 	}
 

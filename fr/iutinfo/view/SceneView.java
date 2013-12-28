@@ -19,7 +19,6 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 /**
