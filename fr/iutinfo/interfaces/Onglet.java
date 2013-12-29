@@ -23,4 +23,8 @@ public class Onglet extends JPanel {
 		setPreferredSize(new Dimension(300,80));
 	}
 	
+	public SceneView getSceneView() {
+		return sv;
+	}
+
 }

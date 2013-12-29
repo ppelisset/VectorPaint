@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractButton;
 
 import fr.iutinfo.interfaces.MenuBar;
+import fr.iutinfo.interfaces.Onglet;
 import fr.iutinfo.interfaces.Page;
 
 public class InterfaceGraphiqueListener implements ActionListener {
@@ -40,13 +41,13 @@ public class InterfaceGraphiqueListener implements ActionListener {
 			System.exit(0);
 		}
 		else if(arg0.getActionCommand() == "Copier"){
-			
-		}
-		else if(arg0.getActionCommand() == "Couper"){
-			
-		}
+			((Onglet) p.getSelectedComponent()).getSceneView().copyFigure();
+		} 
 		else if(arg0.getActionCommand() == "Coller"){
-			
+			((Onglet) p.getSelectedComponent()).getSceneView().pasteFigure();
+		} 
+		else if(arg0.getActionCommand() == "Couper"){
+			((Onglet) p.getSelectedComponent()).getSceneView().cutFigure();
 		}
 		else if(arg0.getActionCommand() == "Outils"){
 			aButton = (AbstractButton) arg0.getSource();

@@ -1,5 +1,7 @@
 package fr.iutinfo.model;
 
+import java.util.ArrayList;
+
 public class Rectangle extends Figure {
 
 	private Vector _vector;
@@ -70,6 +72,15 @@ public class Rectangle extends Figure {
 	
 	public String toString() {
 		return "Vector : " + this._vector;
+	}
+	
+	@Override
+	public Rectangle clone() {
+		Rectangle copy;
+		copy = (Rectangle) super.clone();
+		if(copy == null) return copy;
+		copy._vector = this._vector.clone();
+		return copy;
 	}
 
 }
