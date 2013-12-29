@@ -23,7 +23,6 @@ public class InterfaceGraphique extends JFrame {
 		setSize(600, 500);
 		setMinimumSize(new Dimension(250, 200));
 		setLocation(600, 300);
-		setVisible(true);
 		ot = new Outils();
 		otc = new OutilsCouleur();
 		Page p = new Page(ot, otc);
@@ -34,7 +33,7 @@ public class InterfaceGraphique extends JFrame {
 		tools.add(ot);
 		tools.add(otc);
 		add(tools, BorderLayout.WEST);
-		p.nouvelOnglet();
+		setVisible(true);
 	}
 
 }
