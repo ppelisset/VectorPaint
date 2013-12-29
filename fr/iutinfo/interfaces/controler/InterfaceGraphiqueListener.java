@@ -26,8 +26,8 @@ public class InterfaceGraphiqueListener implements ActionListener {
 		else if(arg0.getActionCommand() == "Quitter"){
 			System.exit(0);
 		}
-		else if(arg0.getActionCommand() == "Fermer l'Onglet"){
-			
+		else if(arg0.getActionCommand() == "Fermer Onglet"){
+			p.fermerOnglet();
 		} else if(arg0.getActionCommand() == "Copier"){
 			((Onglet) p.getSelectedComponent()).getSceneView().copyFigure();
 		} else if(arg0.getActionCommand() == "Coller"){

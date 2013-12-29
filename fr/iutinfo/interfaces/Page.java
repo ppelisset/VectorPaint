@@ -25,5 +25,9 @@ public class Page extends JTabbedPane {
 		otc.addOutilCouleurOnglet(o);
 		add(o.nom,o);
 	}
+	
+	public void fermerOnglet() {
+		this.removeTabAt(this.getSelectedIndex());
+	}
 
 }
