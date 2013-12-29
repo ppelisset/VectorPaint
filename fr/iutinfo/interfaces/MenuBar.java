@@ -2,23 +2,25 @@ package fr.iutinfo.interfaces;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class MenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 	
 	private JMenuItem nouveau, ouvrir, sauver, nouvelOnglet, fermerOnglet, quitter, copier, couper, coller;
+	private JCheckBoxMenuItem checkBoxOutils, checkBoxCouleur;
 	
 
 	public MenuBar() {
 		// Listener g�n�rique qui affiche l'action du menu utilis�
 		ActionListener afficherMenuListener = new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				System.out.println("El�ment de menu [" + event.getActionCommand() + "] utilis�.");
+				System.out.println("Element de menu [" + event.getActionCommand() + "] utilise.");
 			}
 		};
 		
-		// Cr�ation du menu Fichier
+		// Creation du menu Fichier
 		JMenu fichierMenu = new JMenu("Fichier");
 		nouveau = new JMenuItem("Nouveau");
 		nouveau.addActionListener(afficherMenuListener);
@@ -27,7 +29,7 @@ public class MenuBar extends JMenuBar {
 		ouvrir = new JMenuItem("Ouvrir");
 		ouvrir.addActionListener(afficherMenuListener);
 		fichierMenu.add(ouvrir);
-		sauver = new JMenuItem("Sauver");
+		sauver = new JMenuItem("Sauver", new ImageIcon(getClass().getResource("icons/sauvegarde.png")));
 		sauver.addActionListener(afficherMenuListener);
 		sauver.setAccelerator(KeyStroke.getKeyStroke('S', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
 		fichierMenu.add(sauver);
@@ -35,7 +37,7 @@ public class MenuBar extends JMenuBar {
 		nouvelOnglet.addActionListener(afficherMenuListener);
 		nouvelOnglet.setAccelerator(KeyStroke.getKeyStroke('T', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
 		fichierMenu.add(nouvelOnglet);
-		fermerOnglet = new JMenuItem("Fermer Onglet");
+		fermerOnglet = new JMenuItem("Fermer l'Onglet");
 		fermerOnglet.addActionListener(afficherMenuListener);
 		fermerOnglet.setAccelerator(KeyStroke.getKeyStroke('W', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
 		fichierMenu.add(fermerOnglet);
@@ -44,7 +46,7 @@ public class MenuBar extends JMenuBar {
 		quitter.setAccelerator(KeyStroke.getKeyStroke('Q', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
 		fichierMenu.add(quitter);
 
-		// Cr�ation du menu Editer
+		// Creation du menu Editer
 		JMenu editerMenu = new JMenu("Editer");
 		copier = new JMenuItem("Copier");
 		copier.addActionListener(afficherMenuListener);
@@ -58,10 +60,18 @@ public class MenuBar extends JMenuBar {
 		coller.addActionListener(afficherMenuListener);
 		coller.setAccelerator(KeyStroke.getKeyStroke('V', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
 		editerMenu.add(coller);
-
+		
+		//Creation du menu Affichage
+		JMenu affichageMenu = new JMenu("Affichage");
+		checkBoxOutils = new JCheckBoxMenuItem("Outils", true);
+		affichageMenu.add(checkBoxOutils);
+		checkBoxCouleur = new JCheckBoxMenuItem("Couleur", true);
+		affichageMenu.add(checkBoxCouleur);
+		
 		// ajout des menus � la barre de menus
 		add(fichierMenu);
 		add(editerMenu);
+		add(affichageMenu);
 	}
 	
 	public void addActionListener(ActionListener al){
@@ -74,5 +84,7 @@ public class MenuBar extends JMenuBar {
 		copier.addActionListener(al);
 		couper.addActionListener(al);
 		coller.addActionListener(al);
+		checkBoxOutils.addActionListener(al);
+		checkBoxCouleur.addActionListener(al);
 	}
 }

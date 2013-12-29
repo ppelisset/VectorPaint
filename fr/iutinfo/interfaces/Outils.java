@@ -2,6 +2,7 @@ package fr.iutinfo.interfaces;
 
 import java.awt.GridLayout;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
@@ -16,14 +17,14 @@ import fr.iutinfo.controller.manager.SetSelectListener;
 
 public class Outils extends JToolBar{
 	private static final long serialVersionUID = 1L;
-	
+
 	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer,_modeOval;
 
 	public Outils(){
 		super(VERTICAL);
-        setAlignmentX(0);
-        
-        _modeLine = new JButton(new ImageIcon(getClass().getResource("icons/line.png")));
+		setAlignmentX(0);
+
+		_modeLine = new JButton(new ImageIcon(getClass().getResource("icons/line.png")));
 		_modePolygone = new JButton(new ImageIcon(getClass().getResource("icons/polygon.png")));
 		_modeRectangle = new JButton(new ImageIcon(getClass().getResource("icons/rectangle.png")));
 		_modeCercle = new JButton(new ImageIcon(getClass().getResource("icons/circle.png")));
@@ -38,8 +39,9 @@ public class Outils extends JToolBar{
 		add(_modeRectangle);
 		add(_modeCercle);
 		add(_modeOval);
+
 	}
-	
+
 	public void addOutilOnglet(Onglet o){
 		_modePointer.addActionListener(new SetContructorListener(o.sv,null));
 		_modeLine.addActionListener(new SetContructorListener(o.sv,new VectorLineConstructor()));
