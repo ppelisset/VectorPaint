@@ -12,12 +12,10 @@ import fr.iutinfo.view.SceneView;
 
 public class MouseSelectController implements MouseListener, MouseMotionListener, KeyListener {
 	private SceneView _scene;
-	private int _posX, _posY;
 	private boolean _inMove = false;
 	private int _startX, _startY;
 	private boolean _inResize = false;
 	private double _beginTop, _beginLeft;
-	private Figure _copy;
 	private boolean _ctrl;
 
 	/**
@@ -35,12 +33,11 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 			double endTop, endLeft;
 			endLeft = (((double)ev.getX())/_scene.getWidth())*100;
 			endTop = (((double)ev.getY())/_scene.getHeight())*100;
-			System.out.println("Resize");
 			_scene.getSelectedFigure().resize(_beginTop, _beginLeft, endTop, endLeft);
 			_beginTop = endTop;
 			_beginLeft = endLeft;
 		}
-		// Si on est en train de d�placer une forme, on la d�place
+		// Si on est en train de deplacer une forme, on la deplace
 		if(_inMove) {
 			int decX = _startX - ev.getX();
 			int decY = _startY - ev.getY();
@@ -57,27 +54,18 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent ev) {
-		_posX = ev.getX();
-		_posY = ev.getY();
-	}
+	public void mouseMoved(MouseEvent ev) {}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent ev) {
 		_scene.requestFocusInWindow();	
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
 	public void mousePressed(MouseEvent ev) {
@@ -87,7 +75,6 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 		// - Si aucune figure est selectionne, on deselectionne celle qui l'etait
 		if(_scene.getSelectedFigure() != null) {
 			Point p = _scene.getSelectedPoint(_scene.getSelectedFigure(), ev.getX(), ev.getY());
-			System.out.println("Point : " + p);
 			if(p != null) {
 				_beginLeft = (((double)p.getX())/_scene.getWidth())*100;
 				_beginTop = (((double)p.getY())/_scene.getHeight())*100;
@@ -139,7 +126,6 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 	@Override
 	public void keyPressed(KeyEvent ev) {
 		if(_scene.getSelectedFigure() != null) {
-			System.out.println("KeyCode : " + ev.getKeyCode());
 			if(ev.getKeyCode() == KeyEvent.VK_UP) {
 				_scene.getSelectedFigure().move(Figure.GO_UP, _scene.getSpeed());
 			} else if(ev.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -151,7 +137,6 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 			}
 		}
 		if(ev.getKeyCode() == 17) {
-			System.out.println("Controle");
 			_ctrl = true;
 		}
 	}
@@ -172,7 +157,6 @@ public class MouseSelectController implements MouseListener, MouseMotionListener
 		}
 	}
 	@Override
-	public void keyTyped(KeyEvent ev) {
-	}
+	public void keyTyped(KeyEvent ev) {}
 
 }

@@ -1,4 +1,4 @@
-package fr.iutinfo.view.manager;
+package fr.iutinfo.interfaces;
 
 import java.awt.Color;
 import java.awt.Graphics;

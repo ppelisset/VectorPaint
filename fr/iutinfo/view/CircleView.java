@@ -26,13 +26,10 @@ public class CircleView implements Printable {
 		sizeY = (int) ((_circle.getDiametreY() * v.getHeight()) / 100);
 		x = (int) ((_circle.getCentre().getLeft() * v.getWidth()) / 100);
 		y = (int) ((_circle.getCentre().getTop() * v.getHeight()) / 100);
-		
-		
 	
 		int hypo = pythagore(sizeX,sizeY);
 		g.setColor(_circle.getColor());
 		if (_circle.isFill()) {
-			
 			g.fillOval(x-(hypo),y-(hypo), hypo*2, hypo*2);
 		} else {
 			g.drawOval(x-(hypo),y-(hypo), hypo*2, hypo*2);
@@ -53,8 +50,7 @@ public class CircleView implements Printable {
 		sizeY = (int) ((_circle.getDiametreY() * v.getHeight()) / 100);
 
 		int hypo = pythagore(sizeX,sizeY);
-		Ellipse2D e = new Ellipse2D.Double(cx-hypo, cy-hypo, hypo * 2,
-				hypo * 2);
+		Ellipse2D e = new Ellipse2D.Double(cx-hypo, cy-hypo, hypo * 2, hypo * 2);
 
 		return e.contains(x, y);
 	}

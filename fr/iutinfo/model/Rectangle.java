@@ -1,7 +1,5 @@
 package fr.iutinfo.model;
 
-import java.util.ArrayList;
-
 public class Rectangle extends Figure {
 
 	private Vector _vector;

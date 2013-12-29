@@ -30,7 +30,7 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	}
 	
 	/**
-	 * Retourne l'état de remplissage de la forme
+	 * Retourne l'etat de remplissage de la forme
 	 * @return
 	 */
 	public boolean isFill() {

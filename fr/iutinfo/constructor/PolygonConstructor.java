@@ -1,9 +1,9 @@
 package fr.iutinfo.constructor;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-import fr.iutinfo.model.Color;
 import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Polygon;
 import fr.iutinfo.model.Vector;
@@ -18,9 +18,8 @@ import fr.iutinfo.view.VectorView;
  */
 public class PolygonConstructor implements Constructor {
 	private boolean _isBegin = false;
-	private static java.awt.Color _currentColor=Color.BLACK;
+	private static Color _currentColor= Color.BLACK;
 	private Polygon _polygon = new Polygon();
-	
 	private double _topDistance, _leftDistance;
 	private double _beginTopDistance, _beginLeftDistance;
 	
@@ -35,8 +34,6 @@ public class PolygonConstructor implements Constructor {
 		} else {
 			double diffX = Math.abs(_beginLeftDistance - leftDistance);
 			double diffY = Math.abs(_beginTopDistance - topDistance);
-			System.out.println("diffX : " + diffX);
-			System.out.println("diffY : " + diffY);
 			if(diffX <= 1 && diffY <= 1) {
 				topDistance = _beginTopDistance;
 				leftDistance = _beginLeftDistance;
@@ -44,8 +41,7 @@ public class PolygonConstructor implements Constructor {
 			try {
 				_polygon.addVector(new Vector(_topDistance, _leftDistance, topDistance, leftDistance));
 			} catch (Exception e) {
-				System.err.println("Erreur du syst�me de vecteur : " + e.getMessage());
-				System.exit(0);
+				System.err.println("Erreur du systeme de vecteur : " + e.getMessage());
 			}
 			_topDistance = topDistance;
 			_leftDistance = leftDistance;
@@ -93,12 +89,5 @@ public class PolygonConstructor implements Constructor {
 	@Override
 	public boolean isBegin() {
 		return _isBegin;
-	}
-	
-	public static void setColor(java.awt.Color color){
-		_currentColor=color;
-	}
-	public static java.awt.Color getColor(){
-		return _currentColor;
 	}
 }

@@ -45,25 +45,23 @@ public class CircleConstructor implements Constructor {
 			g.fillOval(x-hypo, y-hypo, hypo*2, hypo*2);
 		}
 	}
+	
 	public int pythagore(int a, int b) {
 		return (int) (double) Math.sqrt(a*a+b*b);
 	}
+	
 	@Override
 	public Figure getFigure() {
-		// TODO Auto-generated method stub
 		return _circle;
 	}
 
 	@Override
 	public void reinit() {
-		// TODO Auto-generated method stub
 		_isFirst = true;
 	}
 
 	@Override
 	public boolean isBegin() {
-		// TODO Auto-generated method stub
 		return !_isFirst;
 	}
-
 }

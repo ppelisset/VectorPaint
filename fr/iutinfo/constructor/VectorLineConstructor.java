@@ -28,7 +28,6 @@ public class VectorLineConstructor implements Constructor {
 			try {
 				
 				_vector = new VectorLine(new Vector(_topDistance, _leftDistance, topDistance, leftDistance));
-				_vector.setColor(PolygonConstructor.getColor());
 				return true;
 			} catch(Exception e) {
 				throw new ConstructorException(e.getMessage());
@@ -40,6 +39,7 @@ public class VectorLineConstructor implements Constructor {
 	public void paint(SceneView v, Graphics g, int mousePosX, int mousePosY) {
 		if(!_isFirst) {
 			int x, y;
+			_vector.setColor(v.getColor());
 			x = (int) ((_leftDistance*v.getWidth())/100);
 			y = (int) ((_topDistance*v.getHeight())/100);
 			g.drawLine(x, y, mousePosX, mousePosY);

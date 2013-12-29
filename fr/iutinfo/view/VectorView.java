@@ -15,7 +15,7 @@ public class VectorView implements Printable {
 	VectorLine _vector;
 	
 	/**
-	 * Cr�er la vue d'un vector view
+	 * Creer la vue d'un vector view
 	 * @param v
 	 */
 	public VectorView(VectorLine v) {

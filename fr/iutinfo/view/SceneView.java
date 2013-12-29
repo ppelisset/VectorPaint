@@ -77,7 +77,6 @@ public class SceneView extends JPanel implements MyObserver {
 					update(_scene, f);
 					p = _map.get(f);
 				}
-				System.out.println("Affichage : " + f);
 				p.paint(this, g);
 			}
 		}
@@ -111,7 +110,6 @@ public class SceneView extends JPanel implements MyObserver {
 
 	@Override
 	public void update(MyObservable observable, Figure modified) {
-		System.out.println("Appeler pour : " + modified);
 		if(!_map.containsKey(modified)) {
 			Printable p = null;
 			if(modified instanceof VectorLine) {
@@ -129,7 +127,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 
 	/**
-	 * Permet de r�cup�rer la figure se trouvant au point (x,y)
+	 * Permet de recuperer la figure se trouvant au point (x,y)
 	 * @param x
 	 * @param y
 	 * @return
@@ -157,7 +155,7 @@ public class SceneView extends JPanel implements MyObserver {
 	}
 	
 	/**
-	 * Permet de r�cup�rer le point de la figure f se trouvant aux coordonn�s (x,y)
+	 * Permet de recuperer le point de la figure f se trouvant aux coordonn�s (x,y)
 	 * @param f
 	 * @param x
 	 * @param y

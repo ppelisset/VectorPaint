@@ -3,7 +3,6 @@ package fr.iutinfo.controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
 import javax.swing.SwingUtilities;
 
 import fr.iutinfo.constructor.Constructor;
@@ -29,21 +28,13 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 	}
 	
 	@Override
-	public void mouseClicked(MouseEvent ev) {
-		
-	}
+	public void mouseClicked(MouseEvent ev) {}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
 	public void mousePressed(MouseEvent ev) {
@@ -53,10 +44,8 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 			_scene.repaint();
 			return;
 		}
-		System.out.println("Clique : " + ev.getY() + "," + ev.getX());
 		double topDistance = ((double)(ev.getY()*100))/_scene.getHeight();
 		double leftDistance = ((double)(ev.getX()*100))/_scene.getWidth();
-		System.out.println("top : " + topDistance + " left : " + leftDistance);
 		boolean finish = false;
 		try {
 			finish = _constructor.addPoint(topDistance, leftDistance);
@@ -64,7 +53,6 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 			e.printStackTrace();
 		}
 		if(finish) {
-			System.out.println("Fini");
 			_constructor.getFigure().setColor(_scene.getColor());
 			_scene.getScene().addFigure(0, _constructor.getFigure());
 			_scene.repaint();
@@ -73,9 +61,7 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent ev) {
-
-	}
+	public void mouseReleased(MouseEvent ev) {}
 
 	@Override
 	public void mouseDragged(MouseEvent ev) {
@@ -101,7 +87,6 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 	
 	public Constructor getCurrentConstructor() {
 		return _constructor;
-		
 	}
 
 	public void setConstructor(Constructor c) {

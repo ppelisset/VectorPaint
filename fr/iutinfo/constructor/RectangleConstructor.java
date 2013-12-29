@@ -74,19 +74,16 @@ public class RectangleConstructor implements Constructor {
 
 	@Override
 	public Figure getFigure() {
-		// TODO Auto-generated method stub
 		return _rectangle;
 	}
 
 	@Override
 	public void reinit() {
-		// TODO Auto-generated method stub
 		_isFirst = true;
 	}
 
 	@Override
 	public boolean isBegin() {
-		// TODO Auto-generated method stub
 		return !_isFirst;
 	}
 

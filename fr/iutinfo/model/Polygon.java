@@ -128,7 +128,6 @@ public class Polygon extends Figure {
 				diffX = Math.abs(v.getLeftDistance() - originLeft);
 				diffY = Math.abs(v.getTopDistance() - originTop);
 				if(diffX < ERROR_MARGE && diffY < ERROR_MARGE) {
-					System.out.println("Resize");
 					v.setLeftDistance(endLeft);
 					v.setTopDistance(endTop);
 					beginResize = true;

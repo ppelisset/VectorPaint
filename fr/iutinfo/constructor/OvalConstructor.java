@@ -49,19 +49,16 @@ public class OvalConstructor implements Constructor {
 	
 	@Override
 	public Figure getFigure() {
-		// TODO Auto-generated method stub
 		return _oval;
 	}
 
 	@Override
 	public void reinit() {
-		// TODO Auto-generated method stub
 		_isFirst = true;
 	}
 
 	@Override
 	public boolean isBegin() {
-		// TODO Auto-generated method stub
 		return !_isFirst;
 	}
 

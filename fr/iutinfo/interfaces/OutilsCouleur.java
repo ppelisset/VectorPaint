@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import javax.swing.JToolBar;
 
 import fr.iutinfo.controller.MouseController;
-import fr.iutinfo.view.manager.ColorButton;
 
 public class OutilsCouleur extends JToolBar {
 	private static final long serialVersionUID = 1L;

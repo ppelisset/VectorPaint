@@ -4,14 +4,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.JList;
 import javax.swing.SwingUtilities;
 
 import fr.iutinfo.constructor.Constructor;
 import fr.iutinfo.constructor.ConstructorException;
-import fr.iutinfo.constructor.PolygonConstructor;
+import fr.iutinfo.interfaces.ColorButton;
 import fr.iutinfo.view.SceneView;
-import fr.iutinfo.view.manager.ColorButton;
 
 /**
  * Gestionnaire de la souris
@@ -24,7 +22,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	int _posX, _posY;
 
 	/**
-	 * Cr�e un gestionnaire de la souris qui s'occupe de la souris pour toute la
+	 * Cree un gestionnaire de la souris qui s'occupe de la souris pour toute la
 	 * SceneView
 	 * 
 	 * @param v
@@ -49,16 +47,10 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
 	public void mousePressed(MouseEvent ev) {
@@ -69,10 +61,8 @@ public class MouseController implements MouseListener, MouseMotionListener {
 			_scene.repaint();
 			return;
 		}
-		System.out.println("Clique : " + ev.getY() + "," + ev.getX());
 		double topDistance = ((double) (ev.getY() * 100)) / _scene.getHeight();
 		double leftDistance = ((double) (ev.getX() * 100)) / _scene.getWidth();
-		System.out.println("top : " + topDistance + " left : " + leftDistance);
 		boolean finish = false;
 		try {
 			finish = _constructor.addPoint(topDistance, leftDistance);
@@ -80,7 +70,6 @@ public class MouseController implements MouseListener, MouseMotionListener {
 			e.printStackTrace();
 		}
 		if (finish) {
-			System.out.println("Fini");
 			_scene.getScene().addFigure(0, _constructor.getFigure());
 			_scene.repaint();
 			_constructor.reinit();
@@ -88,9 +77,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent ev) {
-
-	}
+	public void mouseReleased(MouseEvent ev) {}
 
 	@Override
 	public void mouseDragged(MouseEvent ev) {
@@ -116,7 +103,6 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 	public Constructor getCurrentConstructor() {
 		return _constructor;
-
 	}
 
 	public void setConstructor(Constructor c) {
