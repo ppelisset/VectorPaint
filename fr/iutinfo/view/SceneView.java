@@ -224,6 +224,7 @@ public class SceneView extends JPanel implements MyObserver {
 			f.move(Figure.GO_DOWN, 2);
 			f.move(Figure.GO_LEFT, 2);
 			_selectedFigure = f;
+			_copy = f;
 			_scene.addFigure(0, f);
 		}
 	}
