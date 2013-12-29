@@ -227,4 +227,10 @@ public class SceneView extends JPanel implements MyObserver {
 			_scene.addFigure(0, f);
 		}
 	}
+	
+	public void cutFigure() {
+		_copy = getSelectedFigure();
+		_selectedFigure = null;
+		_scene.removeFigure(_copy);
+	}
 }

@@ -27,4 +27,8 @@ public class Onglet extends JPanel {
 		nb--;
 		remove(this);
 	}
+	
+	public SceneView getSceneView() {
+		return sv;
+	}
 }
