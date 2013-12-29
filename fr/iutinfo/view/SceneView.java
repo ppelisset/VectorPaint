@@ -31,7 +31,7 @@ public class SceneView extends JPanel implements MyObserver {
 	protected Scene _scene;
 	protected MouseListener _controller;
 	protected HashMap<Figure, Printable> _map;
-	Figure _selectedFigure;
+	Figure _selectedFigure, _copy;
 	public final int POINT_SIZE = 5;
 	public final int ERROR_MARGE = 5;
 
@@ -212,5 +212,19 @@ public class SceneView extends JPanel implements MyObserver {
 	 */
 	public double getSpeed() {
 		return  1;
+	}
+
+	public void copyFigure() {
+		_copy = getSelectedFigure();
+	}
+
+	public void pasteFigure() {
+		if(_copy != null) {
+			Figure f = _copy.clone();
+			f.move(Figure.GO_DOWN, 2);
+			f.move(Figure.GO_LEFT, 2);
+			_selectedFigure = f;
+			_scene.addFigure(0, f);
+		}
 	}
 }
