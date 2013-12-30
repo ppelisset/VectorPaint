@@ -246,7 +246,7 @@ public class Vector implements Cloneable {
 		Vector v;
 		if(s.startsWith("{") && s.endsWith("}")) {
 			s = s.substring(1, s.length()-2);
-			String part[] = s.split("|");
+			String part[] = s.split("\\|");
 			if(part.length != 4) {
 				throw new CorruptFileException();
 			}

@@ -87,4 +87,10 @@ public class Scene extends MyObservable implements MyObserver {
 		}
 		notifyObs(null);
 	}
+	
+	public void clean() {
+		for(ArrayList<Figure> list : listFigure) {
+			list.clear();
+		}
+	}
 }

@@ -1,6 +1,9 @@
 package fr.iutinfo.model;
 
+import java.awt.Color;
 import java.util.ArrayList;
+
+import fr.iutinfo.librairies.CorruptFileException;
 
 public class Polygon extends Figure {
 	protected ArrayList<Vector> _vectorList;
@@ -169,5 +172,32 @@ public class Polygon extends Figure {
 			str += v.save();
 		}
 		return "[" + str + ";" + isFill() + ";" + Integer.toHexString(this.getColor().getRGB()) + "]";
+	}
+	
+	public static Figure restore(String s) throws CorruptFileException {
+		Polygon v;
+		if(s.startsWith("[") && s.endsWith("]")) {
+			s = s.substring(1, s.length()-2);
+			String part[] = s.split(";");
+			if(part.length != 3) throw new CorruptFileException();
+			v = new Polygon();
+			// Recuperation de la liste des vecteurs
+			String vectorList = part[0];
+			String vector[] = vectorList.split(",");
+			for(String vec : vector) {
+				try {
+					v.addVector(Vector.restore(vec));
+				} catch (Exception e) {
+					throw new CorruptFileException();
+				}
+			}
+			
+			v.setColor(Color.decode(part[1]));
+			v.setFill(!Boolean.parseBoolean(part[2]));
+		} else {
+			throw new CorruptFileException();
+		}
+		
+		return v;
 	}
 }

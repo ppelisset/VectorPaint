@@ -11,6 +11,7 @@ import javax.swing.JFileChooser;
 import fr.iutinfo.interfaces.MenuBar;
 import fr.iutinfo.interfaces.Onglet;
 import fr.iutinfo.interfaces.Page;
+import fr.iutinfo.librairies.Opener;
 import fr.iutinfo.librairies.Recorder;
 
 public class InterfaceGraphiqueListener implements ActionListener {
@@ -30,7 +31,15 @@ public class InterfaceGraphiqueListener implements ActionListener {
 			
 		}
 		else if(arg0.getActionCommand() == "Ouvrir"){
-			
+			JFileChooser dialog = new JFileChooser(new File(".vpf"));
+			if(dialog.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+				Opener o = new Opener(((Onglet) p.getSelectedComponent()).getSceneView().getScene());
+				try {
+					o.restoreFromFile(dialog.getSelectedFile());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		else if(arg0.getActionCommand() == "Sauver"){
 			JFileChooser dialog = new JFileChooser(new File(".vpf"));

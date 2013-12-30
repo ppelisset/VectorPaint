@@ -1,5 +1,9 @@
 package fr.iutinfo.model;
 
+import java.awt.Color;
+
+import fr.iutinfo.librairies.CorruptFileException;
+
 public class Rectangle extends Figure {
 
 	private Vector _vector;
@@ -86,4 +90,19 @@ public class Rectangle extends Figure {
 		return "[" + _vector.save() + ";" + isFill() + ";" + Integer.toHexString(this.getColor().getRGB()) + "]";
 	}
 
+	public static Figure restore(String s) throws CorruptFileException {
+		Rectangle v;
+		if(s.startsWith("[") && s.endsWith("]")) {
+			s = s.substring(1, s.length()-2);
+			String part[] = s.split(";");
+			if(part.length != 3) throw new CorruptFileException();
+			v = new Rectangle(Vector.restore(part[0]));
+			v.setColor(Color.decode(part[1]));
+			v.setFill(!Boolean.parseBoolean(part[2]));
+		} else {
+			throw new CorruptFileException();
+		}
+		
+		return v;
+	}
 }
