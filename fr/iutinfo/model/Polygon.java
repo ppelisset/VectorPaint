@@ -161,7 +161,13 @@ public class Polygon extends Figure {
 
 	@Override
 	public String save() {
-		// TODO Auto-generated method stub
-		return null;
+		String str = "";
+		for(Vector v : _vectorList) {
+			if(!str.equals("")) {
+				str += ",";
+			}
+			str += v.save();
+		}
+		return "[" + str + ";" + isFill() + ";" + Integer.toHexString(this.getColor().getRGB()) + "]";
 	}
 }

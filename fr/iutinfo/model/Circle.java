@@ -89,7 +89,6 @@ public class Circle extends Figure implements Cloneable {
 
 	@Override
 	public String save() {
-		// TODO Auto-generated method stub
-		return null;
+		return "[" + _centre.getTop() + "," + _centre.getLeft() + ";" + _diametreX + ";" + _diametreY + ";" + isFill() + ";" + Integer.toHexString(this.getColor().getRGB()) + "]";
 	}
 }

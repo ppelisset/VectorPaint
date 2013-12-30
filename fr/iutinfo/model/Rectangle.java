@@ -83,8 +83,7 @@ public class Rectangle extends Figure {
 
 	@Override
 	public String save() {
-		// TODO Auto-generated method stub
-		return null;
+		return "[" + _vector.save() + ";" + isFill() + ";" + Integer.toHexString(this.getColor().getRGB()) + "]";
 	}
 
 }
