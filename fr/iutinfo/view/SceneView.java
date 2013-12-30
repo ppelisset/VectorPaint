@@ -68,7 +68,7 @@ public class SceneView extends JPanel implements MyObserver {
 		// On affiche tout les elements qui existe deja
 		ArrayList<Figure> listFigure;
 		Printable p;
-		for(int i = 0; i < 4; i++) {
+		for(int i = 3; i >= 0; i--) {
 			listFigure = _scene.getProfondeurFigure(i);
 
 			for(Figure f : listFigure) {

@@ -13,6 +13,7 @@ public class InterfaceGraphique extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private Outils ot;
 	private OutilsCouleur otc;
+	private ToolBar tb;
 	private MenuBar mb;
 	
 	public InterfaceGraphique(){
@@ -26,6 +27,7 @@ public class InterfaceGraphique extends JFrame {
 		ot = new Outils();
 		otc = new OutilsCouleur();
 		Page p = new Page(ot, otc);
+		tb = new ToolBar(p);
 		mb.addActionListener(new InterfaceGraphiqueListener(p, mb));
 		add(p);
 		JPanel tools = new JPanel();
@@ -33,6 +35,7 @@ public class InterfaceGraphique extends JFrame {
 		tools.add(ot);
 		tools.add(otc);
 		add(tools, BorderLayout.WEST);
+		add(tb, BorderLayout.PAGE_START);
 		setVisible(true);
 	}
 

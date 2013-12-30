@@ -1,0 +1,48 @@
+package fr.iutinfo.interfaces;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JToolBar;
+
+import fr.iutinfo.interfaces.controler.ToolBarListener;
+
+public class ToolBar extends JToolBar {
+	private JButton _firstGround, _secondGround, _thirdGround, _backGround;
+	
+	public ToolBar(Page current) {
+		_firstGround = new JButton("Premier Plan");
+		_secondGround = new JButton("Deuxieme Plan");
+		_thirdGround = new JButton("Troisieme Plan");
+		_backGround = new JButton("Arriere Plan");
+		
+		ActionListener listener = new ToolBarListener(this, current);
+		_firstGround.addActionListener(listener);
+		_secondGround.addActionListener(listener);
+		_thirdGround.addActionListener(listener);
+		_backGround.addActionListener(listener);
+		
+		add(_firstGround);
+		add(_secondGround);
+		add(_thirdGround);
+		add(_backGround);
+	}
+
+	public JButton getFirstGround() {
+		return _firstGround;
+	}
+
+	public JButton getSecondGround() {
+		return _secondGround;
+	}
+
+	public JButton getThirdGround() {
+		return _thirdGround;
+	}
+
+	public JButton getBackGround() {
+		return _backGround;
+	}
+	
+	
+}

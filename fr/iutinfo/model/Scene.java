@@ -45,15 +45,13 @@ public class Scene extends MyObservable implements MyObserver {
 	 * change une Figure d'ArrayList
 	 */
 	public void setFigure(Figure figure, int profondeur) {
-		if(listFigure.contains(figure)) {
-			if(isCorrect(profondeur)){
-				for(int i=0; i<4; i++){
-					listFigure.get(i).remove(figure);
-				}
-				listFigure.get(profondeur).add(figure);
+		if(isCorrect(profondeur)){
+			for(int i=0; i<4; i++){
+				listFigure.get(i).remove(figure);
 			}
-			notifyObs(figure);
+			listFigure.get(profondeur).add(figure);
 		}
+		notifyObs(figure);
 	}
 
 	/**
