@@ -20,14 +20,16 @@ public class ToolBarListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent ev) {
 		SceneView current = ((Onglet)_p.getSelectedComponent()).getSceneView();
-		if(ev.getSource() == _tb.getFirstGround()) {
-			current.getScene().setFigure(current.getSelectedFigure(), 0);
-		} else if(ev.getSource() == _tb.getSecondGround()) {
-			current.getScene().setFigure(current.getSelectedFigure(), 1);
-		} else if(ev.getSource() == _tb.getThirdGround()) {
-			current.getScene().setFigure(current.getSelectedFigure(), 2);
-		} else if(ev.getSource() == _tb.getBackGround()) {
-			current.getScene().setFigure(current.getSelectedFigure(), 3);
+		if(current.getSelectedFigure() != null) {
+			if(ev.getSource() == _tb.getFirstGround()) {
+				current.getScene().setFigure(current.getSelectedFigure(), 0);
+			} else if(ev.getSource() == _tb.getSecondGround()) {
+				current.getScene().setFigure(current.getSelectedFigure(), 1);
+			} else if(ev.getSource() == _tb.getThirdGround()) {
+				current.getScene().setFigure(current.getSelectedFigure(), 2);
+			} else if(ev.getSource() == _tb.getBackGround()) {
+				current.getScene().setFigure(current.getSelectedFigure(), 3);
+			}
 		}
 	}
 	
