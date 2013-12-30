@@ -81,4 +81,10 @@ public class Rectangle extends Figure {
 		return copy;
 	}
 
+	@Override
+	public String save() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

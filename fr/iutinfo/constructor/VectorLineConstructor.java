@@ -39,7 +39,6 @@ public class VectorLineConstructor implements Constructor {
 	public void paint(SceneView v, Graphics g, int mousePosX, int mousePosY) {
 		if(!_isFirst) {
 			int x, y;
-			_vector.setColor(v.getColor());
 			x = (int) ((_leftDistance*v.getWidth())/100);
 			y = (int) ((_topDistance*v.getHeight())/100);
 			g.drawLine(x, y, mousePosX, mousePosY);

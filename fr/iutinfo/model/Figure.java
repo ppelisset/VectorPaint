@@ -2,6 +2,7 @@ package fr.iutinfo.model;
 
 import java.awt.Color;
 
+import fr.iutinfo.librairies.CorruptFileException;
 import fr.iutinfo.librairies.MyObservable;
 
 public abstract class Figure extends MyObservable implements Cloneable {
@@ -79,6 +80,12 @@ public abstract class Figure extends MyObservable implements Cloneable {
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+	
+	public abstract String save();
+	
+	public static Figure restore(String s) throws CorruptFileException {
 		return null;
 	}
 }

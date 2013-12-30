@@ -84,4 +84,10 @@ public class Oval extends Figure implements Cloneable {
 		c.setCentre(this.getCentre().clone());
 		return c;
 	}
+
+	@Override
+	public String save() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

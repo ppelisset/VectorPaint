@@ -1,5 +1,7 @@
 package fr.iutinfo.model;
 
+import fr.iutinfo.librairies.CorruptFileException;
+
 /**
  * Classe représentant un vecteur
  * @author maxence, pierre
@@ -234,6 +236,33 @@ public class Vector implements Cloneable {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public String save() {
+		return "{" + _topDistance + "|" + _leftDistance + "|" + _endTopDistance + "|" + _endLeftDistance + "}";
+	}
+	
+	public static Vector restore(String s) throws CorruptFileException {
+		Vector v;
+		if(s.startsWith("{") && s.endsWith("}")) {
+			s = s.substring(1, s.length()-2);
+			String part[] = s.split("|");
+			if(part.length != 4) {
+				throw new CorruptFileException();
+			}
+			try {
+				double topDistance = Double.parseDouble(part[0]);
+				double leftDistance = Double.parseDouble(part[1]);
+				double endTopDistance = Double.parseDouble(part[2]);
+				double endLeftDistance = Double.parseDouble(part[3]);
+				v = new Vector(topDistance, leftDistance, endTopDistance, endLeftDistance);
+			} catch (Exception e) {
+				throw new CorruptFileException();
+			}
+		} else {
+			throw new CorruptFileException();
+		}
+		return v;
 	}
 
 }

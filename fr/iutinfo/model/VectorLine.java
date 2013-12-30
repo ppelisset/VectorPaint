@@ -1,5 +1,9 @@
 package fr.iutinfo.model;
 
+import java.awt.Color;
+
+import fr.iutinfo.librairies.CorruptFileException;
+
 
 /**
  * Classe representant une ligne vectorielle
@@ -82,5 +86,25 @@ public class VectorLine extends Figure {
 		if(copy == null) return null;
 		copy._vector = _vector.clone();
 		return copy;
+	}
+
+	@Override
+	public String save() {
+		return "["+_vector.save()+";"+Integer.toHexString(this.getColor().getRGB())+"]";
+	}
+	
+	public static Figure restore(String s) throws CorruptFileException {
+		VectorLine v;
+		if(s.startsWith("[") && s.endsWith("]")) {
+			s = s.substring(1, s.length()-2);
+			String part[] = s.split(";");
+			if(part.length != 2) throw new CorruptFileException();
+			v = new VectorLine(Vector.restore(part[0]));
+			v.setColor(Color.decode(part[1]));
+		} else {
+			throw new CorruptFileException();
+		}
+		
+		return v;
 	}
 }

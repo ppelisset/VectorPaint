@@ -2,12 +2,16 @@ package fr.iutinfo.interfaces.controler;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.AbstractButton;
+import javax.swing.JFileChooser;
 
 import fr.iutinfo.interfaces.MenuBar;
 import fr.iutinfo.interfaces.Onglet;
 import fr.iutinfo.interfaces.Page;
+import fr.iutinfo.librairies.Recorder;
 
 public class InterfaceGraphiqueListener implements ActionListener {
 	private Page p;
@@ -29,7 +33,15 @@ public class InterfaceGraphiqueListener implements ActionListener {
 			
 		}
 		else if(arg0.getActionCommand() == "Sauver"){
-			
+			JFileChooser dialog = new JFileChooser(new File(".vpf"));
+			if(dialog.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+				Recorder r = new Recorder(((Onglet) p.getSelectedComponent()).getSceneView().getScene());
+				try {
+					r.recordInFile(dialog.getSelectedFile());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		else if(arg0.getActionCommand() == "Nouvel Onglet"){
 			p.nouvelOnglet();
