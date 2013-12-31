@@ -171,13 +171,13 @@ public class Polygon extends Figure {
 			}
 			str += v.save();
 		}
-		return "[" + str + ";" + isFill() + ";" + Integer.toHexString(this.getColor().getRGB()) + "]";
+		return "[" + str + ";" + (isFill() ? 1 : 0) + ";" + Figure.encodeColor(getColor()) + "]";
 	}
 	
 	public static Figure restore(String s) throws CorruptFileException {
 		Polygon v;
 		if(s.startsWith("[") && s.endsWith("]")) {
-			s = s.substring(1, s.length()-2);
+			s = s.substring(1, s.length()-1);
 			String part[] = s.split(";");
 			if(part.length != 3) throw new CorruptFileException();
 			v = new Polygon();
@@ -192,8 +192,8 @@ public class Polygon extends Figure {
 				}
 			}
 			
-			v.setColor(Color.decode(part[1]));
-			v.setFill(!Boolean.parseBoolean(part[2]));
+			v.setColor(Figure.decodeColor(part[2]));
+			v.setFill(!Boolean.parseBoolean(part[1]));
 		} else {
 			throw new CorruptFileException();
 		}

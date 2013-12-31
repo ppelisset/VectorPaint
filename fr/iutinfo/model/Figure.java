@@ -88,4 +88,39 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	public static Figure restore(String s) throws CorruptFileException {
 		return null;
 	}
+	
+	public static String encodeColor(Color c) {
+		String str = "#";
+		String current;
+		
+		current = Integer.toHexString(c.getAlpha());
+		if(current.length() < 2) current = "0" + current;
+		str += current;
+	
+		current = Integer.toHexString(c.getRed());
+		if(current.length() < 2) current = "0" + current;
+		str += current;
+		
+		current = Integer.toHexString(c.getGreen());
+		if(current.length() < 2) current = "0" + current;
+		str += current;
+				
+		current = Integer.toHexString(c.getBlue());
+		if(current.length() < 2) current = "0" + current;
+		str += current;
+		return str;
+	}
+	
+	public static Color decodeColor(String s) {
+		if(s.startsWith("#")) {
+			int a, r, g, b;
+			a = Integer.decode("#" + s.substring(1, 3));
+			r = Integer.decode("#" + s.substring(3, 5));
+			g = Integer.decode("#" + s.substring(5, 7));
+			b = Integer.decode("#" + s.substring(7, 9));
+			return new Color(r, g, b, a);
+		} else {
+			throw new IllegalArgumentException(s + " must be HexNumber");
+		}
+	}
 }

@@ -93,20 +93,20 @@ public class Circle extends Figure implements Cloneable {
 
 	@Override
 	public String save() {
-		return "[" + _centre.getTop() + "," + _centre.getLeft() + ";" + _diametreX + ";" + _diametreY + ";" + isFill() + ";" + Integer.toHexString(this.getColor().getRGB()) + "]";
+		return "[" + _centre.getTop() + "," + _centre.getLeft() + ";" + _diametreX + ";" + _diametreY + ";" + (isFill() ? 1 : 0) + ";" + Figure.encodeColor(getColor()) + "]";
 	}
 	
 	public static Figure restore(String s) throws CorruptFileException {
 		Circle v;
 		if(s.startsWith("[") && s.endsWith("]")) {
-			s = s.substring(1, s.length()-2);
+			s = s.substring(1, s.length()-1);
 			String part[] = s.split(";");
 			if(part.length != 5) throw new CorruptFileException();
 			String ptInfo[] = part[0].split(",");
 			Point p = new Point(Double.parseDouble(ptInfo[0]), Double.parseDouble(ptInfo[1]));
 			v = new Circle(p, Double.parseDouble(part[1]), Double.parseDouble(part[2]));
 			v.setFill(!Boolean.parseBoolean(part[3]));
-			v.setColor(Color.decode(part[4]));
+			v.setColor(Figure.decodeColor(part[4]));
 		} else {
 			throw new CorruptFileException();
 		}

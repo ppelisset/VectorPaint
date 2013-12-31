@@ -90,17 +90,17 @@ public class VectorLine extends Figure {
 
 	@Override
 	public String save() {
-		return "["+_vector.save()+";"+Integer.toHexString(this.getColor().getRGB())+"]";
+		return "["+_vector.save()+";"+Figure.encodeColor(getColor())+"]";
 	}
 	
 	public static Figure restore(String s) throws CorruptFileException {
 		VectorLine v;
 		if(s.startsWith("[") && s.endsWith("]")) {
-			s = s.substring(1, s.length()-2);
+			s = s.substring(1, s.length()-1);
 			String part[] = s.split(";");
 			if(part.length != 2) throw new CorruptFileException();
 			v = new VectorLine(Vector.restore(part[0]));
-			v.setColor(Color.decode(part[1]));
+			v.setColor(Figure.decodeColor(part[1]));
 		} else {
 			throw new CorruptFileException();
 		}
