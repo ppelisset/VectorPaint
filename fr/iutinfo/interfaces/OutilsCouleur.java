@@ -16,6 +16,7 @@ public class OutilsCouleur extends JToolBar {
 		super(HORIZONTAL);
 		setAlignmentX(0);
 		setLayout(new GridLayout(2,7));
+		
 
 		black = new ColorButton(Color.black);
 		add(black);

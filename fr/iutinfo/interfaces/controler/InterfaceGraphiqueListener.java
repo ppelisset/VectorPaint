@@ -7,7 +7,9 @@ import java.io.IOException;
 
 import javax.swing.AbstractButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
+import fr.iutinfo.interfaces.InterfaceGraphique;
 import fr.iutinfo.interfaces.MenuBar;
 import fr.iutinfo.interfaces.Onglet;
 import fr.iutinfo.interfaces.Page;
@@ -17,18 +19,23 @@ import fr.iutinfo.librairies.Recorder;
 public class InterfaceGraphiqueListener implements ActionListener {
 	private Page p;
 	private MenuBar m;
+	private InterfaceGraphique ig;
+	private int reponse;
 	//pour les checkBoxMenuItem
 	private AbstractButton aButton;
 	
-	public InterfaceGraphiqueListener(Page p, MenuBar m){
+	public InterfaceGraphiqueListener(Page p, MenuBar m, InterfaceGraphique ig){
 		this.p = p;
 		this.m = m;
+		this.ig = ig;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand() == "Nouveau"){
-			
+			reponse = JOptionPane.showConfirmDialog(ig, "Etes vous sure?", "Nouveau", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+			if(reponse == JOptionPane.YES_OPTION)
+				p.reinitOnglet();
 		}
 		else if(arg0.getActionCommand() == "Ouvrir"){
 			JFileChooser dialog = new JFileChooser(new File(".vpf"));
@@ -59,7 +66,9 @@ public class InterfaceGraphiqueListener implements ActionListener {
 			p.supOnglet();
 		}
 		else if(arg0.getActionCommand() == "Quitter"){
-			System.exit(0);
+			reponse = JOptionPane.showConfirmDialog(ig, "Attention, vous allez peut être perdre l'ensembe de votre progression.\nEtes vous sure de vouloir quitter le programme?", "Quitter", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+			if(reponse == JOptionPane.YES_OPTION)
+				System.exit(0);
 		}
 		else if(arg0.getActionCommand() == "Copier"){
 			((Onglet) p.getSelectedComponent()).getSceneView().copyFigure();

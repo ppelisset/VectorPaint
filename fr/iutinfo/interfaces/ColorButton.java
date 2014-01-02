@@ -1,6 +1,7 @@
 package fr.iutinfo.interfaces;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import javax.swing.JButton;
@@ -10,8 +11,7 @@ public class ColorButton extends JButton {
 	private Color color;
 	public ColorButton(Color c){
 		this.color=c;
-		
-		
+		setPreferredSize(new Dimension(30, 30));
 	}
 	/**
 	 * retourne la couleur

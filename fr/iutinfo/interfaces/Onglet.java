@@ -1,6 +1,5 @@
 package fr.iutinfo.interfaces;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.*;
@@ -20,7 +19,12 @@ public class Onglet extends JPanel {
 		sv = new SceneView(new Scene());
 		setLayout(new GridLayout());
 		add(sv);
-		setPreferredSize(new Dimension(300,80));
+	}
+	
+	public void reinitSceneView(){
+		remove(sv);
+		sv = new SceneView(new Scene());
+		add(sv);
 	}
 	
 	public SceneView getSceneView() {

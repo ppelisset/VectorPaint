@@ -2,6 +2,7 @@ package fr.iutinfo.interfaces;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -28,13 +29,10 @@ public class InterfaceGraphique extends JFrame {
 		otc = new OutilsCouleur();
 		Page p = new Page(ot, otc);
 		tb = new ToolBar(p);
-		mb.addActionListener(new InterfaceGraphiqueListener(p, mb));
+		mb.addActionListener(new InterfaceGraphiqueListener(p, mb, this));
 		add(p);
-		JPanel tools = new JPanel();
-		tools.setLayout(new GridLayout(0, 1));
-		tools.add(ot);
-		tools.add(otc);
-		add(tools, BorderLayout.WEST);
+		add(ot,BorderLayout.WEST);
+		add(otc,BorderLayout.SOUTH);
 		add(tb, BorderLayout.PAGE_START);
 		setVisible(true);
 	}

@@ -38,6 +38,14 @@ public class Page extends JTabbedPane {
 		listOnglet.remove(o);
 	}
 	
+	public void reinitOnglet(){
+		Onglet o = listOnglet.get(getSelectedIndex());
+		o.reinitSceneView();
+		ot.addOutilOnglet(o);
+		otc.addOutilCouleurOnglet(o);
+		repaint();
+	}
+	
 	public void addOutils(){
 		ot.setVisible(true);;
 	}
