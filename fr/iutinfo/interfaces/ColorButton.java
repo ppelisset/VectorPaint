@@ -2,6 +2,7 @@ package fr.iutinfo.interfaces;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ public class ColorButton extends JButton {
 		this.color=c;
 		setPreferredSize(new Dimension(30, 30));
 		setBackground(color);
+		setOpaque(true);
+		setBorderPainted(false);
 	}
 	
 	public ColorButton(ImageIcon ic){
