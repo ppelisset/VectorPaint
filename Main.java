@@ -1,4 +1,6 @@
 import javax.swing.UIManager;
+
+import fr.iutinfo.interfaces.CouleurPersonnalise;
 import fr.iutinfo.interfaces.InterfaceGraphique;
 
 public class Main {

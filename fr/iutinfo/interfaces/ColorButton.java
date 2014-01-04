@@ -2,17 +2,27 @@ package fr.iutinfo.interfaces;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class ColorButton extends JButton {
 
 	private Color color;
+
 	public ColorButton(Color c){
 		this.color=c;
 		setPreferredSize(new Dimension(30, 30));
+		setBackground(color);
 	}
+	
+	public ColorButton(ImageIcon ic){
+		super(ic);
+		setText("perso");
+		color = Color.white;
+		setPreferredSize(new Dimension(30, 30));
+	}
+
 	/**
 	 * retourne la couleur
 	 * @return Color
@@ -25,12 +35,12 @@ public class ColorButton extends JButton {
 	 * @param color
 	 */
 	public void setColor(Color color){
-		
 		this.color=color;
+		setBackground(color);
+		repaint();
 	}
 	
-	public void paintComponent(Graphics g) {
-		g.setColor(color);
-		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+	public String toString(){
+		return getText();
 	}
 }

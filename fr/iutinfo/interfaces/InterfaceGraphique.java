@@ -2,11 +2,8 @@ package fr.iutinfo.interfaces;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import fr.iutinfo.interfaces.controler.InterfaceGraphiqueListener;
 
@@ -18,7 +15,7 @@ public class InterfaceGraphique extends JFrame {
 	private MenuBar mb;
 	
 	public InterfaceGraphique(){
-		super("Paint");
+		super("Vector Paint");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mb = new MenuBar();
 		setJMenuBar(mb);

@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 import fr.iutinfo.constructor.Constructor;
 import fr.iutinfo.constructor.ConstructorException;
 import fr.iutinfo.interfaces.ColorButton;
+import fr.iutinfo.interfaces.CouleurPersonnalise;
 import fr.iutinfo.view.SceneView;
 
 /**
@@ -36,14 +37,19 @@ public class MouseController implements MouseListener, MouseMotionListener {
 	public void mouseClicked(MouseEvent evt) {
 		ColorButton bouton = (ColorButton) evt.getSource();
 
-        
+
 		if (evt.getClickCount() == 2) {
-	        this._scene.setColor((bouton.getColor()));
-	    } else if (evt.getClickCount() == 1) {
-	        if(this._scene.getSelectedFigure() != null) {
-	        	this._scene.getSelectedFigure().setColor(bouton.getColor());
-	        }
-	    }
+			this._scene.setColor((bouton.getColor()));
+
+		} else if (evt.getClickCount() == 1) {
+			if(this._scene.getSelectedFigure() != null) {
+				this._scene.getSelectedFigure().setColor(bouton.getColor());
+			}
+		}
+		
+		if(evt.getSource().toString().equals("perso")){
+			new CouleurPersonnalise(_scene, (ColorButton) evt.getSource());
+		}
 	}
 
 	@Override

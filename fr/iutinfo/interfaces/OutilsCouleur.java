@@ -3,6 +3,9 @@ package fr.iutinfo.interfaces;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import fr.iutinfo.controller.MouseController;
@@ -10,7 +13,7 @@ import fr.iutinfo.controller.MouseController;
 public class OutilsCouleur extends JToolBar {
 	private static final long serialVersionUID = 1L;
 
-	private ColorButton black, blue, cyan, darkGray, gray, green, lightGray, magenta, orange, pink, red, white, yellow;
+	private ColorButton black, blue, cyan, darkGray, gray, green, lightGray, magenta, orange, pink, red, white, yellow, couleurPersonnalise;
 
 	public OutilsCouleur(){
 		super(HORIZONTAL);
@@ -56,6 +59,10 @@ public class OutilsCouleur extends JToolBar {
 
 		yellow = new ColorButton(Color.yellow);
 		add(yellow);
+		
+		couleurPersonnalise= new ColorButton(new ImageIcon(getClass().getResource("icons/triangleRGB.png")));
+		add(couleurPersonnalise);
+		
 	}
 
 	public void addOutilCouleurOnglet(Onglet o){
@@ -73,5 +80,6 @@ public class OutilsCouleur extends JToolBar {
 		red.addMouseListener(mc);
 		white.addMouseListener(mc);
 		yellow.addMouseListener(mc);
+		couleurPersonnalise.addMouseListener(mc);
 	}
 }
