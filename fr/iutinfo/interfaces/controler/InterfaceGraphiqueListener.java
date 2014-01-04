@@ -1,8 +1,10 @@
 package fr.iutinfo.interfaces.controler;
 
+import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 
 import javax.swing.AbstractButton;
@@ -38,11 +40,14 @@ public class InterfaceGraphiqueListener implements ActionListener {
 				p.reinitOnglet();
 		}
 		else if(arg0.getActionCommand() == "Ouvrir"){
-			JFileChooser dialog = new JFileChooser(new File(".vpf"));
-			if(dialog.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			FileDialog fDial = new FileDialog(ig, "Ouvrir", FileDialog.LOAD);
+			fDial.setFilenameFilter(new FileFilter());
+			fDial.setVisible(true);
+			if(fDial.getFile() != null) {
+				String filepath = fDial.getDirectory() + fDial.getFile();
 				Opener o = new Opener(((Onglet) p.getSelectedComponent()).getSceneView().getScene());
 				try {
-					o.restoreFromFile(dialog.getSelectedFile());
+					o.restoreFromFile(new File(filepath));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -52,8 +57,12 @@ public class InterfaceGraphiqueListener implements ActionListener {
 			JFileChooser dialog = new JFileChooser(new File(".vpf"));
 			if(dialog.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 				Recorder r = new Recorder(((Onglet) p.getSelectedComponent()).getSceneView().getScene());
+				File f = dialog.getSelectedFile();
+				if(!f.getPath().toLowerCase().endsWith(".vpf")) {
+					f = new File(f.getPath() +  ".vpf");
+				}
 				try {
-					r.recordInFile(dialog.getSelectedFile());
+					r.recordInFile(f);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -95,4 +104,11 @@ public class InterfaceGraphiqueListener implements ActionListener {
 		}
 	}
 
+	class FileFilter implements FilenameFilter {
+		@Override
+		public boolean accept(File dir, String name) {
+			return name.endsWith(".vpf");
+		}
+		
+	}
 }
