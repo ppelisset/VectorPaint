@@ -28,6 +28,9 @@ public class CouleurPersonnaliseListener implements ActionListener {
 			sv.setColor(cp.getColor());
 			cb.setColor(cp.getColor());
 			cp.dispose();
+			if(sv.getSelectedFigure() != null) {
+				sv.getSelectedFigure().setColor(cp.getColor());
+			}
 		}else if(b.getText().equals("cancel")){
 			cp.dispose();
 		}
