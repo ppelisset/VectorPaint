@@ -13,6 +13,7 @@ public class Onglet extends JPanel {
 	private static int nb = 0;
 	protected String nom;
 	protected SceneView sv;
+	private String currentPath;
 
 	public Onglet(){
 		nom = "Onglet "	+ ++nb;
@@ -29,6 +30,14 @@ public class Onglet extends JPanel {
 	
 	public SceneView getSceneView() {
 		return sv;
+	}
+
+	public void setFilePath(String filepath) {
+		this.currentPath = filepath;
+	}
+	
+	public String getCurrentPath() {
+		return this.currentPath;
 	}
 
 }

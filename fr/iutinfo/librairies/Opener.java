@@ -17,7 +17,7 @@ public class Opener {
 		_s = s;
 	}
 	
-	public void restoreFromFile(File f) throws IOException {
+	public void restoreFromFile(File f) throws IOException, CorruptFileException {
 		BufferedReader bf = new BufferedReader(new FileReader(f));
 		String line;
 		int currentGround = 0;
@@ -36,24 +36,8 @@ public class Opener {
 						Method m = c.getMethod("restore", String.class);
 						Figure fig = (Figure)m.invoke(null, args);
 						_s.addFigure(currentGround, fig);
-					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (SecurityException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (NoSuchMethodException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IllegalArgumentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					} catch (Exception e) {
+						throw new CorruptFileException();
 					}
 				}
 			}

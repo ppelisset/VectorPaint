@@ -10,11 +10,14 @@ import java.io.IOException;
 import javax.swing.AbstractButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JWindow;
+import javax.swing.filechooser.FileFilter;
 
 import fr.iutinfo.interfaces.InterfaceGraphique;
 import fr.iutinfo.interfaces.MenuBar;
 import fr.iutinfo.interfaces.Onglet;
 import fr.iutinfo.interfaces.Page;
+import fr.iutinfo.librairies.CorruptFileException;
 import fr.iutinfo.librairies.Opener;
 import fr.iutinfo.librairies.Recorder;
 
@@ -48,25 +51,50 @@ public class InterfaceGraphiqueListener implements ActionListener {
 				Opener o = new Opener(((Onglet) p.getSelectedComponent()).getSceneView().getScene());
 				try {
 					o.restoreFromFile(new File(filepath));
+					p.setTitleAt(p.getSelectedIndex(), fDial.getFile());
+					((Onglet) p.getSelectedComponent()).setFilePath(filepath);
 				} catch (IOException e) {
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(ig, "Impossible de lire le fichier, vérifiais que le fichier existe et que vous disposez des droits de lecture", "Erreur d'accès au fichier", JOptionPane.ERROR_MESSAGE);
+				} catch (CorruptFileException e) {
+					JOptionPane.showMessageDialog(ig, "Le fichier semble corrompu, vérifier qu'il s'agit bien d'un fichier créé avec VectorPaint", "Fichier corrompu", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		}
-		else if(arg0.getActionCommand() == "Sauver"){
-			JFileChooser dialog = new JFileChooser(new File(".vpf"));
-			if(dialog.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-				Recorder r = new Recorder(((Onglet) p.getSelectedComponent()).getSceneView().getScene());
-				File f = dialog.getSelectedFile();
-				if(!f.getPath().toLowerCase().endsWith(".vpf")) {
-					f = new File(f.getPath() +  ".vpf");
+		} else if(arg0.getActionCommand().equals("Sauver sous...") || arg0.getActionCommand().equals("Sauver")) {
+			boolean save = false;
+			File f = null;
+			if(((Onglet) p.getSelectedComponent()).getCurrentPath() != null && !arg0.getActionCommand().equals("Sauver sous...")) {
+				f = new File(((Onglet) p.getSelectedComponent()).getCurrentPath());
+				save = true;
+			} else {
+				JFileChooser dialog = new JFileChooser(new File("."));
+				javax.swing.filechooser.FileFilter filter = new javax.swing.filechooser.FileFilter() {
+					public boolean accept(final File f) {
+						return (f.isDirectory() ? true : f.getName().endsWith(".vpf"));
+				    }
+					public String getDescription() {
+				        return "VectorPaint File (*.vpf)";
+				    }
+				};
+				dialog.setFileFilter(filter);
+				if(dialog.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+					f = dialog.getSelectedFile();
+					if(!f.getPath().toLowerCase().endsWith(".vpf")) {
+						f = new File(f.getPath() +  ".vpf");
+					}
+					save = true;
 				}
+			}
+			if(save) {
+				Recorder r = new Recorder(((Onglet) p.getSelectedComponent()).getSceneView().getScene());
 				try {
 					r.recordInFile(f);
+					p.setTitleAt(p.getSelectedIndex(), f.getName());
+					((Onglet) p.getSelectedComponent()).setFilePath(f.getPath());
 				} catch (IOException e) {
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(ig, "Impossible d'écrire dans le fichier, vérifiais que le fichier existe et que vous disposez des droits en écriture", "Erreur d'accès au fichier", JOptionPane.ERROR_MESSAGE);
 				}
 			}
+			
 		}
 		else if(arg0.getActionCommand() == "Nouvel Onglet"){
 			p.nouvelOnglet();

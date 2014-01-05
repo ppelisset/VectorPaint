@@ -8,7 +8,7 @@ import javax.swing.*;
 public class MenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 	
-	private JMenuItem nouveau, ouvrir, sauver, nouvelOnglet, fermerOnglet, quitter, copier, couper, coller;
+	private JMenuItem nouveau, ouvrir, sauver, sauverSous, nouvelOnglet, fermerOnglet, quitter, copier, couper, coller;
 	private JCheckBoxMenuItem checkBoxOutils, checkBoxCouleur;
 	
 
@@ -33,6 +33,9 @@ public class MenuBar extends JMenuBar {
 		sauver.addActionListener(afficherMenuListener);
 		sauver.setAccelerator(KeyStroke.getKeyStroke('S', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
 		fichierMenu.add(sauver);
+		sauverSous = new JMenuItem("Sauver sous...", new ImageIcon(getClass().getResource("icons/sauvegarde.png")));
+		sauverSous.addActionListener(afficherMenuListener);
+		fichierMenu.add(sauverSous);
 		nouvelOnglet = new JMenuItem("Nouvel Onglet");
 		nouvelOnglet.addActionListener(afficherMenuListener);
 		nouvelOnglet.setAccelerator(KeyStroke.getKeyStroke('T', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
@@ -78,6 +81,7 @@ public class MenuBar extends JMenuBar {
 		nouveau.addActionListener(al);
 		ouvrir.addActionListener(al);
 		sauver.addActionListener(al);
+		sauverSous.addActionListener(al);
 		nouvelOnglet.addActionListener(al);
 		fermerOnglet.addActionListener(al);
 		quitter.addActionListener(al);
