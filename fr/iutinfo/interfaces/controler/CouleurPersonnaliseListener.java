@@ -7,34 +7,39 @@ import javax.swing.JButton;
 
 import fr.iutinfo.interfaces.ColorButton;
 import fr.iutinfo.interfaces.CouleurPersonnalise;
-import fr.iutinfo.view.SceneView;
+import fr.iutinfo.interfaces.Page;
 
 
 
 public class CouleurPersonnaliseListener implements ActionListener {
-	private SceneView sv;
+	private Page p;
 	private CouleurPersonnalise cp;
 	private ColorButton cb;
-	
-	public CouleurPersonnaliseListener(SceneView sv, CouleurPersonnalise cp, ColorButton cb){
-		this.sv = sv;
+
+	public CouleurPersonnaliseListener(Page p){
+		this.p = p;
+	}
+
+	public CouleurPersonnaliseListener(Page p, CouleurPersonnalise cp, ColorButton cb){
+		this.p = p;
 		this.cp = cp;
 		this.cb = cb;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		JButton b = (JButton) e.getSource();
 		if(b.getText().equals("OK")){
-			sv.setColor(cp.getColor());
+			p.getSelectedOnglet().getSceneView().setColor(cp.getColor());
 			cb.setColor(cp.getColor());
 			cp.dispose();
-			if(sv.getSelectedFigure() != null) {
-				sv.getSelectedFigure().setColor(cp.getColor());
+			if(p.getSelectedOnglet().getSceneView().getSelectedFigure() != null) {
+				p.getSelectedOnglet().getSceneView().getSelectedFigure().setColor(cp.getColor());
 			}
 		}else if(b.getText().equals("cancel")){
 			cp.dispose();
 		}
-
+		if(e.getSource().toString().equals("perso")){
+			new CouleurPersonnalise(p, (ColorButton) e.getSource());
+		}	
 	}
-
 }

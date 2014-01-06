@@ -25,8 +25,9 @@ public class InterfaceGraphique extends JFrame {
 		ot = new Outils();
 		otc = new OutilsCouleur();
 		Page p = new Page(ot, otc);
+		otc.addCouleurPersonnalise(p);
 		tb = new ToolBar(p);
-		mb.addActionListener(new InterfaceGraphiqueListener(p, mb, this));
+		mb.addActionListener(new InterfaceGraphiqueListener(p, this));
 		add(p);
 		add(ot,BorderLayout.WEST);
 		add(otc,BorderLayout.SOUTH);

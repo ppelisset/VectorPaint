@@ -46,6 +46,10 @@ public class Page extends JTabbedPane {
 		repaint();
 	}
 	
+	public Onglet getSelectedOnglet(){
+		return listOnglet.get(getSelectedIndex());
+	}
+	
 	public void addOutils(){
 		ot.setVisible(true);;
 	}

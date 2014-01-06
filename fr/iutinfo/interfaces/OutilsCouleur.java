@@ -3,12 +3,11 @@ package fr.iutinfo.interfaces;
 import java.awt.Color;
 import java.awt.GridLayout;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import fr.iutinfo.controller.MouseController;
+import fr.iutinfo.interfaces.controler.CouleurPersonnaliseListener;
 
 public class OutilsCouleur extends JToolBar {
 	private static final long serialVersionUID = 1L;
@@ -62,7 +61,6 @@ public class OutilsCouleur extends JToolBar {
 		
 		couleurPersonnalise= new ColorButton(new ImageIcon(getClass().getResource("icons/triangleRGB.png")));
 		add(couleurPersonnalise);
-		
 	}
 
 	public void addOutilCouleurOnglet(Onglet o){
@@ -81,5 +79,10 @@ public class OutilsCouleur extends JToolBar {
 		white.addMouseListener(mc);
 		yellow.addMouseListener(mc);
 		couleurPersonnalise.addMouseListener(mc);
+	}
+	
+	public void addCouleurPersonnalise(Page p){
+		CouleurPersonnaliseListener cpl = new CouleurPersonnaliseListener(p);
+		couleurPersonnalise.addActionListener(cpl);
 	}
 }

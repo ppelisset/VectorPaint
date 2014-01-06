@@ -10,11 +10,8 @@ import java.io.IOException;
 import javax.swing.AbstractButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JWindow;
-import javax.swing.filechooser.FileFilter;
 
 import fr.iutinfo.interfaces.InterfaceGraphique;
-import fr.iutinfo.interfaces.MenuBar;
 import fr.iutinfo.interfaces.Onglet;
 import fr.iutinfo.interfaces.Page;
 import fr.iutinfo.librairies.CorruptFileException;
@@ -23,15 +20,13 @@ import fr.iutinfo.librairies.Recorder;
 
 public class InterfaceGraphiqueListener implements ActionListener {
 	private Page p;
-	private MenuBar m;
 	private InterfaceGraphique ig;
 	private int reponse;
 	//pour les checkBoxMenuItem
 	private AbstractButton aButton;
 	
-	public InterfaceGraphiqueListener(Page p, MenuBar m, InterfaceGraphique ig){
+	public InterfaceGraphiqueListener(Page p, InterfaceGraphique ig){
 		this.p = p;
-		this.m = m;
 		this.ig = ig;
 	}
 
@@ -54,9 +49,9 @@ public class InterfaceGraphiqueListener implements ActionListener {
 					p.setTitleAt(p.getSelectedIndex(), fDial.getFile());
 					((Onglet) p.getSelectedComponent()).setFilePath(filepath);
 				} catch (IOException e) {
-					JOptionPane.showMessageDialog(ig, "Impossible de lire le fichier, vérifiais que le fichier existe et que vous disposez des droits de lecture", "Erreur d'accès au fichier", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ig, "Impossible de lire le fichier, verifiais que le fichier existe et que vous disposez des droits de lecture", "Erreur d'acces au fichier", JOptionPane.ERROR_MESSAGE);
 				} catch (CorruptFileException e) {
-					JOptionPane.showMessageDialog(ig, "Le fichier semble corrompu, vérifier qu'il s'agit bien d'un fichier créé avec VectorPaint", "Fichier corrompu", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ig, "Le fichier semble corrompu, verifier qu'il s'agit bien d'un fichier cree avec VectorPaint", "Fichier corrompu", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		} else if(arg0.getActionCommand().equals("Sauver sous...") || arg0.getActionCommand().equals("Sauver")) {
@@ -91,7 +86,7 @@ public class InterfaceGraphiqueListener implements ActionListener {
 					p.setTitleAt(p.getSelectedIndex(), f.getName());
 					((Onglet) p.getSelectedComponent()).setFilePath(f.getPath());
 				} catch (IOException e) {
-					JOptionPane.showMessageDialog(ig, "Impossible d'écrire dans le fichier, vérifiais que le fichier existe et que vous disposez des droits en écriture", "Erreur d'accès au fichier", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(ig, "Impossible d'ecrire dans le fichier, verifiais que le fichier existe et que vous disposez des droits en ecriture", "Erreur d'acces au fichier", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			

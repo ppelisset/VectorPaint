@@ -9,7 +9,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import fr.iutinfo.interfaces.controler.CouleurPersonnaliseListener;
-import fr.iutinfo.view.SceneView;
 
 public class CouleurPersonnalise extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +23,7 @@ public class CouleurPersonnalise extends JFrame {
 	private JButton ok, cancel;
 	private Color couleur;
 
-	public CouleurPersonnalise(SceneView sv, ColorButton cb){
+	public CouleurPersonnalise(Page p, ColorButton cb){
 		super("Choix de couleur");
 		
 		//Changelistener pour modifier les JSlider et les JTextField
@@ -173,7 +172,7 @@ public class CouleurPersonnalise extends JFrame {
 		c.weighty = 0.5;
 		c.gridy = 0;
 		
-		CouleurPersonnaliseListener cpl = new CouleurPersonnaliseListener(sv, this, cb);
+		CouleurPersonnaliseListener cpl = new CouleurPersonnaliseListener(p, this, cb);
 		
 		ok = new JButton("OK");
 		ok.addActionListener(cpl);
@@ -198,11 +197,10 @@ public class CouleurPersonnalise extends JFrame {
 		jps.add(lColor,c);
 		
 		add(jps);
-		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(600, 500);
+		setSize(350, 450);
 		setMinimumSize(new Dimension(350, 450));
-		setLocation(600, 300);
+		setLocation(750, 350);
 		setVisible(true);
 	}
 	
