@@ -2,7 +2,6 @@ package fr.iutinfo.interfaces;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;

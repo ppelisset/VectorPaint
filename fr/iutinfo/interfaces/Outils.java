@@ -2,7 +2,6 @@ package fr.iutinfo.interfaces;
 
 import java.awt.GridLayout;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
@@ -39,7 +38,6 @@ public class Outils extends JToolBar{
 		add(_modeRectangle);
 		add(_modeCercle);
 		add(_modeOval);
-
 	}
 
 	public void addOutilOnglet(Onglet o){

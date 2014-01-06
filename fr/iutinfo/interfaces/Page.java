@@ -30,6 +30,7 @@ public class Page extends JTabbedPane {
 		ot.addOutilOnglet(o);
 		otc.addOutilCouleurOnglet(o);
 		add(o.nom,o);
+		setSelectedComponent(o);
 	}
 	
 	public void supOnglet(){
