@@ -50,7 +50,7 @@ public class OvalView implements Printable {
 		sizeY = (int) ((_oval.getDiametreY() * v.getHeight()) / 100);
 		cx -= sizeX;
 		cy -= sizeY;
-		Ellipse2D e = new Ellipse2D.Double(cx-sizeX, cy-sizeY,sizeX * 2,
+		Ellipse2D e = new Ellipse2D.Double(cx, cy,sizeX * 2,
 				sizeY * 2);
 
 		return e.contains(x, y);
