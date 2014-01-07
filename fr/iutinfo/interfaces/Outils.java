@@ -31,7 +31,7 @@ public class Outils extends JToolBar{
 		_modeCercle = new JButton(new ImageIcon(getClass().getResource("icons/circle.png")));
 		_modeSelect = new JButton(new ImageIcon(getClass().getResource("icons/select.png")));
 		_modePointer = new JButton(new ImageIcon(getClass().getResource("icons/pointer.png")));
-		_modeOval=new JButton("oval");
+		_modeOval=new JButton(new ImageIcon(getClass().getResource("icons/oval.png")));
 		couleurCourante = new ColorButton(Color.black);
 		setLayout(new GridLayout(3, 1));
 		add(_modePointer);

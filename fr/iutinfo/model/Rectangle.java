@@ -98,7 +98,7 @@ public class Rectangle extends Figure {
 			if(part.length != 3) throw new CorruptFileException();
 			v = new Rectangle(Vector.restore(part[0]));
 			v.setColor(Figure.decodeColor(part[2]));
-			v.setFill(!Boolean.parseBoolean(part[1]));
+			v.setFill((Integer.parseInt(part[1]) == 0) ? false : true);
 		} else {
 			throw new CorruptFileException();
 		}

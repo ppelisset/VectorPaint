@@ -105,7 +105,7 @@ public class Circle extends Figure implements Cloneable {
 			String ptInfo[] = part[0].split(",");
 			Point p = new Point(Double.parseDouble(ptInfo[0]), Double.parseDouble(ptInfo[1]));
 			v = new Circle(p, Double.parseDouble(part[1]), Double.parseDouble(part[2]));
-			v.setFill(!Boolean.parseBoolean(part[3]));
+			v.setFill((Integer.parseInt(part[3]) == 0) ? false : true);
 			v.setColor(Figure.decodeColor(part[4]));
 		} else {
 			throw new CorruptFileException();

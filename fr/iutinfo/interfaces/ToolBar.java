@@ -8,7 +8,7 @@ import javax.swing.JToolBar;
 import fr.iutinfo.interfaces.controler.ToolBarListener;
 
 public class ToolBar extends JToolBar {
-	private JButton _firstGround, _secondGround, _thirdGround, _backGround;
+	private JButton _firstGround, _secondGround, _thirdGround, _backGround, _fillButton, _emptyButton;
 	
 	public ToolBar(Page current) {
 		_firstGround = new JButton("Premier Plan");
@@ -21,11 +21,15 @@ public class ToolBar extends JToolBar {
 		_secondGround.addActionListener(listener);
 		_thirdGround.addActionListener(listener);
 		_backGround.addActionListener(listener);
+		_fillButton = new FillButton(current, true);
+		_emptyButton = new FillButton(current, false);
 		
 		add(_firstGround);
 		add(_secondGround);
 		add(_thirdGround);
 		add(_backGround);
+		add(_fillButton);
+		add(_emptyButton);
 	}
 
 	public JButton getFirstGround() {

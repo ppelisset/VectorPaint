@@ -90,7 +90,7 @@ public class Polygon extends Figure {
 	}
 
 	/**
-	 * Recupère la liste des vecteurs constituant le polygone
+	 * RecupÔøΩre la liste des vecteurs constituant le polygone
 	 * @return
 	 */
 	public ArrayList<Vector> getVectors() {
@@ -193,7 +193,7 @@ public class Polygon extends Figure {
 			}
 			
 			v.setColor(Figure.decodeColor(part[2]));
-			v.setFill(!Boolean.parseBoolean(part[1]));
+			v.setFill((Integer.parseInt(part[1]) == 0) ? false : true);
 		} else {
 			throw new CorruptFileException();
 		}
