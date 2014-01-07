@@ -73,15 +73,7 @@ public class Circle extends Figure implements Cloneable {
 		if(Math.abs(originTop-_centre.getTop()) < Circle.ERROR_MARGE && Math.abs(originLeft-_centre.getLeft()) < Circle.ERROR_MARGE) {
 			_centre.setTop(endTop);
 			_centre.setLeft(endLeft);
-		} else if(Math.abs(originTop-(_centre.getTop()-_diametreY)) < Circle.ERROR_MARGE && Math.abs(originLeft-_centre.getLeft()) < Circle.ERROR_MARGE) {
-			if(Math.abs(_centre.getTop()-endTop) > Circle.ERROR_MARGE*2) {
-				setDiametreY(_centre.getTop()-endTop);
-			}
-		} else {
-			if(Math.abs(endLeft-_centre.getLeft()) > Circle.ERROR_MARGE*2) {
-				setDiametreX(endLeft-_centre.getLeft());
-			}
-		}
+		} else  setDiametreY(_centre.getTop()-endTop); 	setDiametreX(endLeft-_centre.getLeft());
 		notifyObs(this);
 	}
 	

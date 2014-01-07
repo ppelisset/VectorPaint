@@ -58,7 +58,6 @@ public class Oval extends Figure implements Cloneable {
 		}
 		notifyObs(this);
 	}
-
 	@Override
 	public void resize(double originTop, double originLeft, double endTop,
 			double endLeft) {
@@ -66,15 +65,14 @@ public class Oval extends Figure implements Cloneable {
 				&& Math.abs(originLeft - _centre.getLeft()) < Oval.ERROR_MARGE) {
 			_centre.setTop(endTop);
 			_centre.setLeft(endLeft);
-		} else if (Math.abs(originTop - (_centre.getTop() - _diametreY)) < Oval.ERROR_MARGE
-				&& Math.abs(originLeft - _centre.getLeft()) < Oval.ERROR_MARGE) {
+		} else if (Math.abs(originTop - (_centre.getTop() - _diametreY)) < Oval.ERROR_MARGE) 
+			{
 			if (Math.abs(_centre.getTop() - endTop) > Oval.ERROR_MARGE * 2) {
 				setDiametreY(_centre.getTop() - endTop);
 			}
-		} else {
-			if (Math.abs(endLeft - _centre.getLeft()) > Oval.ERROR_MARGE * 2) {
+		} else if (Math.abs(endLeft - _centre.getLeft()) > Oval.ERROR_MARGE * 2) {
 				setDiametreX(endLeft - _centre.getLeft());
-			}
+			
 		}
 		notifyObs(this);
 	}

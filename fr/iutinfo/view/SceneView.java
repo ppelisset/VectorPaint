@@ -4,6 +4,7 @@ import fr.iutinfo.controller.MouseCreateController;
 import fr.iutinfo.librairies.MyObservable;
 import fr.iutinfo.librairies.MyObserver;
 import fr.iutinfo.model.Circle;
+import fr.iutinfo.model.Oval;
 import fr.iutinfo.model.Polygon;
 import fr.iutinfo.model.Rectangle;
 import fr.iutinfo.model.Scene;
@@ -120,6 +121,8 @@ public class SceneView extends JPanel implements MyObserver {
 				p = new PolygoneView((Polygon)modified);
 			} else if(modified instanceof Rectangle) {
 				p = new RectangleView((Rectangle)modified);
+			} else if(modified instanceof Oval) {
+				p = new OvalView((Oval)modified);
 			}
 			if(p != null) _map.put(modified, p);
 		}
