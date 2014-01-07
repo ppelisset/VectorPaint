@@ -1,5 +1,6 @@
 package fr.iutinfo.interfaces;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.JTabbedPane;
@@ -29,6 +30,8 @@ public class Page extends JTabbedPane {
 		listOnglet.add(o);
 		ot.addOutilOnglet(o);
 		otc.addOutilCouleurOnglet(o);
+		if(!listOnglet.isEmpty())
+			o.getSceneView().setColor(listOnglet.get(0).getSceneView().getColor());
 		add(o.nom,o);
 		setSelectedComponent(o);
 	}
@@ -65,5 +68,11 @@ public class Page extends JTabbedPane {
 	
 	public void supCouleur(){
 		otc.setVisible(false);
+	}
+	
+	public void setColorSV(Color c){
+		for(int i=0; i<listOnglet.size(); ++i){
+			listOnglet.get(i).getSceneView().setColor(c);
+		}
 	}
 }

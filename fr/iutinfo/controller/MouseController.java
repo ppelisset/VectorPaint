@@ -4,11 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.SwingUtilities;
-
-import fr.iutinfo.constructor.Constructor;
-import fr.iutinfo.constructor.ConstructorException;
 import fr.iutinfo.interfaces.ColorButton;
+import fr.iutinfo.interfaces.Outils;
 import fr.iutinfo.view.SceneView;
 
 /**
@@ -40,6 +37,7 @@ public class MouseController implements MouseListener, MouseMotionListener {
 
 		if (evt.getClickCount() == 2) {
 			this._scene.setColor((bouton.getColor()));
+			Outils.couleurCourante.setBackground(bouton.getColor());
 
 		} else if (evt.getClickCount() == 1) {
 			if(this._scene.getSelectedFigure() != null) {

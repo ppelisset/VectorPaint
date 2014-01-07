@@ -1,5 +1,6 @@
 package fr.iutinfo.interfaces;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
@@ -18,6 +19,7 @@ public class Outils extends JToolBar{
 	private static final long serialVersionUID = 1L;
 
 	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer,_modeOval;
+	public static ColorButton couleurCourante;
 
 	public Outils(){
 		super(VERTICAL);
@@ -30,6 +32,7 @@ public class Outils extends JToolBar{
 		_modeSelect = new JButton(new ImageIcon(getClass().getResource("icons/select.png")));
 		_modePointer = new JButton(new ImageIcon(getClass().getResource("icons/pointer.png")));
 		_modeOval=new JButton("oval");
+		couleurCourante = new ColorButton(Color.black);
 		setLayout(new GridLayout(3, 1));
 		add(_modePointer);
 		add(_modeSelect);
@@ -38,6 +41,7 @@ public class Outils extends JToolBar{
 		add(_modeRectangle);
 		add(_modeCercle);
 		add(_modeOval);
+		add(couleurCourante);
 	}
 
 	public void addOutilOnglet(Onglet o){

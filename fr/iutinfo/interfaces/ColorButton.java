@@ -22,6 +22,7 @@ public class ColorButton extends JButton {
 		super(ic);
 		setText("perso");
 		color = Color.white;
+		setOpaque(true);
 		setPreferredSize(new Dimension(30, 30));
 	}
 
