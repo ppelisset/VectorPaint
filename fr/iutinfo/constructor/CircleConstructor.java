@@ -7,6 +7,9 @@ import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Point;
 import fr.iutinfo.view.SceneView;
 
+/**
+ * Classe de gestion de la construction d'un cercle
+ */
 public class CircleConstructor implements Constructor {
 	private double _topDistance, _leftDistance;
 	private boolean _isFirst = true;

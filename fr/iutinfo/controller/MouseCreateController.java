@@ -19,7 +19,7 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 	int _posX, _posY;
 	
 	/**
-	 * Cr�e un gestionnaire de la souris qui s'occupe de la souris pour la creation de figure sur la scene view
+	 * Cree un gestionnaire de la souris qui s'occupe de la souris pour la creation de figure sur la scene view
 	 * @param v
 	 */
 	public MouseCreateController(SceneView v) {
@@ -37,6 +37,9 @@ public class MouseCreateController implements MouseListener, MouseMotionListener
 	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
+	/**
+	 * Methode appeler lors de la création d'une figure
+	 */
 	public void mousePressed(MouseEvent ev) {
 		if(_constructor == null) return;
 		if(SwingUtilities.isRightMouseButton(ev)) {
