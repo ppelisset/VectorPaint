@@ -8,13 +8,26 @@ import java.util.ArrayList;
 import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Scene;
 
+/**
+ * Classe représentant un enregistreur de données pour une scene
+ *
+ */
 public class Recorder {
 	private Scene _s;
 	
+	/**
+	 * Crée un enregistreur de données pour la scene passer en paramètre
+	 * @param s
+	 */
 	public Recorder(Scene s) {
 		_s = s;
 	}
 	
+	/**
+	 * Enregistre la scène dans le fichier f
+	 * @param f
+	 * @throws IOException
+	 */
 	public void recordInFile(File f) throws IOException {
 		if(!f.exists()) {
 			f.createNewFile();

@@ -88,6 +88,9 @@ public class Scene extends MyObservable implements MyObserver {
 		notifyObs(null);
 	}
 	
+	/**
+	 * Vide la scene
+	 */
 	public void clean() {
 		for(ArrayList<Figure> list : listFigure) {
 			list.clear();
