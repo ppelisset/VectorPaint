@@ -13,10 +13,10 @@ import fr.iutinfo.interfaces.controler.CouleurPersonnaliseListener;
 public class CouleurPersonnalise extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	private JPanel jpn, jps;
-	private JLabel lR, lG, lB, lColor;
-	private JSlider sR, sG, sB;
-	private JTextField tR, tG, tB;
+	private JPanel pPn, pPs;
+	private JLabel lR, lG, lB, lA, lColor;
+	private JSlider sR, sG, sB, sA;
+	private JTextField tR, tG, tB, tA;
 	private ChangeListener cl;
 	private KeyListener kl;
 	private GridBagConstraints c;
@@ -39,7 +39,10 @@ public class CouleurPersonnalise extends JFrame {
 				if(s == sB){
 					tB.setText(s.getValue()+"");
 				}
-				couleur = new Color(sR.getValue(), sG.getValue(), sB.getValue());
+				if(s == sA){
+					tA.setText(s.getValue()+"");
+				}
+				couleur = new Color(sR.getValue(), sG.getValue(), sB.getValue(), sA.getValue());
 				lColor.setBackground(couleur);
 			}
 		};
@@ -59,6 +62,9 @@ public class CouleurPersonnalise extends JFrame {
 					if(tF == tB){
 						tB.setText("0");
 					}
+					if(tF == tA){
+						tA.setText("255");
+					}
 				}else{
 					try{
 						if(Integer.valueOf(tR.getText())>256){
@@ -74,6 +80,10 @@ public class CouleurPersonnalise extends JFrame {
 								tB.setText("255");
 								sB.setValue(255);
 							}
+							if(tF == tA){
+								tA.setText("255");
+								sA.setValue(255);
+							}
 						}else{
 							if(tF == tR){
 								sR.setValue(Integer.valueOf(tR.getText()));
@@ -83,6 +93,9 @@ public class CouleurPersonnalise extends JFrame {
 							}
 							if(tF == tB){
 								sB.setValue(Integer.valueOf(tB.getText()));
+							}
+							if(tF == tA){
+								sA.setValue(Integer.valueOf(tA.getText()));
 							}
 						}
 					}
@@ -96,9 +109,12 @@ public class CouleurPersonnalise extends JFrame {
 						if(tF == tB){
 							tB.setText("0");
 						}
+						if(tF == tA){
+							tA.setText("255");
+						}
 					}
 				}
-				couleur = new Color(sR.getValue(), sG.getValue(), sB.getValue());
+				couleur = new Color(sR.getValue(), sG.getValue(), sB.getValue(), sA.getValue());
 				lColor.setBackground(couleur);
 			}
 			public void keyPressed(KeyEvent e) {
@@ -107,8 +123,8 @@ public class CouleurPersonnalise extends JFrame {
 
 		setLayout(new GridLayout(2,1));
 		
-		jpn = new JPanel();
-		jpn.setLayout(new GridBagLayout());
+		pPn = new JPanel();
+		pPn.setLayout(new GridBagLayout());
 		
 		//contrainte de placement
 		c = new GridBagConstraints();
@@ -123,13 +139,13 @@ public class CouleurPersonnalise extends JFrame {
 		c.weightx = 0.2;
 		c.gridx = 0;
 		c.gridy = 0;
-		jpn.add(lR,c);
+		pPn.add(lR,c);
 		c.weightx = 0.6;
 		c.gridx = 1;
-		jpn.add(sR,c);
+		pPn.add(sR,c);
 		c.weightx = 0.2;
 		c.gridx = 2;
-		jpn.add(tR,c);
+		pPn.add(tR,c);
 		
 		lG = new JLabel("G:");
 		sG = new JSlider(0,255,0);
@@ -139,13 +155,13 @@ public class CouleurPersonnalise extends JFrame {
 		c.weightx = 0.2;
 		c.gridx = 0;
 		c.gridy = 1;
-		jpn.add(lG,c);
+		pPn.add(lG,c);
 		c.weightx = 0.6;
 		c.gridx = 1;
-		jpn.add(sG,c);
+		pPn.add(sG,c);
 		c.weightx = 0.2;
 		c.gridx = 2;
-		jpn.add(tG,c);
+		pPn.add(tG,c);
 		
 		lB = new JLabel("B:");
 		sB = new JSlider(0,255,0);
@@ -155,18 +171,34 @@ public class CouleurPersonnalise extends JFrame {
 		c.weightx = 0.2;
 		c.gridx = 0;
 		c.gridy = 2;
-		jpn.add(lB,c);
+		pPn.add(lB,c);
 		c.weightx = 0.6;
 		c.gridx = 1;
-		jpn.add(sB,c);
+		pPn.add(sB,c);
 		c.weightx = 0.2;
 		c.gridx = 2;
-		jpn.add(tB,c);
+		pPn.add(tB,c);
 		
-		add(jpn);
+		lA = new JLabel("A:");
+		sA = new JSlider(0,255,255);
+		sA.addChangeListener(cl);
+		tA = new JTextField("255");
+		tA.addKeyListener(kl);
+		c.weightx = 0.2;
+		c.gridx = 0;
+		c.gridy = 3;
+		pPn.add(lA,c);
+		c.weightx = 0.6;
+		c.gridx = 1;
+		pPn.add(sA,c);
+		c.weightx = 0.2;
+		c.gridx = 2;
+		pPn.add(tA,c);
 		
-		jps = new JPanel();
-		jps.setLayout(new GridBagLayout());
+		add(pPn);
+		
+		pPs = new JPanel();
+		pPs.setLayout(new GridBagLayout());
 		
 		c.fill = GridBagConstraints.CENTER;
 		c.weighty = 0.5;
@@ -178,25 +210,26 @@ public class CouleurPersonnalise extends JFrame {
 		ok.addActionListener(cpl);
 		c.weightx = 0.29;
 		c.gridx = 0;
-		jps.add(ok,c);
+		pPs.add(ok,c);
 		
 		cancel = new JButton("cancel");
 		cancel.addActionListener(cpl);
 		c.weightx = 0.29;
 		c.gridx = 1;
-		jps.add(cancel,c);
+		pPs.add(cancel,c);
 		
-		couleur = new Color(0,0,0);
+		couleur = new Color(0,0,0,255);
 		lColor = new JLabel(" ");
-		lColor.setOpaque(true);
-		lColor.setBackground(couleur);
 		lColor.setPreferredSize(new Dimension(200,200));
+		lColor.setBackground(couleur);
+		lColor.setOpaque(true);
+		
 		c.weightx = 0.42;
 		c.gridx = 2;
 		
-		jps.add(lColor,c);
+		pPs.add(lColor,c);
 		
-		add(jps);
+		add(pPs);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(350, 450);
 		setMinimumSize(new Dimension(350, 450));

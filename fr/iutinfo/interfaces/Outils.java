@@ -2,6 +2,7 @@ package fr.iutinfo.interfaces;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,11 +15,12 @@ import fr.iutinfo.constructor.RectangleConstructor;
 import fr.iutinfo.constructor.VectorLineConstructor;
 import fr.iutinfo.controller.manager.SetContructorListener;
 import fr.iutinfo.controller.manager.SetSelectListener;
+import fr.iutinfo.interfaces.controler.PipetteListener;
 
 public class Outils extends JToolBar{
 	private static final long serialVersionUID = 1L;
 
-	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer,_modeOval;
+	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer,_modeOval,_modePipette;
 	public static ColorButton couleurCourante;
 
 	public Outils(){
@@ -33,6 +35,7 @@ public class Outils extends JToolBar{
 		_modePointer = new JButton(new ImageIcon(getClass().getResource("icons/pointer.png")));
 		_modeOval=new JButton(new ImageIcon(getClass().getResource("icons/oval.png")));
 		couleurCourante = new ColorButton(Color.black);
+		_modePipette = new JButton(new ImageIcon(getClass().getResource("icons/pipette.png")));
 		setLayout(new GridLayout(3, 1));
 		add(_modePointer);
 		add(_modeSelect);
@@ -41,10 +44,11 @@ public class Outils extends JToolBar{
 		add(_modeRectangle);
 		add(_modeCercle);
 		add(_modeOval);
+		add(_modePipette);
 		add(couleurCourante);
 	}
 
-	public void addOutilOnglet(Onglet o){
+	public void addOutilOnglet(Page p, Onglet o){
 		_modePointer.addActionListener(new SetContructorListener(o.sv,null));
 		_modeLine.addActionListener(new SetContructorListener(o.sv,new VectorLineConstructor()));
 		_modeLine.addActionListener(new SetContructorListener(o.sv,new VectorLineConstructor()));
@@ -53,5 +57,6 @@ public class Outils extends JToolBar{
 		_modeRectangle.addActionListener(new SetContructorListener(o.sv,new RectangleConstructor()));
 		_modeCercle.addActionListener(new SetContructorListener(o.sv,new CircleConstructor()));
 		_modeOval.addActionListener(new SetContructorListener(o.sv, new OvalConstructor()));
+		_modePipette.addActionListener(new PipetteListener(p, o.sv));
 	}
 }

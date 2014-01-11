@@ -20,7 +20,7 @@ public class Page extends JTabbedPane {
 		this.otc = otc;
 		Onglet o = new Onglet();
 		listOnglet.add(o);
-		ot.addOutilOnglet(o);
+		ot.addOutilOnglet(this, o);
 		otc.addOutilCouleurOnglet(o);
 		add(o.nom,o);
 	}
@@ -28,7 +28,7 @@ public class Page extends JTabbedPane {
 	public void nouvelOnglet(){
 		Onglet o = new Onglet();
 		listOnglet.add(o);
-		ot.addOutilOnglet(o);
+		ot.addOutilOnglet(this, o);
 		otc.addOutilCouleurOnglet(o);
 		if(!listOnglet.isEmpty())
 			o.getSceneView().setColor(listOnglet.get(0).getSceneView().getColor());
@@ -45,7 +45,7 @@ public class Page extends JTabbedPane {
 	public void reinitOnglet(){
 		Onglet o = listOnglet.get(getSelectedIndex());
 		o.reinitSceneView();
-		ot.addOutilOnglet(o);
+		ot.addOutilOnglet(this, o);
 		otc.addOutilCouleurOnglet(o);
 		repaint();
 	}
