@@ -4,10 +4,18 @@ import java.util.ArrayList;
 
 import fr.iutinfo.model.Figure;
 
+/**
+ * Classe pour le design pattern observable modifié afin de prendre une figure en paramètre (permet de savoir quelle figure doit être modifier dans la vue)
+ *
+ */
 public class MyObservable {
 	private Figure _message;
 	private ArrayList<MyObserver> _observer = new ArrayList<MyObserver>();
 	
+	/**
+	 * Change la figure passer en paramètre
+	 * @param msg
+	 */
 	public void setMessageFigure(Figure msg) {
 		_message = msg;
 	}
@@ -26,6 +34,10 @@ public class MyObservable {
 		}
 	}
 	
+	/**
+	 * Ajoute une observateur
+	 * @param obs
+	 */
 	public void addObserver(MyObserver obs) {
 		if(!_observer.contains(obs)) {
 			_observer.add(obs);

@@ -10,13 +10,26 @@ import java.lang.reflect.Method;
 import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Scene;
 
+/**
+ * Classe représentant un lecteur de fichier pour une scene
+ */
 public class Opener {
 	Scene _s;
 	
+	/**
+	 * Crée un lecteur de fichier pour la scene passer en paramètre
+	 * @param s
+	 */
 	public Opener(Scene s) {
 		_s = s;
 	}
 	
+	/**
+	 * Vide la scene et la rempli avec les informations du fichiers passé en paramètre
+	 * @param f
+	 * @throws IOException
+	 * @throws CorruptFileException
+	 */
 	public void restoreFromFile(File f) throws IOException, CorruptFileException {
 		BufferedReader bf = new BufferedReader(new FileReader(f));
 		String line;

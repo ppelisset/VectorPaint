@@ -1,9 +1,17 @@
 package fr.iutinfo.model;
 
+/**
+ * Classe représentant un point sous forme vectorielle
+ */
 public class Point implements Cloneable {
 	private double _top;
 	private double _left;
 	
+	/**
+	 * Crée un point
+	 * @param top
+	 * @param left
+	 */
 	public Point(double top, double left) {
 		_top = top;
 		_left = left;
@@ -28,7 +36,7 @@ public class Point implements Cloneable {
 	public String toString() {
 		return "Point("+_left+","+_top+")";
 	}	
-	
+
 	public Point clone() {
 		try {
 			return (Point) super.clone();

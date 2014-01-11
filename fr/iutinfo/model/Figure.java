@@ -83,12 +83,27 @@ public abstract class Figure extends MyObservable implements Cloneable {
 		return null;
 	}
 	
+	/**
+	 * Methode permettant la sauvegarde de la Figure
+	 * @return String la réprésentation sous forme de texte de la figure
+	 */
 	public abstract String save();
 	
+	/**
+	 * Permet de restaurer une figure à partir de sa représentation sous forme de texte
+	 * @param s
+	 * @return
+	 * @throws CorruptFileException
+	 */
 	public static Figure restore(String s) throws CorruptFileException {
 		return null;
 	}
 	
+	/**
+	 * Permet d'encoder une couleur pour la sauvegarde d'une figure
+	 * @param c
+	 * @return
+	 */
 	public static String encodeColor(Color c) {
 		String str = "#";
 		String current;
@@ -111,6 +126,11 @@ public abstract class Figure extends MyObservable implements Cloneable {
 		return str;
 	}
 	
+	/**
+	 * Permet de décoder une couleur pour l'ouverture d'une figure
+	 * @param s
+	 * @return
+	 */
 	public static Color decodeColor(String s) {
 		if(s.startsWith("#")) {
 			int a, r, g, b;

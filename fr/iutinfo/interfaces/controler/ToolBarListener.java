@@ -8,6 +8,9 @@ import fr.iutinfo.interfaces.ToolBar;
 import fr.iutinfo.interfaces.Onglet;
 import fr.iutinfo.view.SceneView;
 
+/**
+ * Classe permettant de changer la profondeur d'une figure
+ */
 public class ToolBarListener implements ActionListener {
 	private ToolBar _tb;
 	private Page _p;
