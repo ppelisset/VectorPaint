@@ -33,7 +33,7 @@ public class OvalView implements Printable {
 		g.setColor(_oval.getColor());
 		if (_oval.isFill()) {
 			
-			g.fillOval(x,y, sizeX*2, sizeY*2);
+			g.fillOval(x,y, Math.abs(sizeX*2), Math.abs(sizeY*2));
 		} else {
 			g.drawOval(x,y, sizeX*2, sizeY*2);
 		}
