@@ -13,7 +13,9 @@ public class InterfaceGraphique extends JFrame {
 	private OutilsCouleur otc;
 	private ToolBar tb;
 	private MenuBar mb;
-	
+	/**
+	 * creation de la page principal du logiciel
+	 */
 	public InterfaceGraphique(){
 		super("Vector Paint");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -13,12 +13,14 @@ public class OutilsCouleur extends JToolBar {
 	private static final long serialVersionUID = 1L;
 
 	private ColorButton black, blue, cyan, darkGray, gray, green, lightGray, magenta, orange, pink, red, white, yellow, couleurPersonnalise;
-
+	/**
+	 * constructeur qui cree des colorButton qui seron utilise pour la coloration de figure
+	 */
 	public OutilsCouleur(){
 		super(HORIZONTAL);
 		setAlignmentX(0);
 		setLayout(new GridLayout(2,7));
-		
+
 
 		black = new ColorButton(Color.black);
 		add(black);
@@ -58,11 +60,14 @@ public class OutilsCouleur extends JToolBar {
 
 		yellow = new ColorButton(Color.yellow);
 		add(yellow);
-		
+
 		couleurPersonnalise= new ColorButton(new ImageIcon(getClass().getResource("icons/triangleRGB.png")));
 		add(couleurPersonnalise);
 	}
-
+	/**
+	 * methode qui permet d'ajouter les outils aux nouveau onglet passe en parametre
+	 * @param o
+	 */
 	public void addOutilCouleurOnglet(Onglet o){
 		MouseController mc = new MouseController(o.sv);
 		black.addMouseListener(mc);
@@ -80,7 +85,10 @@ public class OutilsCouleur extends JToolBar {
 		yellow.addMouseListener(mc);
 		couleurPersonnalise.addMouseListener(mc);
 	}
-	
+	/**
+	 * methode qui permet d'ajouter les couleur personnalise à la page passe en parametre 
+	 * @param p
+	 */
 	public void addCouleurPersonnalise(Page p){
 		CouleurPersonnaliseListener cpl = new CouleurPersonnaliseListener(p);
 		couleurPersonnalise.addActionListener(cpl);

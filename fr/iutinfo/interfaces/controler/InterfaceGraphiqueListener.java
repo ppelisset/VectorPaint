@@ -24,13 +24,20 @@ public class InterfaceGraphiqueListener implements ActionListener {
 	private int reponse;
 	//pour les checkBoxMenuItem
 	private AbstractButton aButton;
-	
+	/**
+	 * creation du listener de la Frame principal
+	 * @param p
+	 * @param ig
+	 */
 	public InterfaceGraphiqueListener(Page p, InterfaceGraphique ig){
 		this.p = p;
 		this.ig = ig;
 	}
 
-	@Override
+	/**
+	 * methode qui gere l'interaction utilisateur/interface de la JFrame {@link InterfaceGraphique}
+	 */
+
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand() == "Nouveau"){
 			reponse = JOptionPane.showConfirmDialog(ig, "Etes vous sure?", "Nouveau", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -126,7 +133,11 @@ public class InterfaceGraphiqueListener implements ActionListener {
 				p.supCouleur();
 		}
 	}
-
+	/**
+	 * class permetant de creer notre propre filler
+	 * @author Matthieu
+	 *
+	 */
 	class FileFilter implements FilenameFilter {
 		@Override
 		public boolean accept(File dir, String name) {

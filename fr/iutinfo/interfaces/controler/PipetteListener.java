@@ -1,6 +1,5 @@
 package fr.iutinfo.interfaces.controler;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,13 +14,18 @@ import fr.iutinfo.view.SceneView;
 public class PipetteListener implements ActionListener {
 	private SceneView sv;
 	private Page p;
-	private double _beginLeft,_beginTop;
-	
+	/**
+	 * lesteneur du JButton pippette de la class Outils
+	 * @param p
+	 * @param sv
+	 */
 	public PipetteListener(Page p, SceneView sv){
 		this.sv = sv;
 		this.p = p;
 	}
-
+	/**
+	 * methode qui gere l'interaction utilisateur/interface du JButton pipette de la class Outils
+	 */
 	public void actionPerformed(ActionEvent e) {
 		sv.setSelectedFigure(null);
 		if(!(sv.getMouseListener() instanceof MouseSelectController)) {

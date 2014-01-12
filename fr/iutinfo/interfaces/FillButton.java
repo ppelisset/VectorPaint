@@ -9,8 +9,14 @@ import javax.swing.JButton;
 import fr.iutinfo.view.SceneView;
 
 public class FillButton extends JButton {
+	private static final long serialVersionUID = 1L;
 	private Page _current;
 	private boolean _fill;
+	/**
+	 * constructeur qui gere la transparence des figures selectionnee
+	 * @param current
+	 * @param isFill
+	 */
 	public FillButton(Page current, boolean isFill) {
 		_current = current;
 		_fill = isFill;

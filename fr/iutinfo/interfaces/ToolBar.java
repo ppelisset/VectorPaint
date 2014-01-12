@@ -8,8 +8,12 @@ import javax.swing.JToolBar;
 import fr.iutinfo.interfaces.controler.ToolBarListener;
 
 public class ToolBar extends JToolBar {
+	private static final long serialVersionUID = 1L;
 	private JButton _firstGround, _secondGround, _thirdGround, _backGround, _fillButton, _emptyButton;
-	
+	/**
+	 * cree une bar d'Outils de modification de figure
+	 * @param current
+	 */
 	public ToolBar(Page current) {
 		_firstGround = new JButton("Premier Plan");
 		_secondGround = new JButton("Deuxieme Plan");
@@ -31,19 +35,31 @@ public class ToolBar extends JToolBar {
 		add(_fillButton);
 		add(_emptyButton);
 	}
-
+	/**
+	 * retourne le JButton FirstGround
+	 * @return JButton
+	 */
 	public JButton getFirstGround() {
 		return _firstGround;
 	}
-
+	/**
+	 * retourne le JButton SecondGround
+	 * @return JButton
+	 */
 	public JButton getSecondGround() {
 		return _secondGround;
 	}
-
+	/**
+	 * retourne le JButton ThirdGround
+	 * @return JButton
+	 */
 	public JButton getThirdGround() {
 		return _thirdGround;
 	}
-
+	/**
+	 * retourne le JButton BackGround
+	 * @return JButton
+	 */
 	public JButton getBackGround() {
 		return _backGround;
 	}

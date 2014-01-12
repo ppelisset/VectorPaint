@@ -2,7 +2,6 @@ package fr.iutinfo.interfaces;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,7 +21,9 @@ public class Outils extends JToolBar{
 
 	private JButton _modeLine, _modePolygone, _modeSelect, _modeRectangle, _modeCercle, _modePointer,_modeOval,_modePipette;
 	public static ColorButton couleurCourante;
-
+	/**
+	 * constructeur qui cree les outils de dessins
+	 */
 	public Outils(){
 		super(VERTICAL);
 		setAlignmentX(0);
@@ -48,6 +49,11 @@ public class Outils extends JToolBar{
 		add(couleurCourante);
 	}
 
+	/**
+	 * methode qui permet d'ajouter les outils aux nouveau onglet passe en parametre 
+	 * @param p
+	 * @param o
+	 */
 	public void addOutilOnglet(Page p, Onglet o){
 		_modePointer.addActionListener(new SetContructorListener(o.sv,null));
 		_modeLine.addActionListener(new SetContructorListener(o.sv,new VectorLineConstructor()));

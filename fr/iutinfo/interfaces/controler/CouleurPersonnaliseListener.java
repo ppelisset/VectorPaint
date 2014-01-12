@@ -16,17 +16,25 @@ public class CouleurPersonnaliseListener implements ActionListener {
 	private Page p;
 	private CouleurPersonnalise cp;
 	private ColorButton cb;
-
+	/**
+	 * listener de la class {@link CouleurPersonnalise}
+	 * @param p
+	 */
 	public CouleurPersonnaliseListener(Page p){
 		this.p = p;
 	}
-
+	/**
+	 * listener de la class {@link CouleurPersonnalise}
+	 * @param p
+	 */
 	public CouleurPersonnaliseListener(Page p, CouleurPersonnalise cp, ColorButton cb){
 		this.p = p;
 		this.cp = cp;
 		this.cb = cb;
 	}
-
+	/**
+	 * methode qui gere l'interaction utilisateur/interface de la JFrame {@link CouleurPersonnalise}
+	 */
 	public void actionPerformed(ActionEvent e) {
 		JButton b = (JButton) e.getSource();
 		if(b.getText().equals("OK")){

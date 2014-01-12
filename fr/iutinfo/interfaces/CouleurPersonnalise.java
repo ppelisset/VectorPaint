@@ -23,6 +23,11 @@ public class CouleurPersonnalise extends JFrame {
 	private JButton ok, cancel;
 	private Color couleur;
 
+	/**
+	 * constructeur qui cree une Frame pour pouvoir faire ses propre couleur
+	 * @param p
+	 * @param cb
+	 */
 	public CouleurPersonnalise(Page p, ColorButton cb){
 		super("Choix de couleur");
 		
@@ -48,8 +53,8 @@ public class CouleurPersonnalise extends JFrame {
 		};
 
 		kl= new KeyListener() {
-			public void keyTyped(KeyEvent e) {
-			}
+			public void keyTyped(KeyEvent e) {}
+			//detection de valeur fausse
 			public void keyReleased(KeyEvent e) {
 				JTextField tF = (JTextField) e.getSource();
 				if(tF.getText().isEmpty()){
@@ -117,8 +122,7 @@ public class CouleurPersonnalise extends JFrame {
 				couleur = new Color(sR.getValue(), sG.getValue(), sB.getValue(), sA.getValue());
 				lColor.setBackground(couleur);
 			}
-			public void keyPressed(KeyEvent e) {
-			}
+			public void keyPressed(KeyEvent e) {}
 		};
 
 		setLayout(new GridLayout(2,1));
@@ -236,7 +240,10 @@ public class CouleurPersonnalise extends JFrame {
 		setLocation(750, 350);
 		setVisible(true);
 	}
-	
+	/**
+	 * retourne la couleur choisie
+	 * @return Color
+	 */
 	public Color getColor(){
 		return couleur;
 	}

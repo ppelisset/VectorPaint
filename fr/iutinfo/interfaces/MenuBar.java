@@ -7,11 +7,13 @@ import javax.swing.*;
 
 public class MenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
-	
+
 	private JMenuItem nouveau, ouvrir, sauver, sauverSous, nouvelOnglet, fermerOnglet, quitter, copier, couper, coller;
 	private JCheckBoxMenuItem checkBoxOutils, checkBoxCouleur;
-	
 
+	/**
+	 * constructeur permetant la création d'une bar de menu
+	 */
 	public MenuBar() {
 		// Listener gï¿½nï¿½rique qui affiche l'action du menu utilisï¿½
 		ActionListener afficherMenuListener = new ActionListener() {
@@ -19,7 +21,7 @@ public class MenuBar extends JMenuBar {
 				System.out.println("Element de menu [" + event.getActionCommand() + "] utilise.");
 			}
 		};
-		
+
 		// Creation du menu Fichier
 		JMenu fichierMenu = new JMenu("Fichier");
 		nouveau = new JMenuItem("Nouveau");
@@ -63,20 +65,23 @@ public class MenuBar extends JMenuBar {
 		coller.addActionListener(afficherMenuListener);
 		coller.setAccelerator(KeyStroke.getKeyStroke('V', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(), false));
 		editerMenu.add(coller);
-		
+
 		//Creation du menu Affichage
 		JMenu affichageMenu = new JMenu("Affichage");
 		checkBoxOutils = new JCheckBoxMenuItem("Outils", true);
 		affichageMenu.add(checkBoxOutils);
 		checkBoxCouleur = new JCheckBoxMenuItem("Couleur", true);
 		affichageMenu.add(checkBoxCouleur);
-		
+
 		// ajout des menus ï¿½ la barre de menus
 		add(fichierMenu);
 		add(editerMenu);
 		add(affichageMenu);
 	}
-	
+	/**
+	 * methode premetant de paramettrer un listener a tout les boutons
+	 * @param al
+	 */
 	public void addActionListener(ActionListener al){
 		nouveau.addActionListener(al);
 		ouvrir.addActionListener(al);

@@ -20,7 +20,7 @@ public class ToolBarListener implements ActionListener {
 		_p = p;
 	}
 	
-	@Override
+	
 	public void actionPerformed(ActionEvent ev) {
 		SceneView current = ((Onglet)_p.getSelectedComponent()).getSceneView();
 		if(current.getSelectedFigure() != null) {

@@ -8,8 +8,12 @@ import javax.swing.JButton;
 
 public class ColorButton extends JButton {
 
+	private static final long serialVersionUID = 1L;
 	private Color color;
-
+	/**
+	 * creer un JButton avec une taille prédéfinie et lui donne une couleur passe en parametre
+	 * @param c
+	 */
 	public ColorButton(Color c){
 		this.color=c;
 		setPreferredSize(new Dimension(30, 30));
@@ -17,7 +21,10 @@ public class ColorButton extends JButton {
 		setOpaque(true);
 		setBorderPainted(false);
 	}
-	
+	/**
+	 * creer un JButton avec une taille et une couleur prédéfinie et lui donne une ImageIcon passe en parametre
+	 * @param ic
+	 */
 	public ColorButton(ImageIcon ic){
 		super(ic);
 		setText("perso");
@@ -42,7 +49,10 @@ public class ColorButton extends JButton {
 		setBackground(color);
 		repaint();
 	}
-	
+	/**
+	 * retourne le texte du bouton.
+	 * @return String
+	 */
 	public String toString(){
 		return getText();
 	}
