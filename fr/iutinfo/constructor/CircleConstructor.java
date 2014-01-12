@@ -48,7 +48,12 @@ public class CircleConstructor implements Constructor {
 			g.fillOval(x-hypo, y-hypo, hypo*2, hypo*2);
 		}
 	}
-	
+	/**
+	 * Theoreme de Pythagore
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int pythagore(int a, int b) {
 		return (int) (double) Math.sqrt(a*a+b*b);
 	}

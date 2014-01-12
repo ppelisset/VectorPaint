@@ -15,7 +15,10 @@ import fr.iutinfo.model.Vector;
 public class PolygoneView implements Printable {
 	private Polygon _polygon;
 	private java.awt.Polygon _view;
-
+	/**
+	 * Constructeur de la Vue d'un polygone associée à un model
+	 * @param p
+	 */
 	public PolygoneView(Polygon p) {
 		_polygon = p;
 	}

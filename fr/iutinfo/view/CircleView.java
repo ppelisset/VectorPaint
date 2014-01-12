@@ -13,7 +13,10 @@ import fr.iutinfo.model.Circle;
  */
 public class CircleView implements Printable {
 	private Circle _circle;
-
+	/**
+	 * Methode de creation de la vue associée à un model de cercle
+	 * @param c
+	 */
 	public CircleView(Circle c) {
 		_circle = c;
 	}
@@ -36,7 +39,12 @@ public class CircleView implements Printable {
 		}
 
 	}
-
+	/**
+	 * Théorème de Pythagore
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public int pythagore(int a, int b) {
 		return (int) (double) Math.sqrt(a * a + b * b);
 	}

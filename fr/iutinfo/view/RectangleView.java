@@ -8,7 +8,10 @@ import fr.iutinfo.model.Vector;
 
 public class RectangleView implements Printable {
 	private Rectangle _rectangle;
-	
+	/**
+	 * Cosntructeur de vue Rectangle associée à un Model de Rectangle
+	 * @param rect
+	 */
 	public RectangleView(Rectangle rect) {
 		_rectangle = rect;
 	}

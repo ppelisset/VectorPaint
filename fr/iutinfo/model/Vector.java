@@ -3,7 +3,7 @@ package fr.iutinfo.model;
 import fr.iutinfo.librairies.CorruptFileException;
 
 /**
- * Classe représentant un vecteur
+ * Classe reprÔøΩsentant un vecteur
  * @author maxence, pierre
  */
 public class Vector implements Cloneable {
@@ -18,7 +18,7 @@ public class Vector implements Cloneable {
 	protected double _endLeftDistance;
 
 	/**
-	 * Définit un vecteur par sa position dans l'écran
+	 * DÔøΩfinit un vecteur par sa position dans l'ÔøΩcran
 	 * (topDistance,leftDistance) ainsi que par sa direction
 	 * (xDirection,yDirection) et sa taille size.
 	 * 
@@ -42,8 +42,8 @@ public class Vector implements Cloneable {
 	}
 
 	/**
-	 * Définit un vecteur par rapport à un point de départ(topDistance,leftDistance)
-	 * et d'un point d'arrivé (endTopDistance,endLeftDistance)
+	 * DÔøΩfinit un vecteur par rapport ÔøΩ un point de dÔøΩpart(topDistance,leftDistance)
+	 * et d'un point d'arrivÔøΩ (endTopDistance,endLeftDistance)
 	 * @param topDistance
 	 * @param leftDistance
 	 * @param endTopDistance
@@ -188,7 +188,7 @@ public class Vector implements Cloneable {
 	}
 
 	/**
-	 * Recupère la distance par rapport au haut de l'ecran du point d'arrive
+	 * RecupÔøΩre la distance par rapport au haut de l'ecran du point d'arrive
 	 * @return
 	 */
 	public double getEndTopDistance() {
@@ -205,7 +205,7 @@ public class Vector implements Cloneable {
 	}
 
 	/**
-	 * Recupère la distance par rapport au cote gauche de l'écran du point d'arrive
+	 * RecupÔøΩre la distance par rapport au cote gauche de l'ÔøΩcran du point d'arrive
 	 * @return
 	 */
 	public double getEndLeftDistance() {
@@ -213,18 +213,24 @@ public class Vector implements Cloneable {
 	}
 
 	/**
-	 * Modifie la distance par rapport au cote gauche de l'écran du point d'arrive
+	 * Modifie la distance par rapport au cote gauche de l'ÔøΩcran du point d'arrive
 	 * @param endLeftDistance
 	 */
 	public void setEndLeftDistance(double endLeftDistance) {
 		_endLeftDistance = endLeftDistance;
 		_updateDirection();
 	}
-
+	/** 
+	 * Methode toString du Vector
+	 */
 	public String toString() {
 		return "Vecteur (" + _topDistance + "," + _leftDistance + "," + _endTopDistance + "," + _endLeftDistance + ")";
 	}
-	
+	/**
+	 * Methode de test d'√©galit√© entre deux Vectors
+	 * @param v
+	 * @return boolean
+	 */
 	public boolean equals(Vector v) {
 		return (_topDistance == v._topDistance && _leftDistance == v._leftDistance && _endLeftDistance == v._endLeftDistance && _endTopDistance == v._endTopDistance);
 	}
@@ -242,6 +248,12 @@ public class Vector implements Cloneable {
 		return "{" + _topDistance + "|" + _leftDistance + "|" + _endTopDistance + "|" + _endLeftDistance + "}";
 	}
 	
+	/**
+	 * Methode de creation d'ujn vector depuis un fichier .vpf
+	 * @param s
+	 * @return
+	 * @throws CorruptFileException
+	 */
 	public static Vector restore(String s) throws CorruptFileException {
 		Vector v;
 		if(s.startsWith("{") && s.endsWith("}")) {

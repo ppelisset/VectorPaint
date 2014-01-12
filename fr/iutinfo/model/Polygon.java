@@ -37,7 +37,7 @@ public class Polygon extends Figure {
 	/**
 	 * Verifie que le vecteur est ajoutable
 	 * @param v
-	 * @return
+	 * @return boolean
 	 */
 	protected boolean _checkVector(Vector v) {
 		if(_vectorList.isEmpty()) return true;
@@ -60,7 +60,7 @@ public class Polygon extends Figure {
 	/**
 	 * Verifie que la figure est pleine
 	 * @param v
-	 * @return
+	 * @return boolean
 	 */
 	protected boolean _isFinish(Vector v) {
 		if(_vectorList.isEmpty()) return false;
@@ -83,7 +83,7 @@ public class Polygon extends Figure {
 	
 	/**
 	 * Verifie si un polygon est fini
-	 * @return
+	 * @return boolean
 	 */
 	public boolean isFinish() {
 		return _finished;
@@ -91,7 +91,7 @@ public class Polygon extends Figure {
 
 	/**
 	 * Recup�re la liste des vecteurs constituant le polygone
-	 * @return
+	 * @return ArrayList <Vector>
 	 */
 	public ArrayList<Vector> getVectors() {
 		return _vectorList;
@@ -173,7 +173,12 @@ public class Polygon extends Figure {
 		}
 		return "[" + str + ";" + (isFill() ? 1 : 0) + ";" + Figure.encodeColor(getColor()) + "]";
 	}
-	
+	/**
+	 * Méthode de création de la figure depuis lecture d'un ficher .vpf
+	 * @param s
+	 * @return
+	 * @throws CorruptFileException
+	 */
 	public static Figure restore(String s) throws CorruptFileException {
 		Polygon v;
 		if(s.startsWith("[") && s.endsWith("]")) {

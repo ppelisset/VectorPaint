@@ -92,7 +92,12 @@ public class VectorLine extends Figure {
 	public String save() {
 		return "["+_vector.save()+";"+Figure.encodeColor(getColor())+"]";
 	}
-	
+	/**
+	 * Methode de creation de creation d'ujne VectorLine à partir d'un fichier .vpf
+	 * @param s
+	 * @return
+	 * @throws CorruptFileException
+	 */
 	public static Figure restore(String s) throws CorruptFileException {
 		VectorLine v;
 		if(s.startsWith("[") && s.endsWith("]")) {

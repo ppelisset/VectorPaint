@@ -13,7 +13,10 @@ import fr.iutinfo.model.Oval;
  */
 public class OvalView implements Printable {
 	private Oval _oval;
-
+	/**
+	 * Constructeur de vue associée à un model de Oval
+	 * @param o
+	 */
 	public OvalView(Oval o) {
 		_oval = o;
 	}
