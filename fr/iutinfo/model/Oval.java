@@ -128,4 +128,30 @@ public class Oval extends Figure implements Cloneable {
 				+ _diametreX + ";" + _diametreY + ";" + (isFill() ? 1 : 0)
 				+ ";" + Figure.encodeColor(getColor()) + "]";
 	}
+	
+	/**
+	 * Restaure la figure sauvegarde
+	 * @param s
+	 * @return
+	 * @throws CorruptFileException
+	 */
+	public static Figure restore(String s) throws CorruptFileException {
+		Oval v;
+		if (s.startsWith("[") && s.endsWith("]")) {
+			s = s.substring(1, s.length() - 1);
+			String part[] = s.split(";");
+			if (part.length != 5)
+				throw new CorruptFileException();
+			String ptInfo[] = part[0].split(",");
+			Point p = new Point(Double.parseDouble(ptInfo[0]),
+					Double.parseDouble(ptInfo[1]));
+			v = new Oval(p, Double.parseDouble(part[1]), Double.parseDouble(part[2]));
+			v.setFill((Integer.parseInt(part[3]) == 0) ? false : true);
+			v.setColor(Figure.decodeColor(part[4]));
+		} else {
+			throw new CorruptFileException();
+		}
+
+		return v;
+	}
 }
