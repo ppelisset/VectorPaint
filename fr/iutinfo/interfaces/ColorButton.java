@@ -11,7 +11,7 @@ public class ColorButton extends JButton {
 	private static final long serialVersionUID = 1L;
 	private Color color;
 	/**
-	 * creer un JButton avec une taille prédéfinie et lui donne une couleur passe en parametre
+	 * creer un JButton avec une taille predefinie et lui donne une couleur passe en parametre
 	 * @param c
 	 */
 	public ColorButton(Color c){
@@ -22,7 +22,7 @@ public class ColorButton extends JButton {
 		setBorderPainted(false);
 	}
 	/**
-	 * creer un JButton avec une taille et une couleur prédéfinie et lui donne une ImageIcon passe en parametre
+	 * creer un JButton avec une taille et une couleur predefinie et lui donne une ImageIcon passe en parametre
 	 * @param ic
 	 */
 	public ColorButton(ImageIcon ic){

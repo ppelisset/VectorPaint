@@ -9,14 +9,14 @@ import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Scene;
 
 /**
- * Classe représentant un enregistreur de données pour une scene
+ * Classe representant un enregistreur de donnees pour une scene
  *
  */
 public class Recorder {
 	private Scene _s;
 	
 	/**
-	 * Crée un enregistreur de données pour la scene passer en paramètre
+	 * Cree un enregistreur de donnees pour la scene passer en parametre
 	 * @param s
 	 */
 	public Recorder(Scene s) {
@@ -24,7 +24,7 @@ public class Recorder {
 	}
 	
 	/**
-	 * Enregistre la scène dans le fichier f
+	 * Enregistre la scene dans le fichier f
 	 * @param f
 	 * @throws IOException
 	 */

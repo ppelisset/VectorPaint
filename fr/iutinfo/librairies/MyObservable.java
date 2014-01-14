@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import fr.iutinfo.model.Figure;
 
 /**
- * Classe pour le design pattern observable modifié afin de prendre une figure en paramètre (permet de savoir quelle figure doit être modifier dans la vue)
+ * Classe pour le design pattern observable modifie afin de prendre une figure en parametre (permet de savoir quelle figure doit etre modifier dans la vue)
  *
  */
 public class MyObservable {
@@ -13,7 +13,7 @@ public class MyObservable {
 	private ArrayList<MyObserver> _observer = new ArrayList<MyObserver>();
 	
 	/**
-	 * Change la figure passer en paramètre
+	 * Change la figure passer en parametre
 	 * @param msg
 	 */
 	public void setMessageFigure(Figure msg) {

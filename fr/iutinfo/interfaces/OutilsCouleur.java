@@ -86,7 +86,7 @@ public class OutilsCouleur extends JToolBar {
 		couleurPersonnalise.addMouseListener(mc);
 	}
 	/**
-	 * methode qui permet d'ajouter les couleur personnalise à la page passe en parametre 
+	 * methode qui permet d'ajouter les couleur personnalise a la page passe en parametre 
 	 * @param p
 	 */
 	public void addCouleurPersonnalise(Page p){

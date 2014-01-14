@@ -62,7 +62,7 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	 */
 	public abstract void move(int direction, double speed);
 	/**
-	 * Permet de redimensionner une figure en remplacent le point ÔøΩ l'origine par l'autre
+	 * Permet de redimensionner une figure en remplacent le point a l'origine par l'autre
 	 * @param originTop
 	 * @param originLeft
 	 * @param endTop
@@ -71,7 +71,7 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	public abstract void resize(double originTop, double originLeft, double endTop, double endLeft);
 	
 	/**
-	 * Methode de clonage, si la figure contient une liste de vecteur alors la classe fille doit redÔøΩfinir clone
+	 * Methode de clonage, si la figure contient une liste de vecteur alors la classe fille doit redefinir clone
 	 * @see Polygon.clone
 	 */
 	public Figure clone() {
@@ -85,12 +85,12 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	
 	/**
 	 * Methode permettant la sauvegarde de la Figure
-	 * @return String la réprésentation sous forme de texte de la figure
+	 * @return String la representation sous forme de texte de la figure
 	 */
 	public abstract String save();
 	
 	/**
-	 * Permet de restaurer une figure à partir de sa représentation sous forme de texte
+	 * Permet de restaurer une figure a partir de sa representation sous forme de texte
 	 * @param s
 	 * @return
 	 * @throws CorruptFileException
@@ -127,7 +127,7 @@ public abstract class Figure extends MyObservable implements Cloneable {
 	}
 	
 	/**
-	 * Permet de décoder une couleur pour l'ouverture d'une figure
+	 * Permet de decoder une couleur pour l'ouverture d'une figure
 	 * @param s
 	 * @return
 	 */

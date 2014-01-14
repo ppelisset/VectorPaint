@@ -3,7 +3,7 @@ package fr.iutinfo.librairies;
 import fr.iutinfo.model.Figure;
 
 /**
- * Interface implémentant le design pattern observer prennant en paramètre une figure
+ * Interface implementant le design pattern observer prennant en parametre une figure
  * @see fr.iutinfo.librairies.MyObservable
  */
 public interface MyObserver {

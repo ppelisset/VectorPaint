@@ -78,7 +78,7 @@ public class Scene extends MyObservable implements MyObserver {
 	}
 
 	/**
-	 * Permet de supprimer la figure passer en paramtre
+	 * Permet de supprimer la figure passer en parametre
 	 * @param figure
 	 */
 	public void removeFigure(Figure figure) {

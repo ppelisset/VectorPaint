@@ -7,7 +7,7 @@ import fr.iutinfo.controller.MouseSelectController;
 import fr.iutinfo.view.SceneView;
 
 /**
- * Permet de passer vers l'outils de séléction de figure
+ * Permet de passer vers l'outils de selection de figure
  */
 public class SetSelectListener implements ActionListener {
 	private SceneView _scene;

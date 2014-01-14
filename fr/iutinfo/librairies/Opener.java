@@ -11,13 +11,13 @@ import fr.iutinfo.model.Figure;
 import fr.iutinfo.model.Scene;
 
 /**
- * Classe représentant un lecteur de fichier pour une scene
+ * Classe representant un lecteur de fichier pour une scene
  */
 public class Opener {
 	Scene _s;
 	
 	/**
-	 * Crée un lecteur de fichier pour la scene passer en paramètre
+	 * Cree un lecteur de fichier pour la scene passer en parametre
 	 * @param s
 	 */
 	public Opener(Scene s) {
@@ -25,7 +25,7 @@ public class Opener {
 	}
 	
 	/**
-	 * Vide la scene et la rempli avec les informations du fichiers passé en paramètre
+	 * Vide la scene et la rempli avec les informations du fichiers passe en parametre
 	 * @param f
 	 * @throws IOException
 	 * @throws CorruptFileException

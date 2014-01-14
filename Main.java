@@ -5,8 +5,8 @@ import fr.iutinfo.interfaces.InterfaceGraphique;
 public class Main {
 	/**
 	 * Fonction de lancement du programme
-	 * Ajuste une propriete pour le système Mac OS X
-	 * Modifie le look en Feel par défaut
+	 * Ajuste une propriete pour le systeme Mac OS X
+	 * Modifie le look en Feel par defaut
 	 * Lance l'interface graphique
 	 * @throws Exception
 	 */

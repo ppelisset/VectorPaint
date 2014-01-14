@@ -60,7 +60,7 @@ public class Page extends JTabbedPane {
 		repaint();
 	}
 	/**
-	 * retourne l'onglet selectionné de la page
+	 * retourne l'onglet selectionne de la page
 	 * @return Onglet
 	 */
 	public Onglet getSelectedOnglet(){

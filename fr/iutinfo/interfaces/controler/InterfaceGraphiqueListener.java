@@ -105,7 +105,7 @@ public class InterfaceGraphiqueListener implements ActionListener {
 			p.supOnglet();
 		}
 		else if(arg0.getActionCommand() == "Quitter"){
-			reponse = JOptionPane.showConfirmDialog(ig, "Attention, vous allez peut être perdre l'ensembe de votre progression.\nEtes vous sure de vouloir quitter le programme?", "Quitter", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+			reponse = JOptionPane.showConfirmDialog(ig, "Attention, vous allez peut etre perdre l'ensembe de votre progression.\nEtes vous sure de vouloir quitter le programme?", "Quitter", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 			if(reponse == JOptionPane.YES_OPTION)
 				System.exit(0);
 		}

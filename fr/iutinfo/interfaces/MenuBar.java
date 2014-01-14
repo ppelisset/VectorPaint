@@ -12,7 +12,7 @@ public class MenuBar extends JMenuBar {
 	private JCheckBoxMenuItem checkBoxOutils, checkBoxCouleur;
 
 	/**
-	 * constructeur permetant la création d'une bar de menu
+	 * constructeur permetant la creation d'une bar de menu
 	 */
 	public MenuBar() {
 		// Listener gï¿½nï¿½rique qui affiche l'action du menu utilisï¿½
